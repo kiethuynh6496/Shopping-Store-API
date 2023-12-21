@@ -36,7 +36,7 @@ namespace Shopping_Store_API.Config
         /// </summary>
         /// <param name="name"></param>
         /// <param name="options"></param>
-        public void Configure(string name, SwaggerGenOptions options)
+        public void Configure(string? name, SwaggerGenOptions options)
         {
             Configure(options);
         }
