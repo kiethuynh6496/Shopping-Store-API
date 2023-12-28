@@ -19,7 +19,7 @@ namespace Shopping_Store_API.DBContext
         {
 
             base.OnModelCreating(builder);
-            // Bỏ tiền tố AspNet của các bảng: mặc định
+            // Remove AspNet prefix of tables: default
             foreach (var entityType in builder.Model.GetEntityTypes())
             {
                 var tableName = entityType.GetTableName();
@@ -28,7 +28,7 @@ namespace Shopping_Store_API.DBContext
                     entityType.SetTableName(tableName.Substring(6));
                 }
             }
-            // Add Fluent API
+            // Add fluent API and seed initial data
             builder.ApplyConfiguration(new ProductConfiguration());
         }
     }
