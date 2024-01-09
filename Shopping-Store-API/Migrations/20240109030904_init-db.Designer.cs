@@ -12,8 +12,8 @@ using Shopping_Store_API.DBContext;
 namespace ShoppingStoreAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231228041050_init-shopstore")]
-    partial class initshopstore
+    [Migration("20240109030904_init-db")]
+    partial class initdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -234,16 +234,13 @@ namespace ShoppingStoreAPI.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Product", b =>
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Brand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Brand")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -254,7 +251,228 @@ namespace ShoppingStoreAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(2916));
+                        .HasDefaultValue(new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6797));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brand");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6938),
+                            IsDeleted = false,
+                            Name = "Dell",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6940),
+                            IsDeleted = false,
+                            Name = "Apple",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6941),
+                            IsDeleted = false,
+                            Name = "Gigabyte",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6942),
+                            IsDeleted = false,
+                            Name = "Corsair",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6943),
+                            IsDeleted = false,
+                            Name = "LG",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6944),
+                            IsDeleted = false,
+                            Name = "Asus",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6945),
+                            IsDeleted = false,
+                            Name = "Viewsonic",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(6946),
+                            IsDeleted = false,
+                            Name = "Acer",
+                            UpdatedBy = "admin"
+                        });
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("admin");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7429));
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7560),
+                            IsDeleted = false,
+                            Name = "Laptop",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7562),
+                            IsDeleted = false,
+                            Name = "Ipad",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7563),
+                            IsDeleted = false,
+                            Name = "Screen",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7564),
+                            IsDeleted = false,
+                            Name = "Iphone",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7565),
+                            IsDeleted = false,
+                            Name = "Macbook",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7566),
+                            IsDeleted = false,
+                            Name = "Mainboard",
+                            UpdatedBy = "admin"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(7567),
+                            IsDeleted = false,
+                            Name = "Case",
+                            UpdatedBy = "admin"
+                        });
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BrandID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("admin");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(3513));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -275,9 +493,6 @@ namespace ShoppingStoreAPI.Migrations
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("int");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UpdatedBy")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -287,457 +502,461 @@ namespace ShoppingStoreAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BrandID");
+
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("Product", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Brand = "Dell",
+                            BrandID = 1,
+                            CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3143),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5711),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Latitude 7320",
                             PictureUrl = "/images/products/product-01.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Laptop",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 2,
-                            Brand = "Dell",
+                            BrandID = 1,
+                            CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3147),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5716),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Latitude 7330",
                             PictureUrl = "/images/products/product-02.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Laptop",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 3,
-                            Brand = "Dell",
+                            BrandID = 1,
+                            CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3149),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5717),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Inspiron 6430",
                             PictureUrl = "/images/products/product-03.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Laptop",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 4,
-                            Brand = "Dell",
+                            BrandID = 1,
+                            CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3151),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5719),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Inspiron 6530",
                             PictureUrl = "/images/products/product-04.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Laptop",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 5,
-                            Brand = "Apple",
+                            BrandID = 2,
+                            CategoryID = 2,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3152),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5763),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Ipad M1 12.9",
                             PictureUrl = "/images/products/product-05.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Ipad",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 6,
-                            Brand = "Apple",
+                            BrandID = 2,
+                            CategoryID = 2,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3155),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5765),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Ipad M1 12.9",
                             PictureUrl = "/images/products/product-06.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Ipad",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 7,
-                            Brand = "Dell",
+                            BrandID = 1,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3158),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5766),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Screen 27inch",
                             PictureUrl = "/images/products/product-07.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 8,
-                            Brand = "Dell",
+                            BrandID = 1,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3160),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5768),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Screen 27inch",
                             PictureUrl = "/images/products/product-08.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 9,
-                            Brand = "Apple",
+                            BrandID = 2,
+                            CategoryID = 4,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3161),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5770),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Iphone 14 Pro Max",
                             PictureUrl = "/images/products/product-09.jpeg",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Iphone",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 10,
-                            Brand = "Apple",
+                            BrandID = 2,
+                            CategoryID = 4,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3162),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5772),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Iphone 14 Pro Max",
                             PictureUrl = "/images/products/product-10.jpeg",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Iphone",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 11,
-                            Brand = "Apple",
+                            BrandID = 2,
+                            CategoryID = 5,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3164),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5774),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Macbook Air M1",
                             PictureUrl = "/images/products/product-11.jpeg",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Macbook",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 12,
-                            Brand = "Apple",
+                            BrandID = 2,
+                            CategoryID = 5,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3165),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5775),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Macbook Air M1",
                             PictureUrl = "/images/products/product-12.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Macbook",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 13,
-                            Brand = "Gigabyte",
+                            BrandID = 3,
+                            CategoryID = 6,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3168),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5776),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Mainboard Gigabyte 6330",
                             PictureUrl = "/images/products/product-13.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Mainboard",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 14,
-                            Brand = "Gigabyte",
+                            BrandID = 3,
+                            CategoryID = 6,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3169),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5778),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Mainboard Gigabyte 6330",
                             PictureUrl = "/images/products/product-14.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Mainboard",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 15,
-                            Brand = "Corsair",
+                            BrandID = 4,
+                            CategoryID = 7,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3171),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5779),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Case Corsair",
                             PictureUrl = "/images/products/product-15.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Case",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 16,
-                            Brand = "LG",
+                            BrandID = 5,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3172),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5780),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG Ultra Gear",
                             PictureUrl = "/images/products/product-16.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 17,
-                            Brand = "LG",
+                            BrandID = 5,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3174),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5781),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG Ultra Gear",
                             PictureUrl = "/images/products/product-17.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 18,
-                            Brand = "Asus",
+                            BrandID = 6,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3176),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5783),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "MSI 27",
                             PictureUrl = "/images/products/product-18.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 19,
-                            Brand = "Viewsonic",
+                            BrandID = 7,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3177),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5784),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24",
                             PictureUrl = "/images/products/product-19.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 20,
-                            Brand = "Acer",
+                            BrandID = 8,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3179),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5786),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Acer 27",
                             PictureUrl = "/images/products/product-20.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 21,
-                            Brand = "Asus",
+                            BrandID = 6,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3180),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5788),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 27 Freesync",
                             PictureUrl = "/images/products/product-21.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 22,
-                            Brand = "Asus",
+                            BrandID = 6,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3181),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5789),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 24 Freesync",
                             PictureUrl = "/images/products/product-22.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 23,
-                            Brand = "Viewsonic",
+                            BrandID = 7,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3183),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5790),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24 Freesync",
                             PictureUrl = "/images/products/product-23.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 24,
-                            Brand = "Viewsonic",
+                            BrandID = 7,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3185),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5791),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24 Freesync 75Hz",
                             PictureUrl = "/images/products/product-24.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 25,
-                            Brand = "Asus",
+                            BrandID = 6,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3186),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5793),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus TUF Gaming 24",
                             PictureUrl = "/images/products/product-25.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 26,
-                            Brand = "Gigabyte",
+                            BrandID = 3,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3187),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5794),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Gigabyte 24",
                             PictureUrl = "/images/products/product-26.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 27,
-                            Brand = "Asus",
+                            BrandID = 6,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3189),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5795),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus GM27",
                             PictureUrl = "/images/products/product-27.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 28,
-                            Brand = "Acer",
+                            BrandID = 8,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3190),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5797),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Acer 75hz 27",
                             PictureUrl = "/images/products/product-28.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 29,
-                            Brand = "LG",
+                            BrandID = 5,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3192),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5798),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG 75hz 27",
                             PictureUrl = "/images/products/product-29.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         },
                         new
                         {
                             Id = 30,
-                            Brand = "Asus",
+                            BrandID = 6,
+                            CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2023, 12, 28, 11, 10, 50, 352, DateTimeKind.Local).AddTicks(3193),
+                            CreatedDate = new DateTime(2024, 1, 9, 10, 9, 4, 600, DateTimeKind.Local).AddTicks(5799),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 100hz 27",
                             PictureUrl = "/images/products/product-30.png",
                             Price = 20000L,
                             QuantityInStock = 100,
-                            Type = "Screen",
                             UpdatedBy = "admin"
                         });
                 });
@@ -791,6 +1010,35 @@ namespace ShoppingStoreAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Product", b =>
+                {
+                    b.HasOne("Shopping_Store_API.Entities.ERP.Brand", "Brand")
+                        .WithMany("Products")
+                        .HasForeignKey("BrandID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Shopping_Store_API.Entities.ERP.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Brand", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

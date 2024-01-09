@@ -14,7 +14,9 @@ namespace Shopping_Store_API.DBContext
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public virtual DbSet<Product> Products { get; set; }
-        
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -30,6 +32,8 @@ namespace Shopping_Store_API.DBContext
             }
             // Add fluent API and seed initial data
             builder.ApplyConfiguration(new ProductConfiguration());
+            builder.ApplyConfiguration(new BrandConfiguration());
+            builder.ApplyConfiguration(new CategoryConfiguration());
         }
     }
 }
