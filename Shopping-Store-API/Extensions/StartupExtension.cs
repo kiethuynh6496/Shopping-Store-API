@@ -15,6 +15,8 @@ using Shopping_Store_API.Interface.RepositoryInterface;
 using Shopping_Store_API.Service;
 using Shopping_Store_API.Interface.ServiceInterface;
 using System.Text.Json.Serialization;
+using Shopping_Store_API.Filters;
+using Shopping_Store_API.Middlewares;
 
 namespace Shopping_Store_API.Extensions
 {
@@ -26,8 +28,13 @@ namespace Shopping_Store_API.Extensions
             #region Controller
             services.AddControllers().AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-                options.JsonSerializerOptions.WriteIndented = true;
+                //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                //options.JsonSerializerOptions.WriteIndented = true;
+            });
+            services.AddMvc(option =>
+            {
+                option.EnableEndpointRouting = false;
+                option.Filters.Add(new ApiExceptionFilter());
             });
             #endregion
 
@@ -133,7 +140,8 @@ namespace Shopping_Store_API.Extensions
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.UseMiddleware<>();
+            app.UseMiddleware<ErrorHandlerMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

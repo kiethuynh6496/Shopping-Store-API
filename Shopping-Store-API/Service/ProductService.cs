@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Shopping_Store_API.Commons;
+using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
@@ -17,47 +19,42 @@ namespace Shopping_Store_API.Service
 
         public async Task<Product> GetProductById(int productId)
         {
-            if (productId > 0)
+            var productById = await _unitOfWork.Products.GetById(p => p.Id == productId);
+            if (productById == null)
             {
-                var productDetails = await _unitOfWork.Products.GetById(p => p.Id == productId);
-                if (productDetails != null)
-                {
-                    return productDetails;
-                }
+                throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
             }
-            return null;
+            return productById;
         }
 
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            var productDetailsList = await _unitOfWork.Products.GetAll();
-            return productDetailsList;
+            var productList = await _unitOfWork.Products.GetAll();
+            if (productList == null)
+            {
+                throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
+            }
+            return productList;
         }
 
         public async Task<IEnumerable<Product>> GetProdcutByBrand(string brand)
         {
-            if (!brand.IsNullOrEmpty())
+            var productByBrand = await _unitOfWork.Products.GetProdcutByBrand(brand).ToListAsync();
+            if (productByBrand == null)
             {
-                var productByBrand = await _unitOfWork.Products.GetProdcutByBrand(brand).ToListAsync();
-                if (productByBrand != null)
-                {
-                    return productByBrand;
-                }
+                throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
             }
-            return null;
+            return productByBrand;
         }
 
         public async Task<IEnumerable<Product>> GetProdcutByCategory(string category)
         {
-            if (!category.IsNullOrEmpty())
+            var productByCategory = await _unitOfWork.Products.GetProdcutByCategory(category).ToListAsync();
+            if (productByCategory == null)
             {
-                var productByCategory = await _unitOfWork.Products.GetProdcutByCategory(category).ToListAsync();
-                if (productByCategory != null)
-                {
-                    return productByCategory;
-                }
+                throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
             }
-            return null;
+            return productByCategory;
         }
 
         public Task<bool> CreateProduct(Product product)

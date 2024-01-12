@@ -23,10 +23,6 @@ namespace Shopping_Store_API.Controllers.v1
         public async Task<IActionResult> GetProductListAsync()
         {
             var productDetailsList = await _productService.GetAllProducts();
-            if (productDetailsList == null || !productDetailsList.Any())
-            {
-                return NotFound();
-            }
 
             return Ok(productDetailsList);
         }
@@ -41,11 +37,6 @@ namespace Shopping_Store_API.Controllers.v1
         {
             var productDetails = await _productService.GetProductById(productId);
 
-            if (productDetails == null)
-            {
-                return NotFound();
-            }
-
             return Ok(productDetails);
         }
 
@@ -59,11 +50,6 @@ namespace Shopping_Store_API.Controllers.v1
         {
             var productByBrand = await _productService.GetProdcutByBrand(brand);
 
-            if (productByBrand == null || !productByBrand.Any())
-            {
-                return NotFound();
-            }
-
             return Ok(productByBrand);
         }
 
@@ -76,11 +62,6 @@ namespace Shopping_Store_API.Controllers.v1
         public async Task<IActionResult> GetProdcutByCategoryAsync(string category)
         {
             var productByCategory = await _productService.GetProdcutByCategory(category);
-
-            if (productByCategory == null || !productByCategory.Any())
-            {
-                return NotFound();
-            }
 
             return Ok(productByCategory);
         }
