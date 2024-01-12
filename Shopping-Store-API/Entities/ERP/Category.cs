@@ -18,6 +18,7 @@ namespace Shopping_Store_API.Entities.ERP
 
         [Required]
         public string Name { get; set; }
+        [InverseProperty(nameof(Product.Category))]
         public virtual ICollection<Product> Products { get; set; }
     }
 }

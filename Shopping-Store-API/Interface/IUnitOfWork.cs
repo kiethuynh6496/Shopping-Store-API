@@ -1,6 +1,11 @@
-﻿namespace Shopping_Store_API.Interface
+﻿using Shopping_Store_API.Interface.RepositoryInterface;
+
+namespace Shopping_Store_API.Interface
 {
-    public class IUnitOfWork
+    public interface IUnitOfWork
     {
+        IProductRepository Products { get; }
+
+        Task<int> CommitAsync();
     }
 }

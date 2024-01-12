@@ -13,9 +13,11 @@ namespace Shopping_Store_API.Entities.ERP
 
         public int CategoryID { get; set; }
         [ForeignKey(nameof(CategoryID))]
+        [InverseProperty("Products")]
         public virtual Category Category { get; set; }
-        [ForeignKey(nameof(BrandID))]
         public int BrandID { get; set; }
+        [ForeignKey(nameof(BrandID))]
+        [InverseProperty("Products")]
         public virtual Brand Brand { get; set; }
     }
 }
