@@ -32,7 +32,7 @@ namespace Shopping_Store_API.Config
                         Name = "Dell Latitude 7320",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 1000,
                         PictureUrl = "/images/products/product-01.png",
                         BrandID = 1,
                         CategoryID = 1,
@@ -47,7 +47,7 @@ namespace Shopping_Store_API.Config
                         Name = "Dell Latitude 7330",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 2000,
                         PictureUrl = "/images/products/product-02.png",
                         BrandID = 1,
                         CategoryID = 1,
@@ -62,7 +62,7 @@ namespace Shopping_Store_API.Config
                         Name = "Dell Inspiron 6430",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 3000,
                         PictureUrl = "/images/products/product-03.png",
                         BrandID = 1,
                         CategoryID = 1,
@@ -77,7 +77,7 @@ namespace Shopping_Store_API.Config
                         Name = "Dell Inspiron 6530",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 4000,
                         PictureUrl = "/images/products/product-04.png",
                         BrandID = 1,
                         CategoryID = 1,
@@ -92,7 +92,7 @@ namespace Shopping_Store_API.Config
                         Name = "Ipad M1 12.9",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 5000,
                         PictureUrl = "/images/products/product-05.png",
                         BrandID = 2,
                         CategoryID = 2,
@@ -107,7 +107,7 @@ namespace Shopping_Store_API.Config
                         Name = "Ipad M1 12.9",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 6000,
                         PictureUrl = "/images/products/product-06.png",
                         BrandID = 2,
                         CategoryID = 2,
@@ -122,7 +122,7 @@ namespace Shopping_Store_API.Config
                         Name = "Dell Screen 27inch",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 7000,
                         PictureUrl = "/images/products/product-07.png",
                         BrandID = 1,
                         CategoryID = 3,
@@ -137,7 +137,7 @@ namespace Shopping_Store_API.Config
                         Name = "Dell Screen 27inch",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 8000,
                         PictureUrl = "/images/products/product-08.png",
                         BrandID = 1,
                         CategoryID = 3,
@@ -152,7 +152,7 @@ namespace Shopping_Store_API.Config
                         Name = "Iphone 14 Pro Max",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 9000,
                         PictureUrl = "/images/products/product-09.jpeg",
                         BrandID = 2,
                         CategoryID = 4,
@@ -167,7 +167,7 @@ namespace Shopping_Store_API.Config
                         Name = "Iphone 14 Pro Max",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 10000,
                         PictureUrl = "/images/products/product-10.jpeg",
                         BrandID = 2,
                         CategoryID = 4,
@@ -182,7 +182,7 @@ namespace Shopping_Store_API.Config
                         Name = "Macbook Air M1",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 11000,
                         PictureUrl = "/images/products/product-11.jpeg",
                         BrandID = 2,
                         CategoryID = 5,
@@ -197,7 +197,7 @@ namespace Shopping_Store_API.Config
                         Name = "Macbook Air M1",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 12000,
                         PictureUrl = "/images/products/product-12.png",
                         BrandID = 2,
                         CategoryID = 5,
@@ -212,7 +212,7 @@ namespace Shopping_Store_API.Config
                         Name = "Mainboard Gigabyte 6330",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 13000,
                         PictureUrl = "/images/products/product-13.png",
                         BrandID = 3,
                         CategoryID = 6,
@@ -227,7 +227,7 @@ namespace Shopping_Store_API.Config
                         Name = "Mainboard Gigabyte 6330",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 14000,
                         PictureUrl = "/images/products/product-14.png",
                         BrandID = 3,
                         CategoryID = 6,
@@ -242,7 +242,7 @@ namespace Shopping_Store_API.Config
                         Name = "Case Corsair",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 15000,
                         PictureUrl = "/images/products/product-15.png",
                         BrandID = 4,
                         CategoryID = 7,
@@ -257,7 +257,7 @@ namespace Shopping_Store_API.Config
                         Name = "LG Ultra Gear",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 16000,
                         PictureUrl = "/images/products/product-16.png",
                         BrandID = 5,
                         CategoryID = 3,
@@ -272,7 +272,7 @@ namespace Shopping_Store_API.Config
                         Name = "LG Ultra Gear",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 17000,
                         PictureUrl = "/images/products/product-17.png",
                         BrandID = 5,
                         CategoryID = 3,
@@ -287,7 +287,7 @@ namespace Shopping_Store_API.Config
                         Name = "MSI 27",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 18000,
                         PictureUrl = "/images/products/product-18.png",
                         BrandID = 6,
                         CategoryID = 3,
@@ -302,7 +302,7 @@ namespace Shopping_Store_API.Config
                         Name = "Viewsonic 24",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 19000,
                         PictureUrl = "/images/products/product-19.png",
                         BrandID = 7,
                         CategoryID = 3,
@@ -317,7 +317,7 @@ namespace Shopping_Store_API.Config
                         Name = "Acer 27",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 10000,
                         PictureUrl = "/images/products/product-20.png",
                         BrandID = 8,
                         CategoryID = 3,
@@ -332,7 +332,7 @@ namespace Shopping_Store_API.Config
                         Name = "Asus 27 Freesync",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 21000,
                         PictureUrl = "/images/products/product-21.png",
                         BrandID = 6,
                         CategoryID = 3,
@@ -347,7 +347,7 @@ namespace Shopping_Store_API.Config
                         Name = "Asus 24 Freesync",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 22000,
                         PictureUrl = "/images/products/product-22.png",
                         BrandID = 6,
                         CategoryID = 3,
@@ -362,7 +362,7 @@ namespace Shopping_Store_API.Config
                         Name = "Viewsonic 24 Freesync",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 23000,
                         PictureUrl = "/images/products/product-23.png",
                         BrandID = 7,
                         CategoryID = 3,
@@ -377,7 +377,7 @@ namespace Shopping_Store_API.Config
                         Name = "Viewsonic 24 Freesync 75Hz",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 24000,
                         PictureUrl = "/images/products/product-24.png",
                         BrandID = 7,
                         CategoryID = 3,
@@ -392,7 +392,7 @@ namespace Shopping_Store_API.Config
                         Name = "Asus TUF Gaming 24",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 25000,
                         PictureUrl = "/images/products/product-25.png",
                         BrandID = 6,
                         CategoryID = 3,
@@ -407,7 +407,7 @@ namespace Shopping_Store_API.Config
                         Name = "Gigabyte 24",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 26000,
                         PictureUrl = "/images/products/product-26.png",
                         BrandID = 3,
                         CategoryID = 3,
@@ -422,7 +422,7 @@ namespace Shopping_Store_API.Config
                         Name = "Asus GM27",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 27000,
                         PictureUrl = "/images/products/product-27.png",
                         BrandID = 6,
                         CategoryID = 3,
@@ -437,7 +437,7 @@ namespace Shopping_Store_API.Config
                         Name = "Acer 75hz 27",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 28000,
                         PictureUrl = "/images/products/product-28.png",
                         BrandID = 8,
                         CategoryID = 3,
@@ -452,7 +452,7 @@ namespace Shopping_Store_API.Config
                         Name = "LG 75hz 27",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 29000,
                         PictureUrl = "/images/products/product-29.png",
                         BrandID = 5,
                         CategoryID = 3,
@@ -467,7 +467,7 @@ namespace Shopping_Store_API.Config
                         Name = "Asus 100hz 27",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                        Price = 20000,
+                        Price = 30000,
                         PictureUrl = "/images/products/product-30.png",
                         BrandID = 6,
                         CategoryID = 3,

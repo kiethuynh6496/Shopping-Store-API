@@ -28,8 +28,8 @@ namespace Shopping_Store_API.Extensions
             #region Controller
             services.AddControllers().AddJsonOptions(options =>
             {
-                //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-                //options.JsonSerializerOptions.WriteIndented = true;
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.WriteIndented = true;
             });
             services.AddMvc(option =>
             {

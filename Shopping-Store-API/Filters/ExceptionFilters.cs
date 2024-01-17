@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Entities;
+using Shopping_Store_API.Commons;
+using System.ComponentModel;
 
 namespace Shopping_Store_API.Filters
 {
@@ -30,12 +32,18 @@ namespace Shopping_Store_API.Filters
                 context.HttpContext.Response.StatusCode = 500;
             }
 
+            // Get the enum member
+            var enumMember = typeof(Commons.ErrorCodes).GetMember(apiError.ErrorName.ToString())[0];
+
+            // Access the Description property
+            var description = enumMember.CustomAttributes.FirstOrDefault().NamedArguments.FirstOrDefault().TypedValue.Value.ToString();
+
             // always return a JSON result
             context.Result = new JsonResult(new
             {
                 apiError.ErrorCode,
                 apiError.ErrorName,
-                errorMessage = context.Exception?.Message,
+                errorMessage = description,
             });
 
             base.OnException(context);

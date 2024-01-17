@@ -30,5 +30,8 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "Data Already In Use And Cannot Be Deleted!")]
         DataAlreadyInUseAndCannotBeDeleted,
+
+        [Display(Description = "Product Data Doesn't Exist!")]
+        ProductDataDoesntExist,
     }
 }

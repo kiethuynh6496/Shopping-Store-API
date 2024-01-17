@@ -34,11 +34,6 @@ namespace Shopping_Store_API.Repositories
             return product;
         }
 
-        public async Task<IEnumerable<T>> GetAll()
-        {
-            return await DbSet.ToListAsync();
-        }
-
         public async Task Add(T entity)
         {
             if (typeof(IAuditEntity).IsAssignableFrom(typeof(T)))

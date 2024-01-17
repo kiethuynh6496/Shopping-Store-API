@@ -7,7 +7,6 @@ namespace Shopping_Store_API.Interface.RepositoryInterface
     {
         IQueryable<T> GetBy(Expression<Func<T, bool>> expression);
         Task<T> GetById(Expression<Func<T, bool>> expression);
-        Task<IEnumerable<T>> GetAll();
         Task Add(T entity);
         void Update(T entity);
         void Delete(T entity);

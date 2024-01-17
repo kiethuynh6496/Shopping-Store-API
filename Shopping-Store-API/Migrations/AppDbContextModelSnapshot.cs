@@ -248,7 +248,7 @@ namespace ShoppingStoreAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4654));
+                        .HasDefaultValue(new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3427));
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -273,7 +273,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4852),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3575),
                             IsDeleted = false,
                             Name = "Dell",
                             UpdatedBy = "admin"
@@ -282,7 +282,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 2,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4856),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3578),
                             IsDeleted = false,
                             Name = "Apple",
                             UpdatedBy = "admin"
@@ -291,7 +291,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4857),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3579),
                             IsDeleted = false,
                             Name = "Gigabyte",
                             UpdatedBy = "admin"
@@ -300,7 +300,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 4,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4858),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3580),
                             IsDeleted = false,
                             Name = "Corsair",
                             UpdatedBy = "admin"
@@ -309,7 +309,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 5,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4859),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3582),
                             IsDeleted = false,
                             Name = "LG",
                             UpdatedBy = "admin"
@@ -318,7 +318,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 6,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4860),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3584),
                             IsDeleted = false,
                             Name = "Asus",
                             UpdatedBy = "admin"
@@ -327,7 +327,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 7,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4861),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3585),
                             IsDeleted = false,
                             Name = "Viewsonic",
                             UpdatedBy = "admin"
@@ -336,7 +336,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 8,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(4863),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(3586),
                             IsDeleted = false,
                             Name = "Acer",
                             UpdatedBy = "admin"
@@ -360,7 +360,7 @@ namespace ShoppingStoreAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5766));
+                        .HasDefaultValue(new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4278));
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -385,7 +385,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5972),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4422),
                             IsDeleted = false,
                             Name = "Laptop",
                             UpdatedBy = "admin"
@@ -394,7 +394,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 2,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5975),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4425),
                             IsDeleted = false,
                             Name = "Ipad",
                             UpdatedBy = "admin"
@@ -403,7 +403,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5976),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4426),
                             IsDeleted = false,
                             Name = "Screen",
                             UpdatedBy = "admin"
@@ -412,7 +412,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 4,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5977),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4428),
                             IsDeleted = false,
                             Name = "Iphone",
                             UpdatedBy = "admin"
@@ -421,7 +421,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 5,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5979),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4429),
                             IsDeleted = false,
                             Name = "Macbook",
                             UpdatedBy = "admin"
@@ -430,7 +430,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 6,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5980),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4430),
                             IsDeleted = false,
                             Name = "Mainboard",
                             UpdatedBy = "admin"
@@ -439,7 +439,7 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = 7,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(5981),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(4432),
                             IsDeleted = false,
                             Name = "Case",
                             UpdatedBy = "admin"
@@ -469,7 +469,7 @@ namespace ShoppingStoreAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(533));
+                        .HasDefaultValue(new DateTime(2024, 1, 16, 10, 57, 57, 598, DateTimeKind.Local).AddTicks(9839));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -512,12 +512,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3877),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2644),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Latitude 7320",
                             PictureUrl = "/images/products/product-01.png",
-                            Price = 20000L,
+                            Price = 1000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -527,12 +527,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3885),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2650),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Latitude 7330",
                             PictureUrl = "/images/products/product-02.png",
-                            Price = 20000L,
+                            Price = 2000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -542,12 +542,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3886),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2651),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Inspiron 6430",
                             PictureUrl = "/images/products/product-03.png",
-                            Price = 20000L,
+                            Price = 3000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -557,12 +557,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 1,
                             CategoryID = 1,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3888),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2654),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Inspiron 6530",
                             PictureUrl = "/images/products/product-04.png",
-                            Price = 20000L,
+                            Price = 4000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -572,12 +572,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 2,
                             CategoryID = 2,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3889),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2655),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Ipad M1 12.9",
                             PictureUrl = "/images/products/product-05.png",
-                            Price = 20000L,
+                            Price = 5000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -587,12 +587,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 2,
                             CategoryID = 2,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3891),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2657),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Ipad M1 12.9",
                             PictureUrl = "/images/products/product-06.png",
-                            Price = 20000L,
+                            Price = 6000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -602,12 +602,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 1,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3893),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2706),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Screen 27inch",
                             PictureUrl = "/images/products/product-07.png",
-                            Price = 20000L,
+                            Price = 7000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -617,12 +617,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 1,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3895),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2708),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Screen 27inch",
                             PictureUrl = "/images/products/product-08.png",
-                            Price = 20000L,
+                            Price = 8000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -632,12 +632,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 2,
                             CategoryID = 4,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3896),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2710),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Iphone 14 Pro Max",
                             PictureUrl = "/images/products/product-09.jpeg",
-                            Price = 20000L,
+                            Price = 9000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -647,12 +647,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 2,
                             CategoryID = 4,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3897),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2712),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Iphone 14 Pro Max",
                             PictureUrl = "/images/products/product-10.jpeg",
-                            Price = 20000L,
+                            Price = 10000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -662,12 +662,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 2,
                             CategoryID = 5,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3899),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2714),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Macbook Air M1",
                             PictureUrl = "/images/products/product-11.jpeg",
-                            Price = 20000L,
+                            Price = 11000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -677,12 +677,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 2,
                             CategoryID = 5,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3900),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2715),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Macbook Air M1",
                             PictureUrl = "/images/products/product-12.png",
-                            Price = 20000L,
+                            Price = 12000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -692,12 +692,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 3,
                             CategoryID = 6,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3901),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2716),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Mainboard Gigabyte 6330",
                             PictureUrl = "/images/products/product-13.png",
-                            Price = 20000L,
+                            Price = 13000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -707,12 +707,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 3,
                             CategoryID = 6,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3903),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2718),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Mainboard Gigabyte 6330",
                             PictureUrl = "/images/products/product-14.png",
-                            Price = 20000L,
+                            Price = 14000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -722,12 +722,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 4,
                             CategoryID = 7,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3904),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2719),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Case Corsair",
                             PictureUrl = "/images/products/product-15.png",
-                            Price = 20000L,
+                            Price = 15000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -737,12 +737,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 5,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3906),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2720),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG Ultra Gear",
                             PictureUrl = "/images/products/product-16.png",
-                            Price = 20000L,
+                            Price = 16000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -752,12 +752,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 5,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3908),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2722),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG Ultra Gear",
                             PictureUrl = "/images/products/product-17.png",
-                            Price = 20000L,
+                            Price = 17000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -767,12 +767,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 6,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3909),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2723),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "MSI 27",
                             PictureUrl = "/images/products/product-18.png",
-                            Price = 20000L,
+                            Price = 18000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -782,12 +782,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 7,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3911),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2725),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24",
                             PictureUrl = "/images/products/product-19.png",
-                            Price = 20000L,
+                            Price = 19000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -797,12 +797,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 8,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3912),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2726),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Acer 27",
                             PictureUrl = "/images/products/product-20.png",
-                            Price = 20000L,
+                            Price = 10000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -812,12 +812,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 6,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3913),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2728),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 27 Freesync",
                             PictureUrl = "/images/products/product-21.png",
-                            Price = 20000L,
+                            Price = 21000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -827,12 +827,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 6,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3915),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2730),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 24 Freesync",
                             PictureUrl = "/images/products/product-22.png",
-                            Price = 20000L,
+                            Price = 22000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -842,12 +842,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 7,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3916),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2731),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24 Freesync",
                             PictureUrl = "/images/products/product-23.png",
-                            Price = 20000L,
+                            Price = 23000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -857,12 +857,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 7,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3917),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2732),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24 Freesync 75Hz",
                             PictureUrl = "/images/products/product-24.png",
-                            Price = 20000L,
+                            Price = 24000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -872,12 +872,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 6,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3919),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2734),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus TUF Gaming 24",
                             PictureUrl = "/images/products/product-25.png",
-                            Price = 20000L,
+                            Price = 25000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -887,12 +887,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 3,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3920),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2735),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Gigabyte 24",
                             PictureUrl = "/images/products/product-26.png",
-                            Price = 20000L,
+                            Price = 26000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -902,12 +902,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 6,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3921),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2737),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus GM27",
                             PictureUrl = "/images/products/product-27.png",
-                            Price = 20000L,
+                            Price = 27000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -917,12 +917,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 8,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3923),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2738),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Acer 75hz 27",
                             PictureUrl = "/images/products/product-28.png",
-                            Price = 20000L,
+                            Price = 28000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -932,12 +932,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 5,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3924),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2739),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG 75hz 27",
                             PictureUrl = "/images/products/product-29.png",
-                            Price = 20000L,
+                            Price = 29000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         },
@@ -947,12 +947,12 @@ namespace ShoppingStoreAPI.Migrations
                             BrandID = 6,
                             CategoryID = 3,
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 1, 12, 10, 10, 57, 921, DateTimeKind.Local).AddTicks(3926),
+                            CreatedDate = new DateTime(2024, 1, 16, 10, 57, 57, 599, DateTimeKind.Local).AddTicks(2741),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 100hz 27",
                             PictureUrl = "/images/products/product-30.png",
-                            Price = 20000L,
+                            Price = 30000L,
                             QuantityInStock = 100,
                             UpdatedBy = "admin"
                         });

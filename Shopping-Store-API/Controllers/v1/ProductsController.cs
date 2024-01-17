@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Shopping_Store_API.Commons;
 using Shopping_Store_API.Interface.ServiceInterface;
 
 namespace Shopping_Store_API.Controllers.v1
@@ -10,6 +12,7 @@ namespace Shopping_Store_API.Controllers.v1
     public class ProductsController : ControllerBase
     {
         public readonly IProductService _productService;
+
         public ProductsController(IProductService productService)
         {
             _productService = productService;
@@ -20,9 +23,9 @@ namespace Shopping_Store_API.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetProductListAsync()
+        public async Task<IActionResult> GetProductListAsync([FromQuery]ProductParameters productParameters)
         {
-            var productDetailsList = await _productService.GetAllProducts();
+            var productDetailsList = await _productService.GetProducts(productParameters);
 
             return Ok(productDetailsList);
         }

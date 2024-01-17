@@ -27,12 +27,12 @@ namespace Shopping_Store_API.Service
             return productById;
         }
 
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters)
         {
-            var productList = await _unitOfWork.Products.GetAll();
+            var productList = await _unitOfWork.Products.GetProducts(productParameters);
             if (productList == null)
             {
-                throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
+                throw new ApiError((int)ErrorCodes.ProductDataDoesntExist);
             }
             return productList;
         }

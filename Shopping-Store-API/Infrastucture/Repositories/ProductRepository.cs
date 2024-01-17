@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Shopping_Store_API.Commons;
 using Shopping_Store_API.DBContext;
 using Shopping_Store_API.Entities.ERP;
+using Shopping_Store_API.Extensions;
 using Shopping_Store_API.Interface.RepositoryInterface;
 using Shopping_Store_API.Repositories;
 using System.Reflection;
@@ -19,7 +21,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             var productByCategory = DbSet
                     .Include(p => p.Category)
                     .AsNoTracking()
-                    .Where(p => string.Equals(p.Category.Name, category));
+                    .Where(p => p.Category.Name.ToLower().Contains(category));
             return productByCategory;
         }
 
@@ -28,8 +30,20 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             var productByBrand = DbSet
                     .Include(p => p.Brand)
                     .AsNoTracking()
-                    .Where(p => string.Equals(p.Brand.Name, brand));
+                    .Where(p => p.Brand.Name.ToLower().Contains(brand));
             return productByBrand;
+        }
+
+        public async Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters)
+        {
+            var productList = DbSet
+                    .Include(p => p.Category)
+                    .Include(p => p.Brand)
+                    .AsNoTracking()
+                    .Sort(productParameters)
+                    .Filter(productParameters)
+                    .Pagination(productParameters);
+            return productList;
         }
     }
 }

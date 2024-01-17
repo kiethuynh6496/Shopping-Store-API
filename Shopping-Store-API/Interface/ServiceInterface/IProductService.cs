@@ -1,10 +1,11 @@
-﻿using Shopping_Store_API.Entities.ERP;
+﻿using Shopping_Store_API.Commons;
+using Shopping_Store_API.Entities.ERP;
 
 namespace Shopping_Store_API.Interface.ServiceInterface
 {
     public interface IProductService
     {
-        Task<IEnumerable<Product>> GetAllProducts();
+        Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters);
 
         Task<Product> GetProductById(int productId);
 
