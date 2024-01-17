@@ -1,3 +1,4 @@
+using CoreApiResponse;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Shopping_Store_API.Controllers.v1
@@ -5,7 +6,7 @@ namespace Shopping_Store_API.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : BaseController
     {
         private static readonly string[] Summaries = new[]
         {

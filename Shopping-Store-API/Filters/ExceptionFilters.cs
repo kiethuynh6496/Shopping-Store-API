@@ -36,7 +36,7 @@ namespace Shopping_Store_API.Filters
             var enumMember = typeof(Commons.ErrorCodes).GetMember(apiError.ErrorName.ToString())[0];
 
             // Access the Description property
-            var description = enumMember.CustomAttributes.FirstOrDefault().NamedArguments.FirstOrDefault().TypedValue.Value.ToString();
+            var description = enumMember.CustomAttributes.FirstOrDefault().NamedArguments.FirstOrDefault().TypedValue.Value.ToString() ?? string.Empty;
 
             // always return a JSON result
             context.Result = new JsonResult(new

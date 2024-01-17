@@ -62,6 +62,11 @@ namespace Shopping_Store_API.Extensions
             services.ConfigureOptions<ConfigureSwaggerOptions>();
             #endregion
 
+            // Configure AutoMapper
+            #region AutoMapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            #endregion
+
             // Configure DbContext with Scoped lifetime   
             #region DbContext with Scoped lifetime
             services.AddDbContext<AppDbContext>(options =>
