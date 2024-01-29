@@ -6,6 +6,12 @@ namespace Shopping_Store_API.Interface
     {
         IProductRepository Products { get; }
 
+        IShoppingCartRepository ShoppingCart { get; }
+
+        IShoppingCartItemRepository ShoppingCartItem { get; }
+
         Task<int> CommitAsync();
+
+        void Modify<TEntity>(TEntity entity) where TEntity : class;
     }
 }

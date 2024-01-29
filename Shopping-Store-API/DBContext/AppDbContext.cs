@@ -16,6 +16,8 @@ namespace Shopping_Store_API.DBContext
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -30,7 +32,10 @@ namespace Shopping_Store_API.DBContext
                     entityType.SetTableName(tableName.Substring(6));
                 }
             }
-            // Add fluent API and seed initial data
+            // Config fluent API and seed initial data
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new ShoppingCartConfiguration());
+            builder.ApplyConfiguration(new ShoppingCartItemConfiguration());
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new BrandConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());

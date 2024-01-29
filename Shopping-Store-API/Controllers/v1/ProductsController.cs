@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs;
 using Shopping_Store_API.Interface.ServiceInterface;
+using Shopping_Store_API.Service.Parameters;
 using Shopping_Store_API.Users;
 using System.Diagnostics.Metrics;
 
@@ -16,13 +17,13 @@ namespace Shopping_Store_API.Controllers.v1
     [Route("api/v{version:apiVersion}/[controller]")]
     public class ProductsController : BaseController
     {
-        public readonly IProductService _productService;
         private readonly IMapper _mapper;
+        public readonly IProductService _productService;
 
-        public ProductsController(IProductService productService, IMapper mapper)
+        public ProductsController(IMapper mapper, IProductService productService)
         {
-            _productService = productService;
             _mapper = mapper;
+            _productService = productService;
         }
 
         /// <summary>
@@ -30,12 +31,12 @@ namespace Shopping_Store_API.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetProductListAsync([FromQuery]ProductParameters productParameters)
+        public IActionResult GetProductListAsync([FromQuery]ProductParameters productParameters)
         {
-            var productDetailsList = await _productService.GetProducts(productParameters);
+            var productDetailsList = _productService.GetProducts(productParameters);
             var productListDT0 = _mapper.Map<IEnumerable<ProductDTO>>(productDetailsList);
 
-            return CustomResult(ResponseMesssage.DataLoadedSuccessfully.DisplayName(), productListDT0);
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), productListDT0);
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace Shopping_Store_API.Controllers.v1
             var productDetails = await _productService.GetProductById(productId);
             var productListDT0 = _mapper.Map<ProductDTO>(productDetails);
 
-            return CustomResult(ResponseMesssage.DataLoadedSuccessfully.DisplayName(), productListDT0);
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), productListDT0);
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Shopping_Store_API.Controllers.v1
             var productByBrand = await _productService.GetProdcutByBrand(brand);
             var productListDT0 = _mapper.Map<IEnumerable<ProductDTO>>(productByBrand);
 
-            return CustomResult(ResponseMesssage.DataLoadedSuccessfully.DisplayName(), productListDT0);
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), productListDT0);
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Shopping_Store_API.Controllers.v1
             var productByCategory = await _productService.GetProdcutByCategory(category);
             var productListDT0 = _mapper.Map<IEnumerable<ProductDTO>>(productByCategory);
 
-            return CustomResult(ResponseMesssage.DataLoadedSuccessfully.DisplayName(), productListDT0);
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), productListDT0);
         }
     }
 }

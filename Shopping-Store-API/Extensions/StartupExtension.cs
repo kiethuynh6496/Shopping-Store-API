@@ -121,13 +121,16 @@ namespace Shopping_Store_API.Extensions
         {
             return services
                 .AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>))
-                .AddScoped<IProductRepository, ProductRepository>();
+                .AddScoped<IProductRepository, ProductRepository>()
+                .AddScoped<IShoppingCartRepository, ShoppingCartRepository>()
+                .AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             return services
-                .AddScoped<IProductService, ProductService>();
+                .AddScoped<IProductService, ProductService>()
+                .AddScoped<IShoppingCartService, ShoppingCartService>();
         }
 
         public static IApplicationBuilder ConfigureAPIApp(this IApplicationBuilder app)

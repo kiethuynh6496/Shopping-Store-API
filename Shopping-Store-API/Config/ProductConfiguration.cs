@@ -17,12 +17,14 @@ namespace Shopping_Store_API.Config
                 .HasDefaultValue(DateTime.Now);
 
             builder.HasOne(p => p.Category)
-                    .WithMany(c => c.Products)
-                    .HasForeignKey(p => p.CategoryID);
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryID)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(p => p.Brand)
-                    .WithMany(b => b.Products)
-                    .HasForeignKey(p => p.BrandID);
+                .WithMany(b => b.Products)
+                .HasForeignKey(p => p.BrandID)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData
                 (

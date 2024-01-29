@@ -5,6 +5,7 @@ using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
+using Shopping_Store_API.Service.Parameters;
 
 namespace Shopping_Store_API.Service
 {
@@ -27,9 +28,9 @@ namespace Shopping_Store_API.Service
             return productById;
         }
 
-        public async Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters)
+        public IEnumerable<Product> GetProducts(ProductParameters productParameters)
         {
-            var productList = await _unitOfWork.Products.GetProducts(productParameters);
+            var productList = _unitOfWork.Products.GetProducts(productParameters);
             if (productList == null)
             {
                 throw new ApiError((int)ErrorCodes.ProductDataDoesntExist);
@@ -70,6 +71,16 @@ namespace Shopping_Store_API.Service
         public Task<bool> UpdateProduct(Product product)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Product> FindProductById(int productId)
+        {
+            var productById = await _unitOfWork.Products.FindBy(p => p.Id == productId);
+            if (productById == null)
+            {
+                throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
+            }
+            return productById;
         }
     }
 }

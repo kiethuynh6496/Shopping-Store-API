@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shopping_Store_API.Entities.ERP
 {
@@ -13,5 +14,8 @@ namespace Shopping_Store_API.Entities.ERP
 
         [DataType(DataType.Date)]
         public DateTime? Birthday { set; get; }
+
+        [InverseProperty("User")]
+        public virtual ShoppingCart ShoppingCart { get; set; }
     }
 }

@@ -33,5 +33,29 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "Product Data Doesn't Exist!")]
         ProductDataDoesntExist,
+
+        [Display(Description = "Item Isn't Added Successfully!")]
+        ItemIsntAddedSuccessfully,
+
+        [Display(Description = "Shopping Cart Doesn't Exist!")]
+        ShoppingCartDoesntExist,
+
+        [Display(Description = "Shopping Cart Can't Be Created!")]
+        ShoppingCartCantBeCreated,
+
+        [Display(Description = "Data Aren't Created Successfully!")]
+        DataArentCreatedSuccessfully,
+
+        [Display(Description = "Sign up, Please!")]
+        SignUpPlease,
+
+        [Display(Description = "Data Aren't Deleted Successfully!")]
+        DataArentDeletedSuccessfully,
+
+        [Display(Description = "Data Aren't Updated Successfully in ShoppingCartItem!")]
+        DataArentUpdatedSuccessfullyInShoppingCartItem,
+
+        [Display(Description = "Shopping Cart Can't Be Updated!")]
+        ShoppingCartCantBeUpdated,
     }
 }

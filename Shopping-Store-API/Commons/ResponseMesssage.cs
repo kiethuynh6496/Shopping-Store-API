@@ -5,10 +5,16 @@ namespace Shopping_Store_API.Commons
 {
     public enum ResponseMesssage
     {
-        [Description("Data Loaded Successfully!")]
-        DataLoadedSuccessfully = 1,
+        [Description("Data Are Loaded Successfully!")]
+        DataAreLoadedSuccessfully = 1,
 
-        [Description("Data Updated Successfully!")]
-        DataUpdatedSuccessfully,
+        [Description("Data Are Updated Successfully!")]
+        DataAreUpdatedSuccessfully,
+
+        [Description("Data Are Created Successfully!")]
+        DataAreCreatedSuccessfully,
+
+        [Description("Data Are Deleted Successfully!")]
+        DataAreDeletedSuccessfully,
     }
 }

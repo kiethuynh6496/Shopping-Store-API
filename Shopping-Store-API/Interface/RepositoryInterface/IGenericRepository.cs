@@ -5,10 +5,10 @@ namespace Shopping_Store_API.Interface.RepositoryInterface
 {
     public interface IGenericRepository<T> where T : class
     {
-        IQueryable<T> GetBy(Expression<Func<T, bool>> expression);
+        Task<T> FindBy(Expression<Func<T, bool>> expression);
         Task<T> GetById(Expression<Func<T, bool>> expression);
-        Task Add(T entity);
-        void Update(T entity);
+        Task<bool> Add(T entity);
+        bool Update(T entity);
         void Delete(T entity);
     }
 }

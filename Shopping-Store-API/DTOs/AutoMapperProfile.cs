@@ -13,6 +13,11 @@ namespace Shopping_Store_API.DTOs
                 .ReverseMap();
             CreateMap<BrandDTO, Brand>()
                 .ReverseMap();
+
+            CreateMap<ShoppingCartDTO, ShoppingCart>()
+                .ReverseMap();
+            CreateMap<ShoppingCartItemDTO, ShoppingCartItem>()
+                .ReverseMap();
         }
     }
 }

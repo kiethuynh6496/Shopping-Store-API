@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "x+3ZslhXmOeaoQkXxoNOh1ezXTIIQ2XcU3vAtzlagPMd4eL1CEqi3i+53TfBfUH6B+1s/b5yoNVA0/MMmDcleQ==",
+  "dgSpecHash": "gIgppiOjETRWGIJ5PjFF3kVfQot+x6QUiD0OawYOFMP+mcDVOzuT+WX//vDNLOyzXDWwryxOevAjSVneNjK0gg==",
   "success": true,
   "projectFilePath": "C:\\Users\\TuanKiet\\source\\repos\\Shopping-Store-API\\Shopping-Store-API\\Shopping-Store-API.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\TuanKiet\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\TuanKiet\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\TuanKiet\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\TuanKiet\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",
     "C:\\Users\\TuanKiet\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\TuanKiet\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\TuanKiet\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.0\\microsoft.aspnetcore.cryptography.internal.6.0.0.nupkg.sha512",

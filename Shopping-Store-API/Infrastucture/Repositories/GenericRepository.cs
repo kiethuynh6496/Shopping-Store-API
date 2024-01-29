@@ -23,9 +23,9 @@ namespace Shopping_Store_API.Repositories
             _dbFactory = dbFactory;
         }
 
-        public IQueryable<T> GetBy(Expression<Func<T, bool>> expression)
+        public async Task<T> FindBy(Expression<Func<T, bool>> expression)
         {
-            return DbSet.Where(expression);
+            return await DbSet.FindAsync(expression);
         }
 
         public async Task<T> GetById(Expression<Func<T, bool>> expression)
@@ -34,22 +34,24 @@ namespace Shopping_Store_API.Repositories
             return product;
         }
 
-        public async Task Add(T entity)
+        public async Task<bool> Add(T entity)
         {
             if (typeof(IAuditEntity).IsAssignableFrom(typeof(T)))
             {
                 ((IAuditEntity)entity).CreatedDate = DateTime.UtcNow;
             }
             await DbSet.AddAsync(entity);
+            return true;
         }
 
-        public void Update(T entity)
+        public bool Update(T entity)
         {
             if (typeof(IAuditEntity).IsAssignableFrom(typeof(T)))
             {
                 ((IAuditEntity)entity).UpdatedDate = DateTime.UtcNow;
             }
             DbSet.Update(entity);
+            return true;
         }
 
         public void Delete(T entity)
