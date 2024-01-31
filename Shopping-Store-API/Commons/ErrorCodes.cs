@@ -10,11 +10,11 @@ namespace Shopping_Store_API.Commons
         [Display(Description = "An Unknown Error Occured!")]
         OopsSomethingHapped,
 
-        [Display(Description = "Access Token Is InValid!")]
-        AccessTokenIsInValid,
+        [Display(Description = "Token Is InValid!")]
+        TokenIsInValid,
 
-        [Display(Description = "Access Token Is Misssing!")]
-        AccessTokenIsMissing,
+        [Display(Description = "Token Is Misssing!")]
+        TokenIsMissing,
 
         [Display(Description = "Unauthenticated To Access This Data!")]
         UserIsUnauthenticated,

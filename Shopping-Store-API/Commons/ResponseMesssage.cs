@@ -16,5 +16,11 @@ namespace Shopping_Store_API.Commons
 
         [Description("Data Are Deleted Successfully!")]
         DataAreDeletedSuccessfully,
+
+        [Description("Token Are Revoked Successfully!")]
+        TokenAreRevokedSuccessfully,
+
+        [Description("Token Are Refreshed Successfully!")]
+        TokenAreRefreshedSuccessfully,
     }
 }

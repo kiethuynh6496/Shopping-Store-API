@@ -32,7 +32,10 @@ namespace Shopping_Store_API.Service
         {
             var claims = new List<Claim>() {
                 new Claim(ClaimTypes.Sid, appUser.Id),
-                new Claim(ClaimTypes.Email, appUser.Email)
+                new Claim(ClaimTypes.Name, appUser.Email),
+                new Claim(ClaimTypes.Email, appUser.Email),
+                new Claim("Audience", _config["JWT:ValidAudience"]),
+                new Claim("Issuer", _config["JWT:ValidIssuer"])
             };
             var roles = await _userManager.GetRolesAsync(appUser);
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
@@ -41,7 +44,9 @@ namespace Shopping_Store_API.Service
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddMinutes(30),
-                SigningCredentials = creds
+                SigningCredentials = creds,
+                Audience = _config["JWT:ValidAudience"],
+                Issuer = _config["JWT:ValidIssuer"]
             };
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -63,7 +68,6 @@ namespace Shopping_Store_API.Service
             var IsCommitted = await _unitOfWork.CommitAsync();
             if (IsCommitted > 0) return tokenUser;
             return null;
-
         }
 
         public string GenerateRefreshToken()
@@ -83,6 +87,8 @@ namespace Shopping_Store_API.Service
                 ValidateAudience = true,
                 ValidateIssuer = true,
                 ValidateIssuerSigningKey = true,
+                ValidIssuer = _config["JWT:ValidIssuer"],
+                ValidAudience = _config["JWT:ValidAudience"],
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SecretKey"])),
                 ValidateLifetime = false
             };
@@ -91,8 +97,8 @@ namespace Shopping_Store_API.Service
             SecurityToken securityToken;
             var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
             var jwtSecurityToken = securityToken as JwtSecurityToken;
-            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
-                throw new SecurityTokenException("Invalid token");
+            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha512, StringComparison.InvariantCultureIgnoreCase))
+                throw new ApiError((int)ErrorCodes.TokenIsInValid);
 
             return principal;
         }

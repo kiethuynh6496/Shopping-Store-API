@@ -17,27 +17,21 @@ namespace Shopping_Store_API.Controllers.v1
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/auth")]
     public class AuthController : BaseController
     {
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenService _tokenService;
 
-        public AuthController(IMapper mapper, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, ITokenService tokenService)
+        public AuthController(IMapper mapper, UserManager<AppUser> userManager, ITokenService tokenService)
         {
             _mapper = mapper;
             _userManager = userManager;
-            _roleManager = roleManager;
             _tokenService = tokenService;
         }
 
-        /// <summary>
-        /// Register user
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost("Register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
             if (await IsUserExists(registerDTO.Email)) throw new ApiError((int)ErrorCodes.EmailIsAlreadyTaken);
@@ -56,11 +50,7 @@ namespace Shopping_Store_API.Controllers.v1
             return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
-        /// <summary>
-        /// Add product item to shopping cart
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost("Login")]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LogInRequestDTO logInRequestDTO)
         {
             if (logInRequestDTO is null) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);

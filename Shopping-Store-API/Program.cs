@@ -1,15 +1,6 @@
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Shopping_Store_API.Config;
-using Microsoft.AspNetCore.Identity;
-using Shopping_Store_API.DBContext;
-using Shopping_Store_API.Entities.ERP;
-using System;
-using Microsoft.EntityFrameworkCore;
 using Shopping_Store_API.Extensions;
-using Microsoft.Extensions.Configuration;
-using System.Text.Json.Serialization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

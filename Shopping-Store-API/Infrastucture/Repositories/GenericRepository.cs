@@ -33,6 +33,11 @@ namespace Shopping_Store_API.Repositories
             return await DbSet.FirstOrDefaultAsync(expression);
         }
 
+        public IQueryable<T> Where(Expression<Func<T, bool>> expression)
+        {
+            return DbSet.Where(expression);
+        }
+
         public async Task<bool> Add(T entity)
         {
             if (typeof(IAuditEntity).IsAssignableFrom(typeof(T)))

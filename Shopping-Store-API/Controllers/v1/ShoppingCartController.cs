@@ -15,7 +15,7 @@ namespace Shopping_Store_API.Controllers.v1
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/shoppingcart")]
     public class ShoppingCartController : BaseController
     {
         public readonly IShoppingCartService _shoppingCartService;
@@ -44,7 +44,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// Add product item to shopping cart
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("update-item")]
         public async Task<IActionResult> AddItemToShoppingCartAsync([FromQuery]ShoppingCartParameters shoppingCartParameters)
         {
             var addResult = await _shoppingCartService.AddItemToShoppingCart(Request.Cookies["userId"], shoppingCartParameters, Response);
@@ -61,7 +61,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// Remove product item to shopping cart
         /// </summary>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("delete-item")]
         public async Task<IActionResult> RemoveItemToShoppingCartAsync([FromQuery]ShoppingCartParameters shoppingCartParameters)
         {
             var removeResult = await _shoppingCartService.RemoveItemToShoppingCart(Request.Cookies["userId"], shoppingCartParameters);
