@@ -4,8 +4,8 @@ namespace Shopping_Store_API.Commons
 {
     public enum ErrorCodes
     {
-        [Display(Description = "Credentials Is Invalid!")]
-        CredentialsInvalid = 1,
+        [Display(Description = "Client Request Is Invalid!")]
+        ClientRequestIsInvalid = 1,
 
         [Display(Description = "An Unknown Error Occured!")]
         OopsSomethingHapped,
@@ -57,5 +57,8 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "Shopping Cart Can't Be Updated!")]
         ShoppingCartCantBeUpdated,
+
+        [Display(Description = "Email is already taken")]
+        EmailIsAlreadyTaken,
     }
 }

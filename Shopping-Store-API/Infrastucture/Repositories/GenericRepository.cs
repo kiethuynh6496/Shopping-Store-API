@@ -30,8 +30,7 @@ namespace Shopping_Store_API.Repositories
 
         public async Task<T> GetById(Expression<Func<T, bool>> expression)
         {
-            var product = await DbSet.FirstOrDefaultAsync(expression);
-            return product;
+            return await DbSet.FirstOrDefaultAsync(expression);
         }
 
         public async Task<bool> Add(T entity)

@@ -12,28 +12,20 @@ namespace Shopping_Store_API.Infrastucture
         public IProductRepository Products { get; }
         public IShoppingCartRepository ShoppingCart { get; }
         public IShoppingCartItemRepository ShoppingCartItem { get; }
+        public ITokenRepository Token { get; }
 
-        public UnitOfWork(DbFactory dbFactory, IProductRepository productRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartItemRepository shoppingCartItemRepository)
+        public UnitOfWork(DbFactory dbFactory, IProductRepository productRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartItemRepository shoppingCartItemRepository, ITokenRepository tokenRepository)
         {
             _dbFactory = dbFactory;
             Products = productRepository;
             ShoppingCart = shoppingCartRepository;
             ShoppingCartItem = shoppingCartItemRepository;
+            Token = tokenRepository;
         }
 
         public Task<int> CommitAsync()
         {
             return _dbFactory.DbContext.SaveChangesAsync();
-        }
-
-        public void Modify<TEntity>(TEntity entity) where TEntity : class
-        {
-            var entry = _dbFactory.DbContext.Entry(entity);
-
-            if (entry != null)
-            {
-                entry.State = EntityState.Modified;
-            }
         }
     }
 }

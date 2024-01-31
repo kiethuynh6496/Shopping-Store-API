@@ -6,6 +6,11 @@ namespace Shopping_Store_API.Entities.ERP
 {
     public class AppUser : IdentityUser
     {
+        public AppUser()
+        {
+            Tokens = new List<Token>();
+        }
+
         [MaxLength(100)]
         public string? FullName { set; get; }
 
@@ -17,5 +22,8 @@ namespace Shopping_Store_API.Entities.ERP
 
         [InverseProperty("User")]
         public virtual ShoppingCart ShoppingCart { get; set; }
+
+        [InverseProperty(nameof(Token.User))]
+        public virtual List<Token> Tokens { get; set; }
     }
 }

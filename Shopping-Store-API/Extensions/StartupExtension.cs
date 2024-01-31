@@ -17,6 +17,9 @@ using Shopping_Store_API.Interface.ServiceInterface;
 using System.Text.Json.Serialization;
 using Shopping_Store_API.Filters;
 using Shopping_Store_API.Middlewares;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Shopping_Store_API.Extensions
 {
@@ -108,9 +111,30 @@ namespace Shopping_Store_API.Extensions
                 options.User.RequireUniqueEmail = true;
 
                 // SignIn settings.
-                options.SignIn.RequireConfirmedEmail = true;
+                options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
 
+            });
+            #endregion
+
+            #region Configure Authentication and Authorization
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = configuration["JWT:ValidIssuer"],
+                    ValidAudience = configuration["JWT:ValidAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:SecretKey"])),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+                };
             });
             #endregion
 
@@ -123,14 +147,16 @@ namespace Shopping_Store_API.Extensions
                 .AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>))
                 .AddScoped<IProductRepository, ProductRepository>()
                 .AddScoped<IShoppingCartRepository, ShoppingCartRepository>()
-                .AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
+                .AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>()
+                .AddScoped<ITokenRepository, TokenRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             return services
                 .AddScoped<IProductService, ProductService>()
-                .AddScoped<IShoppingCartService, ShoppingCartService>();
+                .AddScoped<IShoppingCartService, ShoppingCartService>()
+                .AddScoped<ITokenService, TokenService>();
         }
 
         public static IApplicationBuilder ConfigureAPIApp(this IApplicationBuilder app)

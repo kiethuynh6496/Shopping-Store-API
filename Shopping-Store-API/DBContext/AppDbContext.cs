@@ -18,6 +18,7 @@ namespace Shopping_Store_API.DBContext
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public virtual DbSet<Token> Tokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -39,6 +40,11 @@ namespace Shopping_Store_API.DBContext
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new BrandConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
+            builder.ApplyConfiguration(new TokenConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new RoleClaimConfiguration());
+            builder.ApplyConfiguration(new UserClaimConfiguration());
+            builder.ApplyConfiguration(new UserRoleConfiguration());
         }
     }
 }

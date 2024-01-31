@@ -10,8 +10,8 @@ namespace Shopping_Store_API.Interface
 
         IShoppingCartItemRepository ShoppingCartItem { get; }
 
-        Task<int> CommitAsync();
+        ITokenRepository Token { get; }
 
-        void Modify<TEntity>(TEntity entity) where TEntity : class;
+        Task<int> CommitAsync();
     }
 }
