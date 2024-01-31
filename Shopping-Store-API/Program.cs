@@ -22,6 +22,7 @@ app.UseSwaggerUI(options =>
         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
             description.GroupName.ToUpperInvariant());
     }
+    options.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
 });
 
 app.ConfigureAPIApp();
