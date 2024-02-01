@@ -43,7 +43,7 @@ namespace Shopping_Store_API.Service
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddMinutes(30),
+                Expires = DateTime.Now.AddMinutes(5),
                 SigningCredentials = creds,
                 Audience = _config["JWT:ValidAudience"],
                 Issuer = _config["JWT:ValidIssuer"]

@@ -23,19 +23,19 @@ namespace Shopping_Store_API.Repositories
             _dbFactory = dbFactory;
         }
 
-        public async Task<T> FindBy(Expression<Func<T, bool>> expression)
+        public async Task<T> FindById(Expression<Func<T, bool>> expression)
         {
-            return await DbSet.FindAsync(expression);
+            return await DbSet.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 
-        public async Task<T> GetById(Expression<Func<T, bool>> expression)
+        public IQueryable<T> FindByAll()
         {
-            return await DbSet.FirstOrDefaultAsync(expression);
+            return DbSet.AsNoTracking();
         }
 
-        public IQueryable<T> Where(Expression<Func<T, bool>> expression)
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return DbSet.Where(expression);
+            return DbSet.AsNoTracking().Where(expression);
         }
 
         public async Task<bool> Add(T entity)

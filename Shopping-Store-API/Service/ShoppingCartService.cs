@@ -42,7 +42,7 @@ namespace Shopping_Store_API.Service
             }
 
             // Get Product
-            var product = await _unitOfWork.Products.GetById(p => p.Id == shoppingCartParameters.productId);
+            var product = await _unitOfWork.Products.FindById(p => p.Id == shoppingCartParameters.productId);
             if (product == null)
             {
                 throw new ApiError((int)ErrorCodes.ProductDataDoesntExist);

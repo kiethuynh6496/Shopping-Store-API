@@ -47,11 +47,8 @@ namespace Shopping_Store_API.Controllers.v1
             var email = principal.Identity.Name;
             var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Email == email);
 
-            var userToken = await _unitOfWork.Token
-                                                    .Where(u => u.UserId == user.Id)
-                                                    .OrderByDescending(u => u.CreatedDate)
-                                                    .FirstOrDefaultAsync();
-            
+            var userToken = await _unitOfWork.Token.FindByCondition(u => u.UserId == user.Id && u.AccessToken == accessToken)
+                                                   .FirstOrDefaultAsync();
 
             if (user is null || userToken.RefreshToken != refreshToken || userToken.ExpiresAt > DateTime.Now)
                 throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
@@ -80,7 +77,7 @@ namespace Shopping_Store_API.Controllers.v1
             var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Id == userId);
             if (user == null) return BadRequest();
             var userToken = await _unitOfWork.Token
-                                                    .Where(u => u.UserId == user.Id)
+                                                    .FindByCondition(u => u.UserId == user.Id)
                                                     .OrderByDescending(u => u.CreatedDate)
                                                     .FirstOrDefaultAsync();
             userToken.RefreshToken = null;

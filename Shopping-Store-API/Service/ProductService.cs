@@ -20,7 +20,7 @@ namespace Shopping_Store_API.Service
 
         public async Task<Product> GetProductById(int productId)
         {
-            var productById = await _unitOfWork.Products.GetById(p => p.Id == productId);
+            var productById = await _unitOfWork.Products.FindById(p => p.Id == productId);
             if (productById == null)
             {
                 throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
@@ -71,16 +71,6 @@ namespace Shopping_Store_API.Service
         public Task<bool> UpdateProduct(Product product)
         {
             throw new NotImplementedException();
-        }
-
-        public async Task<Product> FindProductById(int productId)
-        {
-            var productById = await _unitOfWork.Products.FindBy(p => p.Id == productId);
-            if (productById == null)
-            {
-                throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
-            }
-            return productById;
         }
     }
 }
