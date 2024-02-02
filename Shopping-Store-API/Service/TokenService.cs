@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Shopping_Store_API.Commons;
+using Shopping_Store_API.DTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
@@ -28,7 +29,7 @@ namespace Shopping_Store_API.Service
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Token> GenerateAccessRefreshToken(AppUser appUser)
+        public async Task<LogInResponseDTO> GenerateAccessToken(AppUser appUser)
         {
             var claims = new List<Claim>() {
                 new Claim(ClaimTypes.Sid, appUser.Id),
@@ -43,7 +44,7 @@ namespace Shopping_Store_API.Service
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddMinutes(5),
+                Expires = DateTime.Now.AddMinutes(30),
                 SigningCredentials = creds,
                 Audience = _config["JWT:ValidAudience"],
                 Issuer = _config["JWT:ValidIssuer"]
@@ -55,7 +56,6 @@ namespace Shopping_Store_API.Service
 
             var tokenUser = new Token { 
                                         UserId = appUser.Id,
-                                        AccessToken = accessToken,
                                         RefreshToken = refreshToken,
                                         ExpiresAt = DateTime.Now.AddDays(7),
                                         IsDeleted = false,
@@ -65,7 +65,21 @@ namespace Shopping_Store_API.Service
                                         };
             var result = await _unitOfWork.Token.Add(tokenUser);
             if(result == false) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
-            return tokenUser;
+
+            var IsCommitted = await _unitOfWork.CommitAsync();
+            if (IsCommitted <= 0)
+            {
+                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
+            }
+
+            var responeToken = new LogInResponseDTO
+            {
+                UserId = appUser.Id,
+                AccessToken = accessToken,
+                RefreshToken = refreshToken,
+                ExpiresAt = tokenUser.ExpiresAt
+            };  
+            return responeToken;
         }
 
         public string GenerateRefreshToken()

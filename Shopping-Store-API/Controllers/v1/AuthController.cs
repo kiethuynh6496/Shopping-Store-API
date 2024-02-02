@@ -61,10 +61,9 @@ namespace Shopping_Store_API.Controllers.v1
             var result = await _userManager.CheckPasswordAsync(user, logInRequestDTO.Password);
             if (!result) throw new ApiError((int)ErrorCodes.UserIsUnauthorized);
 
-            var token = await _tokenService.GenerateAccessRefreshToken(user);
-            var logInResponse = _mapper.Map<LogInResponseDTO>(token);
+            var token = await _tokenService.GenerateAccessToken(user);
 
-            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), logInResponse);
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), token);
         }
 
         /// <summary>

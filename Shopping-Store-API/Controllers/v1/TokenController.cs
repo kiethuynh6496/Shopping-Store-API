@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Azure.Core;
 using CoreApiResponse;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs;
 using Shopping_Store_API.Entities;
@@ -37,53 +39,45 @@ namespace Shopping_Store_API.Controllers.v1
         {
             if (tokenRequestDTO is null) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
-            string accessToken = tokenRequestDTO.AccessToken;
+            // Extract the access token from the Authorization header
+            string accessToken = Request.Headers["Authorization"];
             string refreshToken = tokenRequestDTO.RefreshToken;
 
             var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken);
             var email = principal.Identity.Name;
             var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Email == email);
 
-            var userToken = await _unitOfWork.Token.FindByCondition(u => u.UserId == user.Id && u.AccessToken == accessToken)
+            var userToken = await _unitOfWork.Token.FindByCondition(u => u.UserId == user.Id && u.RefreshToken == refreshToken)
                                                    .FirstOrDefaultAsync();
 
-            if (user is null || userToken.RefreshToken != refreshToken || userToken.ExpiresAt < DateTime.Now)
+            if (user is null || userToken is null || userToken.RefreshToken != refreshToken || userToken.ExpiresAt < DateTime.Now)
                 throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
-            var newTokenUser = await _tokenService.GenerateAccessRefreshToken(user);
+            var newTokenUser = await _tokenService.GenerateAccessToken(user);
 
-            var tokenResponseDTO = _mapper.Map<LogInResponseDTO>(newTokenUser);
+            return CustomResult(ResponseMesssage.TokenAreRefreshedSuccessfully.DisplayName(), newTokenUser, System.Net.HttpStatusCode.Created);
 
-            var IsCommitted = await _unitOfWork.CommitAsync();
-            if (IsCommitted <= 0)
-            {
-                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
-            }
-            else
-            {
-                return CustomResult(ResponseMesssage.TokenAreRefreshedSuccessfully.DisplayName(), tokenResponseDTO, System.Net.HttpStatusCode.Created);
-            }
         }
 
         [HttpPost("revoke")]
-        public async Task<IActionResult> Revoke()
+        public async Task<IActionResult> Revoke(TokenRequestDTO tokenRequestDTO)
         {
-            // Extract the access token from the Authorization header
-            string accessToken = Request.Headers["Authorization"];
+            if (tokenRequestDTO.RefreshToken.IsNullOrEmpty()) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
-            var userToken = await _unitOfWork.Token.FindByCondition(u => u.AccessToken == accessToken)
+            var userToken = await _unitOfWork.Token.FindByCondition(u => u.RefreshToken == tokenRequestDTO.RefreshToken)
                                                    .AsTracking()
                                                    .FirstOrDefaultAsync();
+
+            if (userToken is null) throw new ApiError((int)ErrorCodes.TokenIsInValid);
+
             userToken.RefreshToken = null;
             var IsCommitted = await _unitOfWork.CommitAsync();
             if (IsCommitted <= 0)
             {
                 throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
             }
-            else
-            {
-                return CustomResult(ResponseMesssage.TokenAreRevokedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
-            }
+
+            return CustomResult(ResponseMesssage.TokenAreRevokedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
         }
     }
 }
