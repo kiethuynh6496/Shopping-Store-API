@@ -65,9 +65,7 @@ namespace Shopping_Store_API.Service
                                         };
             var result = await _unitOfWork.Token.Add(tokenUser);
             if(result == false) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
-            var IsCommitted = await _unitOfWork.CommitAsync();
-            if (IsCommitted > 0) return tokenUser;
-            return null;
+            return tokenUser;
         }
 
         public string GenerateRefreshToken()

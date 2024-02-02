@@ -11,10 +11,6 @@ using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
-using Shopping_Store_API.Service.Parameters;
-using Shopping_Store_API.Users;
-using System.Diagnostics.Metrics;
-using System.Security.Claims;
 
 namespace Shopping_Store_API.Controllers.v1
 {
@@ -51,14 +47,12 @@ namespace Shopping_Store_API.Controllers.v1
             var userToken = await _unitOfWork.Token.FindByCondition(u => u.UserId == user.Id && u.AccessToken == accessToken)
                                                    .FirstOrDefaultAsync();
 
-            if (user is null || userToken.RefreshToken != refreshToken || userToken.ExpiresAt > DateTime.Now)
+            if (user is null || userToken.RefreshToken != refreshToken || userToken.ExpiresAt < DateTime.Now)
                 throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
-            var newAccessToken = await _tokenService.GenerateAccessRefreshToken(user);
-            var newRefreshToken = _tokenService.GenerateRefreshToken();
+            var newTokenUser = await _tokenService.GenerateAccessRefreshToken(user);
 
-            userToken.RefreshToken = newRefreshToken;
-            var tokenResponseDTO = _mapper.Map<LogInResponseDTO>(userToken);
+            var tokenResponseDTO = _mapper.Map<LogInResponseDTO>(newTokenUser);
 
             var IsCommitted = await _unitOfWork.CommitAsync();
             if (IsCommitted <= 0)
@@ -74,23 +68,12 @@ namespace Shopping_Store_API.Controllers.v1
         [HttpPost("revoke")]
         public async Task<IActionResult> Revoke()
         {
-            //var userId = Request.Cookies["userId"];
-            //var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Id == userId);
-            //if (user == null) return BadRequest();
-            // Get the Authorization header from the request
-            string authorizationHeader = Request.Headers["Authorization"];
-
             // Extract the access token from the Authorization header
-            string accessToken = null;
-            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
-            {
-                accessToken = authorizationHeader.Substring("Bearer ".Length).Trim();
-            }
+            string accessToken = Request.Headers["Authorization"];
 
-            var userToken = await _unitOfWork.Token
-                                                    .FindByCondition(u => u.AccessToken == accessToken)
-                                                    .OrderByDescending(u => u.CreatedDate)
-                                                    .FirstOrDefaultAsync();
+            var userToken = await _unitOfWork.Token.FindByCondition(u => u.AccessToken == accessToken)
+                                                   .AsTracking()
+                                                   .FirstOrDefaultAsync();
             userToken.RefreshToken = null;
             var IsCommitted = await _unitOfWork.CommitAsync();
             if (IsCommitted <= 0)
