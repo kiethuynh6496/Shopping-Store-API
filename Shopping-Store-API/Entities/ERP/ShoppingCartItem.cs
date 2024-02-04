@@ -1,5 +1,4 @@
 ﻿using Shopping_Store_API.Base;
-using Shopping_Store_API.Users;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shopping_Store_API.Entities.ERP

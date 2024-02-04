@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using CoreApiResponse;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +8,6 @@ using Shopping_Store_API.DTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface.ServiceInterface;
-using Shopping_Store_API.Service.Parameters;
-using Shopping_Store_API.Users;
-using System.Diagnostics.Metrics;
 
 namespace Shopping_Store_API.Controllers.v1
 {

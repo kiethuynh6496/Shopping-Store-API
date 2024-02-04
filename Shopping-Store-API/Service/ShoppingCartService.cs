@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Shopping_Store_API.Commons;
+﻿using Shopping_Store_API.Commons;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
 using Shopping_Store_API.Service.Parameters;
-using Shopping_Store_API.Users;
 
 namespace Shopping_Store_API.Service
 {

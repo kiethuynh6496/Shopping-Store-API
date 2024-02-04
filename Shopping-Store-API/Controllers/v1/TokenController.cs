@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using CoreApiResponse;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,14 +18,12 @@ namespace Shopping_Store_API.Controllers.v1
     [Route("api/v{version:apiVersion}/token")]
     public class TokenController : BaseController
     {
-        private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITokenService _tokenService;
 
-        public TokenController(IMapper mapper, UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService)
+        public TokenController(UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService)
         {
-            _mapper = mapper;
             _userManager = userManager;
             _unitOfWork = unitOfWork;
             _tokenService = tokenService;
