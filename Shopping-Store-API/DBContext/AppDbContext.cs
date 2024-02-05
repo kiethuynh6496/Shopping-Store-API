@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Shopping_Store_API.Config;
 using Shopping_Store_API.Entities.ERP;
-using System.Diagnostics;
 
 namespace Shopping_Store_API.DBContext
 {
@@ -19,6 +18,9 @@ namespace Shopping_Store_API.DBContext
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public virtual DbSet<Token> Tokens { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -45,6 +47,9 @@ namespace Shopping_Store_API.DBContext
             builder.ApplyConfiguration(new RoleClaimConfiguration());
             builder.ApplyConfiguration(new UserClaimConfiguration());
             builder.ApplyConfiguration(new UserRoleConfiguration());
+            builder.ApplyConfiguration(new AddressConfiguration());
+            builder.ApplyConfiguration(new OrderConfiguration());
+            builder.ApplyConfiguration(new OrderItemConfiguration());
         }
     }
 }

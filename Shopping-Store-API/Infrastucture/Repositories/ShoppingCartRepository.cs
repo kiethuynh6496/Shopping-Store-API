@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DBContext;
 using Shopping_Store_API.Entities;
@@ -35,8 +35,8 @@ namespace Shopping_Store_API.Infrastucture.Repositories
 
         public ShoppingCart CreateShoppingCart(string userId, HttpResponse httpResponse)
         {
-            if(userId == null) throw new ApiError((int)ErrorCodes.SignUpPlease);
-            var buyerId = userId;/*"d68dcb5f-2706-4cb5-bb0b-37bf39400420"*/
+            if(userId.IsNullOrEmpty()) throw new ApiError((int)ErrorCodes.SignUpPlease);
+            var buyerId = userId;
 
             var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(30) };
 

@@ -8,14 +8,13 @@ namespace Shopping_Store_API.Entities.ERP
     {
         public AppUser()
         {
-            Tokens = new List<Token>();
+            Tokens = new HashSet<Token>();
+            Addresses = new HashSet<Address>();
+            Orders = new HashSet<Order>();
         }
 
         [MaxLength(100)]
         public string? FullName { set; get; }
-
-        [MaxLength(255)]
-        public string? Address { set; get; }
 
         [DataType(DataType.Date)]
         public DateTime? Birthday { set; get; }
@@ -24,6 +23,12 @@ namespace Shopping_Store_API.Entities.ERP
         public virtual ShoppingCart ShoppingCart { get; set; }
 
         [InverseProperty(nameof(Token.User))]
-        public virtual List<Token> Tokens { get; set; }
+        public virtual ICollection<Token> Tokens { get; set; }
+
+        [InverseProperty(nameof(Address.User))]
+        public virtual ICollection<Address> Addresses { get; set; }
+
+        [InverseProperty(nameof(Order.User))]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

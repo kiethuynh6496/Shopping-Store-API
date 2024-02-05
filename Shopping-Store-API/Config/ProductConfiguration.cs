@@ -11,20 +11,14 @@ namespace Shopping_Store_API.Config
             builder.ToTable("Product");
             builder.Property(t => t.Name)
                 .IsRequired();
-            builder.Property(t => t.CreatedBy)
-                .HasDefaultValue("admin");
-            builder.Property(t => t.CreatedDate)
-                .HasDefaultValue(DateTime.Now);
 
             builder.HasOne(p => p.Category)
                 .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryID)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(p => p.CategoryID);
 
             builder.HasOne(p => p.Brand)
                 .WithMany(b => b.Products)
-                .HasForeignKey(p => p.BrandID)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(p => p.BrandID);
 
             builder.HasData
                 (
@@ -38,10 +32,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-01.png",
                         BrandID = 1,
                         CategoryID = 1,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -53,10 +44,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-02.png",
                         BrandID = 1,
                         CategoryID = 1,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -68,10 +56,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-03.png",
                         BrandID = 1,
                         CategoryID = 1,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -83,10 +68,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-04.png",
                         BrandID = 1,
                         CategoryID = 1,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -98,10 +80,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-05.png",
                         BrandID = 2,
                         CategoryID = 2,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -113,10 +92,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-06.png",
                         BrandID = 2,
                         CategoryID = 2,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -128,10 +104,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-07.png",
                         BrandID = 1,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -143,10 +116,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-08.png",
                         BrandID = 1,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -158,10 +128,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-09.jpeg",
                         BrandID = 2,
                         CategoryID = 4,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -173,10 +140,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-10.jpeg",
                         BrandID = 2,
                         CategoryID = 4,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -188,10 +152,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-11.jpeg",
                         BrandID = 2,
                         CategoryID = 5,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -203,10 +164,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-12.png",
                         BrandID = 2,
                         CategoryID = 5,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -218,10 +176,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-13.png",
                         BrandID = 3,
                         CategoryID = 6,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -233,10 +188,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-14.png",
                         BrandID = 3,
                         CategoryID = 6,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -248,10 +200,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-15.png",
                         BrandID = 4,
                         CategoryID = 7,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -263,10 +212,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-16.png",
                         BrandID = 5,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -278,10 +224,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-17.png",
                         BrandID = 5,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -293,10 +236,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-18.png",
                         BrandID = 6,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -308,10 +248,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-19.png",
                         BrandID = 7,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -323,10 +260,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-20.png",
                         BrandID = 8,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -338,10 +272,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-21.png",
                         BrandID = 6,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -353,10 +284,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-22.png",
                         BrandID = 6,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -368,10 +296,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-23.png",
                         BrandID = 7,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -383,10 +308,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-24.png",
                         BrandID = 7,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -398,10 +320,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-25.png",
                         BrandID = 6,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -413,10 +332,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-26.png",
                         BrandID = 3,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -428,10 +344,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-27.png",
                         BrandID = 6,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -443,10 +356,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-28.png",
                         BrandID = 8,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -458,10 +368,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-29.png",
                         BrandID = 5,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     },
                     new Product
                     {
@@ -473,10 +380,7 @@ namespace Shopping_Store_API.Config
                         PictureUrl = "/images/products/product-30.png",
                         BrandID = 6,
                         CategoryID = 3,
-                        QuantityInStock = 100,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        QuantityInStock = 100
                     }
                 );
         }

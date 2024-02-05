@@ -8,7 +8,7 @@ namespace Shopping_Store_API.Entities.ERP
     {
         public ShoppingCart()
         {
-            ShoppingCartItems = new List<ShoppingCartItem>();
+            ShoppingCartItems = new HashSet<ShoppingCartItem>();
         }
 
         public string UserId { get; set; }
@@ -17,7 +17,7 @@ namespace Shopping_Store_API.Entities.ERP
         public AppUser User { get; set; }
 
         [InverseProperty(nameof(ShoppingCartItem.ShoppingCart))]
-        public virtual List<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public void AddItem(Product product, int quantity)
         {

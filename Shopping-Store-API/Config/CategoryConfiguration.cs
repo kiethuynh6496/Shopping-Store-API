@@ -8,68 +8,42 @@ namespace Shopping_Store_API.Config
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.Property(t => t.CreatedBy)
-                .HasDefaultValue("admin");
-            builder.Property(t => t.CreatedDate)
-                .HasDefaultValue(DateTime.Now);
-
             builder.HasData
                 (
                     new Category
                     {
                         Id = 1,
-                        Name = "Laptop",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        Name = "Laptop"
                     },
                     new Category
                     {
                         Id = 2,
-                        Name = "Ipad",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        Name = "Ipad"
                     },
                     new Category
                     {
                         Id = 3,
-                        Name = "Screen",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        Name = "Screen"
                     },
                     new Category
                     {
                         Id = 4,
-                        Name = "Iphone",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        Name = "Iphone"
                     },
                     new Category
                     {
                         Id = 5,
-                        Name = "Macbook",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        Name = "Macbook"
                     },
                     new Category
                     {
                         Id = 6,
-                        Name = "Mainboard",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        Name = "Mainboard"
                     },
                     new Category
                     {
                         Id = 7,
-                        Name = "Case",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        Name = "Case"
                     }
                 );
         }

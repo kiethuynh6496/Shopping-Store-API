@@ -2,14 +2,14 @@
 {
     public class Constants
     {
-        public enum OrderStatusCode
+        public enum OrderStatus
         { 
             Pending = 0,
             Confirmed,
             Processing,
             Shipped
         }
-        public enum StatusCode
+        public enum Status
         {
             Danger = 0,
             Info,

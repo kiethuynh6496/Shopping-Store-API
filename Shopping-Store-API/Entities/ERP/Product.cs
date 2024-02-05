@@ -5,6 +5,12 @@ namespace Shopping_Store_API.Entities.ERP
 {
     public class Product : AuditEntity<int>
     {
+        public Product()
+        {
+            ProductShoppingCartItems = new HashSet<ShoppingCartItem>();
+            OrderItems = new HashSet<OrderItem>();
+        }
+
         public string Name { get; set; }
         public string? Description { get; set; }
         public long Price { get; set; }
@@ -23,5 +29,8 @@ namespace Shopping_Store_API.Entities.ERP
 
         [InverseProperty("Item")]
         public virtual ICollection<ShoppingCartItem> ProductShoppingCartItems { get; set; }
+
+        [InverseProperty("Item")]
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

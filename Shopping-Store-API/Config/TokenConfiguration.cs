@@ -9,14 +9,10 @@ namespace Shopping_Store_API.Config
     {
         public void Configure(EntityTypeBuilder<Token> builder)
         {
-            builder.Property(t => t.CreatedBy)
-                .HasDefaultValue("admin");
-            builder.Property(t => t.CreatedDate)
-                .HasDefaultValue(DateTime.Now);
-
             builder.HasOne(u => u.User)
                 .WithMany(t => t.Tokens)
-                .HasForeignKey(u => u.UserId);
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData
                 (
@@ -27,10 +23,7 @@ namespace Shopping_Store_API.Config
                         IPAddress = "192.168.0.1",
                         UserAgent = "Chrome/91.0.4472.124",
                         RefreshToken = "",
-                        ExpiresAt = DateTime.Now,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        ExpiresAt = DateTime.Now
                     },
                     new Token
                     {
@@ -39,10 +32,7 @@ namespace Shopping_Store_API.Config
                         IPAddress = "192.168.0.2",
                         UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                         RefreshToken = "",
-                        ExpiresAt = DateTime.Now,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        ExpiresAt = DateTime.Now
                     },
                     new Token
                     {
@@ -51,10 +41,7 @@ namespace Shopping_Store_API.Config
                         IPAddress = "192.168.0.3",
                         UserAgent = "Safari/537.36",
                         RefreshToken = "",
-                        ExpiresAt = DateTime.Now,
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        ExpiresAt = DateTime.Now
                     }
                 );
         }

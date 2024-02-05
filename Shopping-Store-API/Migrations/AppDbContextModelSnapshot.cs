@@ -52,14 +52,14 @@ namespace ShoppingStoreAPI.Migrations
                         new
                         {
                             Id = "44bc1c18-51a6-46b0-8e20-0df40a2ae0b9",
-                            ConcurrencyStamp = "a34f3ee0-0520-4f86-aac0-3e0d01f94245",
+                            ConcurrencyStamp = "a7bee7c8-748b-4e11-9f65-e8df283761af",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "4d267d01-3ce5-44d4-bf99-a3fd2172ba17",
-                            ConcurrencyStamp = "4b401338-a118-4dc4-85cb-4cf5bc246b2b",
+                            ConcurrencyStamp = "02d1fe54-d386-412a-badf-6e35a963d3bf",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -239,6 +239,91 @@ namespace ShoppingStoreAPI.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AddressName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool?>("isDefault")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Address");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AddressName = "172/26 Ly Thai To, Q.3",
+                            City = "HCM",
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(2937),
+                            IsDeleted = false,
+                            UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420",
+                            isDefault = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AddressName = "175 Duong so 1, Go Vap",
+                            City = "HCM",
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(2941),
+                            IsDeleted = false,
+                            UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420",
+                            isDefault = false
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AddressName = "175 Duong so 10, Binh Thanh",
+                            City = "HCM",
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(2942),
+                            IsDeleted = false,
+                            UserId = "94a12a30-1a9b-48ad-950d-29f80865003d",
+                            isDefault = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AddressName = "11 Duong so 1, Binh Thanh",
+                            City = "HCM",
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(2944),
+                            IsDeleted = false,
+                            UserId = "f222bfbf-86bf-4b65-9958-bc818ba5f822",
+                            isDefault = true
+                        });
+                });
+
             modelBuilder.Entity("Shopping_Store_API.Entities.ERP.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -246,10 +331,6 @@ namespace ShoppingStoreAPI.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
 
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
@@ -319,39 +400,36 @@ namespace ShoppingStoreAPI.Migrations
                         {
                             Id = "d68dcb5f-2706-4cb5-bb0b-37bf39400420",
                             AccessFailedCount = 0,
-                            Address = "TP Ho Chi Minh",
-                            ConcurrencyStamp = "8a305987-9fbb-4ec6-8c9c-c81ebf2a1e30",
+                            ConcurrencyStamp = "bcd859fe-7282-46f7-8408-d7bc3b2ac480",
                             EmailConfirmed = false,
                             FullName = "kiethuynh",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "79c557f9-506f-4c88-a853-4cb9e9077010",
+                            SecurityStamp = "d000f7f8-e8dd-4307-a255-f0f4752ce391",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "94a12a30-1a9b-48ad-950d-29f80865003d",
                             AccessFailedCount = 0,
-                            Address = "TP Ho Chi Minh",
-                            ConcurrencyStamp = "22e3687d-352f-476a-9e0d-3c37cf143ce4",
+                            ConcurrencyStamp = "26532239-4aea-4c63-8d72-3ce21ec4b422",
                             EmailConfirmed = false,
                             FullName = "mangoc",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b70d16cf-ad04-424c-af22-297a487bb207",
+                            SecurityStamp = "7037ef73-8e81-433a-a160-fcb1fed0236c",
                             TwoFactorEnabled = false
                         },
                         new
                         {
                             Id = "f222bfbf-86bf-4b65-9958-bc818ba5f822",
                             AccessFailedCount = 0,
-                            Address = "TP Ho Chi Minh",
-                            ConcurrencyStamp = "448c21e0-7c53-4ba6-b552-941b7251b6fa",
+                            ConcurrencyStamp = "0f675472-f9d3-46bb-8611-73f244e9abe2",
                             EmailConfirmed = false,
                             FullName = "auduongphong",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2b37d29c-e4dc-40b0-8c2a-576eda53c13d",
+                            SecurityStamp = "abb29ab2-2cc0-4da6-bdef-6821542148a3",
                             TwoFactorEnabled = false
                         });
                 });
@@ -365,15 +443,10 @@ namespace ShoppingStoreAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("admin");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(7789));
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -383,7 +456,6 @@ namespace ShoppingStoreAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -397,74 +469,58 @@ namespace ShoppingStoreAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8012),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9986),
                             IsDeleted = false,
-                            Name = "Dell",
-                            UpdatedBy = "admin"
+                            Name = "Dell"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8015),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9987),
                             IsDeleted = false,
-                            Name = "Apple",
-                            UpdatedBy = "admin"
+                            Name = "Apple"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8017),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9988),
                             IsDeleted = false,
-                            Name = "Gigabyte",
-                            UpdatedBy = "admin"
+                            Name = "Gigabyte"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8019),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9989),
                             IsDeleted = false,
-                            Name = "Corsair",
-                            UpdatedBy = "admin"
+                            Name = "Corsair"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8021),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9990),
                             IsDeleted = false,
-                            Name = "LG",
-                            UpdatedBy = "admin"
+                            Name = "LG"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8022),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9991),
                             IsDeleted = false,
-                            Name = "Asus",
-                            UpdatedBy = "admin"
+                            Name = "Asus"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8024),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9992),
                             IsDeleted = false,
-                            Name = "Viewsonic",
-                            UpdatedBy = "admin"
+                            Name = "Viewsonic"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8026),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9993),
                             IsDeleted = false,
-                            Name = "Acer",
-                            UpdatedBy = "admin"
+                            Name = "Acer"
                         });
                 });
 
@@ -477,15 +533,10 @@ namespace ShoppingStoreAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("admin");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8715));
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -495,7 +546,6 @@ namespace ShoppingStoreAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -509,65 +559,226 @@ namespace ShoppingStoreAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8932),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(122),
                             IsDeleted = false,
-                            Name = "Laptop",
-                            UpdatedBy = "admin"
+                            Name = "Laptop"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8936),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(124),
                             IsDeleted = false,
-                            Name = "Ipad",
-                            UpdatedBy = "admin"
+                            Name = "Ipad"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8946),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(125),
                             IsDeleted = false,
-                            Name = "Screen",
-                            UpdatedBy = "admin"
+                            Name = "Screen"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8948),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(126),
                             IsDeleted = false,
-                            Name = "Iphone",
-                            UpdatedBy = "admin"
+                            Name = "Iphone"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8950),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(127),
                             IsDeleted = false,
-                            Name = "Macbook",
-                            UpdatedBy = "admin"
+                            Name = "Macbook"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8952),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(128),
                             IsDeleted = false,
-                            Name = "Mainboard",
-                            UpdatedBy = "admin"
+                            Name = "Mainboard"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(8954),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(128),
                             IsDeleted = false,
-                            Name = "Case",
-                            UpdatedBy = "admin"
+                            Name = "Case"
+                        });
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Total")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Order");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(4279),
+                            IsDeleted = false,
+                            OrderStatus = 0,
+                            Total = 100000L,
+                            UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(4283),
+                            IsDeleted = false,
+                            OrderStatus = 0,
+                            Total = 110000L,
+                            UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(4284),
+                            IsDeleted = false,
+                            OrderStatus = 0,
+                            Total = 120000L,
+                            UserId = "94a12a30-1a9b-48ad-950d-29f80865003d"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(4285),
+                            IsDeleted = false,
+                            OrderStatus = 0,
+                            Total = 130000L,
+                            UserId = "f222bfbf-86bf-4b65-9958-bc818ba5f822"
+                        });
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("OrderID");
+
+                    b.ToTable("OrderItem");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(6714),
+                            IsDeleted = false,
+                            ItemId = 1,
+                            OrderID = 1,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(6719),
+                            IsDeleted = false,
+                            ItemId = 2,
+                            OrderID = 1,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(6720),
+                            IsDeleted = false,
+                            ItemId = 3,
+                            OrderID = 1,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(6721),
+                            IsDeleted = false,
+                            ItemId = 3,
+                            OrderID = 2,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(6722),
+                            IsDeleted = false,
+                            ItemId = 3,
+                            OrderID = 3,
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(6723),
+                            IsDeleted = false,
+                            ItemId = 3,
+                            OrderID = 4,
+                            Quantity = 3
                         });
                 });
 
@@ -586,15 +797,10 @@ namespace ShoppingStoreAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("admin");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(2780));
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -616,7 +822,6 @@ namespace ShoppingStoreAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -636,450 +841,390 @@ namespace ShoppingStoreAPI.Migrations
                             Id = 1,
                             BrandID = 1,
                             CategoryID = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6720),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9769),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Latitude 7320",
                             PictureUrl = "/images/products/product-01.png",
                             Price = 1000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 2,
                             BrandID = 1,
                             CategoryID = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6728),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9776),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Latitude 7330",
                             PictureUrl = "/images/products/product-02.png",
                             Price = 2000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 3,
                             BrandID = 1,
                             CategoryID = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6730),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9778),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Inspiron 6430",
                             PictureUrl = "/images/products/product-03.png",
                             Price = 3000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 4,
                             BrandID = 1,
                             CategoryID = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6732),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9779),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Inspiron 6530",
                             PictureUrl = "/images/products/product-04.png",
                             Price = 4000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 5,
                             BrandID = 2,
                             CategoryID = 2,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6734),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9782),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Ipad M1 12.9",
                             PictureUrl = "/images/products/product-05.png",
                             Price = 5000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 6,
                             BrandID = 2,
                             CategoryID = 2,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6737),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9783),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Ipad M1 12.9",
                             PictureUrl = "/images/products/product-06.png",
                             Price = 6000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 7,
                             BrandID = 1,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6739),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9784),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Screen 27inch",
                             PictureUrl = "/images/products/product-07.png",
                             Price = 7000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 8,
                             BrandID = 1,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6741),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9785),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Dell Screen 27inch",
                             PictureUrl = "/images/products/product-08.png",
                             Price = 8000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 9,
                             BrandID = 2,
                             CategoryID = 4,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6743),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9826),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Iphone 14 Pro Max",
                             PictureUrl = "/images/products/product-09.jpeg",
                             Price = 9000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 10,
                             BrandID = 2,
                             CategoryID = 4,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6745),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9828),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Iphone 14 Pro Max",
                             PictureUrl = "/images/products/product-10.jpeg",
                             Price = 10000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 11,
                             BrandID = 2,
                             CategoryID = 5,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6747),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9829),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Macbook Air M1",
                             PictureUrl = "/images/products/product-11.jpeg",
                             Price = 11000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 12,
                             BrandID = 2,
                             CategoryID = 5,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6749),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9831),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Macbook Air M1",
                             PictureUrl = "/images/products/product-12.png",
                             Price = 12000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 13,
                             BrandID = 3,
                             CategoryID = 6,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6751),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9832),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Mainboard Gigabyte 6330",
                             PictureUrl = "/images/products/product-13.png",
                             Price = 13000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 14,
                             BrandID = 3,
                             CategoryID = 6,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6753),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9833),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Mainboard Gigabyte 6330",
                             PictureUrl = "/images/products/product-14.png",
                             Price = 14000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 15,
                             BrandID = 4,
                             CategoryID = 7,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6755),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9834),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Case Corsair",
                             PictureUrl = "/images/products/product-15.png",
                             Price = 15000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 16,
                             BrandID = 5,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6757),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9836),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG Ultra Gear",
                             PictureUrl = "/images/products/product-16.png",
                             Price = 16000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 17,
                             BrandID = 5,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6761),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9837),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG Ultra Gear",
                             PictureUrl = "/images/products/product-17.png",
                             Price = 17000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 18,
                             BrandID = 6,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6763),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9838),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "MSI 27",
                             PictureUrl = "/images/products/product-18.png",
                             Price = 18000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 19,
                             BrandID = 7,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6764),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9839),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24",
                             PictureUrl = "/images/products/product-19.png",
                             Price = 19000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 20,
                             BrandID = 8,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6766),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9840),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Acer 27",
                             PictureUrl = "/images/products/product-20.png",
                             Price = 10000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 21,
                             BrandID = 6,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6768),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9842),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 27 Freesync",
                             PictureUrl = "/images/products/product-21.png",
                             Price = 21000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 22,
                             BrandID = 6,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6770),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9843),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 24 Freesync",
                             PictureUrl = "/images/products/product-22.png",
                             Price = 22000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 23,
                             BrandID = 7,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6772),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9844),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24 Freesync",
                             PictureUrl = "/images/products/product-23.png",
                             Price = 23000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 24,
                             BrandID = 7,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6774),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9845),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Viewsonic 24 Freesync 75Hz",
                             PictureUrl = "/images/products/product-24.png",
                             Price = 24000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 25,
                             BrandID = 6,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6776),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9848),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus TUF Gaming 24",
                             PictureUrl = "/images/products/product-25.png",
                             Price = 25000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 26,
                             BrandID = 3,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6778),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9849),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Gigabyte 24",
                             PictureUrl = "/images/products/product-26.png",
                             Price = 26000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 27,
                             BrandID = 6,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6780),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9851),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus GM27",
                             PictureUrl = "/images/products/product-27.png",
                             Price = 27000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 28,
                             BrandID = 8,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6782),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9852),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Acer 75hz 27",
                             PictureUrl = "/images/products/product-28.png",
                             Price = 28000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 29,
                             BrandID = 5,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6784),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9853),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "LG 75hz 27",
                             PictureUrl = "/images/products/product-29.png",
                             Price = 29000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         },
                         new
                         {
                             Id = 30,
                             BrandID = 6,
                             CategoryID = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(6786),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(9855),
                             Description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                             IsDeleted = false,
                             Name = "Asus 100hz 27",
                             PictureUrl = "/images/products/product-30.png",
                             Price = 30000L,
-                            QuantityInStock = 100,
-                            UpdatedBy = "admin"
+                            QuantityInStock = 100
                         });
                 });
 
@@ -1092,7 +1237,6 @@ namespace ShoppingStoreAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(max)")
                         .HasDefaultValue("admin");
@@ -1100,13 +1244,12 @@ namespace ShoppingStoreAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 2, 2, 14, 42, 55, 505, DateTimeKind.Local).AddTicks(6399));
+                        .HasDefaultValue(new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(3925));
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -1127,28 +1270,22 @@ namespace ShoppingStoreAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 505, DateTimeKind.Local).AddTicks(6688),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(4216),
                             IsDeleted = false,
-                            UpdatedBy = "admin",
                             UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 505, DateTimeKind.Local).AddTicks(6693),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(4221),
                             IsDeleted = false,
-                            UpdatedBy = "admin",
                             UserId = "94a12a30-1a9b-48ad-950d-29f80865003d"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 505, DateTimeKind.Local).AddTicks(6695),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(4223),
                             IsDeleted = false,
-                            UpdatedBy = "admin",
                             UserId = "f222bfbf-86bf-4b65-9958-bc818ba5f822"
                         });
                 });
@@ -1162,15 +1299,10 @@ namespace ShoppingStoreAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("admin");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 2, 2, 14, 42, 55, 505, DateTimeKind.Local).AddTicks(7475));
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -1185,7 +1317,6 @@ namespace ShoppingStoreAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -1203,101 +1334,83 @@ namespace ShoppingStoreAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1197),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6783),
                             IsDeleted = false,
                             ItemId = 1,
                             Quantity = 3,
-                            ShoppingCartID = 1,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1203),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6788),
                             IsDeleted = false,
                             ItemId = 2,
                             Quantity = 3,
-                            ShoppingCartID = 1,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 1
                         },
                         new
                         {
                             Id = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1205),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6789),
                             IsDeleted = false,
                             ItemId = 3,
                             Quantity = 3,
-                            ShoppingCartID = 1,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 1
                         },
                         new
                         {
                             Id = 4,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1207),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6790),
                             IsDeleted = false,
                             ItemId = 1,
                             Quantity = 3,
-                            ShoppingCartID = 2,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 2
                         },
                         new
                         {
                             Id = 5,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1209),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6791),
                             IsDeleted = false,
                             ItemId = 2,
                             Quantity = 3,
-                            ShoppingCartID = 2,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 2
                         },
                         new
                         {
                             Id = 6,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1211),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6792),
                             IsDeleted = false,
                             ItemId = 3,
                             Quantity = 3,
-                            ShoppingCartID = 2,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 2
                         },
                         new
                         {
                             Id = 7,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1212),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6792),
                             IsDeleted = false,
                             ItemId = 1,
                             Quantity = 3,
-                            ShoppingCartID = 3,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 3
                         },
                         new
                         {
                             Id = 8,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1214),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6793),
                             IsDeleted = false,
                             ItemId = 2,
                             Quantity = 3,
-                            ShoppingCartID = 3,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 3
                         },
                         new
                         {
                             Id = 9,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(1216),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 157, DateTimeKind.Local).AddTicks(6794),
                             IsDeleted = false,
                             ItemId = 3,
                             Quantity = 3,
-                            ShoppingCartID = 3,
-                            UpdatedBy = "admin"
+                            ShoppingCartID = 3
                         });
                 });
 
@@ -1310,15 +1423,10 @@ namespace ShoppingStoreAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("admin");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 2, 2, 14, 42, 55, 506, DateTimeKind.Local).AddTicks(9678));
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ExpiresAt")
                         .HasColumnType("datetime2");
@@ -1333,7 +1441,6 @@ namespace ShoppingStoreAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -1356,39 +1463,33 @@ namespace ShoppingStoreAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 507, DateTimeKind.Local).AddTicks(1604),
-                            ExpiresAt = new DateTime(2024, 2, 2, 14, 42, 55, 507, DateTimeKind.Local).AddTicks(1597),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(1419),
+                            ExpiresAt = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(1424),
                             IPAddress = "192.168.0.1",
                             IsDeleted = false,
                             RefreshToken = "",
-                            UpdatedBy = "admin",
                             UserAgent = "Chrome/91.0.4472.124",
                             UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 507, DateTimeKind.Local).AddTicks(1608),
-                            ExpiresAt = new DateTime(2024, 2, 2, 14, 42, 55, 507, DateTimeKind.Local).AddTicks(1608),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(1428),
+                            ExpiresAt = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(1429),
                             IPAddress = "192.168.0.2",
                             IsDeleted = false,
                             RefreshToken = "",
-                            UpdatedBy = "admin",
                             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
                             UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 2, 2, 14, 42, 55, 507, DateTimeKind.Local).AddTicks(1611),
-                            ExpiresAt = new DateTime(2024, 2, 2, 14, 42, 55, 507, DateTimeKind.Local).AddTicks(1611),
+                            CreatedDate = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(1429),
+                            ExpiresAt = new DateTime(2024, 2, 5, 21, 51, 49, 158, DateTimeKind.Local).AddTicks(1430),
                             IPAddress = "192.168.0.3",
                             IsDeleted = false,
                             RefreshToken = "",
-                            UpdatedBy = "admin",
                             UserAgent = "Safari/537.36",
                             UserId = "94a12a30-1a9b-48ad-950d-29f80865003d"
                         });
@@ -1443,6 +1544,47 @@ namespace ShoppingStoreAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Address", b =>
+                {
+                    b.HasOne("Shopping_Store_API.Entities.ERP.AppUser", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Order", b =>
+                {
+                    b.HasOne("Shopping_Store_API.Entities.ERP.AppUser", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.OrderItem", b =>
+                {
+                    b.HasOne("Shopping_Store_API.Entities.ERP.Product", "Item")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Shopping_Store_API.Entities.ERP.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Product", b =>
@@ -1507,6 +1649,10 @@ namespace ShoppingStoreAPI.Migrations
 
             modelBuilder.Entity("Shopping_Store_API.Entities.ERP.AppUser", b =>
                 {
+                    b.Navigation("Addresses");
+
+                    b.Navigation("Orders");
+
                     b.Navigation("ShoppingCart")
                         .IsRequired();
 
@@ -1523,8 +1669,15 @@ namespace ShoppingStoreAPI.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Order", b =>
+                {
+                    b.Navigation("OrderItems");
+                });
+
             modelBuilder.Entity("Shopping_Store_API.Entities.ERP.Product", b =>
                 {
+                    b.Navigation("OrderItems");
+
                     b.Navigation("ProductShoppingCartItems");
                 });
 

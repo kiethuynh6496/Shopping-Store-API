@@ -18,26 +18,17 @@ namespace Shopping_Store_API.Config
                     new ShoppingCart
                     {
                         Id = 1,
-                        UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420"
                     },
                     new ShoppingCart
                     {
                         Id = 2,
-                        UserId = "94a12a30-1a9b-48ad-950d-29f80865003d",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        UserId = "94a12a30-1a9b-48ad-950d-29f80865003d"
                     },
                     new ShoppingCart
                     {
                         Id = 3,
-                        UserId = "f222bfbf-86bf-4b65-9958-bc818ba5f822",
-                        CreatedDate = DateTime.Now,
-                        CreatedBy = "admin",
-                        UpdatedBy = "admin",
+                        UserId = "f222bfbf-86bf-4b65-9958-bc818ba5f822"
                     }
                 );
         }
