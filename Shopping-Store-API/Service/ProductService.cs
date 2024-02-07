@@ -37,7 +37,7 @@ namespace Shopping_Store_API.Service
             return productList;
         }
 
-        public async Task<IEnumerable<Product>> GetProdcutByBrand(string brand)
+        public async Task<IEnumerable<Product>> GetProductByBrand(string brand)
         {
             var productByBrand = await _unitOfWork.Products.GetProdcutByBrand(brand).ToListAsync();
             if (productByBrand == null)
@@ -47,7 +47,7 @@ namespace Shopping_Store_API.Service
             return productByBrand;
         }
 
-        public async Task<IEnumerable<Product>> GetProdcutByCategory(string category)
+        public async Task<IEnumerable<Product>> GetProductByCategory(string category)
         {
             var productByCategory = await _unitOfWork.Products.GetProdcutByCategory(category).ToListAsync();
             if (productByCategory == null)

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CoreApiResponse;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs;
@@ -12,6 +13,7 @@ namespace Shopping_Store_API.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/shoppingcart")]
+    [Authorize]
     public class ShoppingCartController : BaseController
     {
         public readonly IShoppingCartService _shoppingCartService;

@@ -9,9 +9,9 @@ namespace Shopping_Store_API.Interface.ServiceInterface
 
         Task<Product> GetProductById(int productId);
 
-        Task<IEnumerable<Product>> GetProdcutByCategory(string category);
+        Task<IEnumerable<Product>> GetProductByCategory(string category);
 
-        Task<IEnumerable<Product>> GetProdcutByBrand(string brand);
+        Task<IEnumerable<Product>> GetProductByBrand(string brand);
 
         Task<bool> CreateProduct(Product product);
 

@@ -22,5 +22,11 @@ namespace Shopping_Store_API.Commons
 
         [Description("Token Are Refreshed Successfully!")]
         TokenAreRefreshedSuccessfully,
+        
+        [Description("Logged Out Successfully!")]
+        LoggedOutSuccessfully,
+
+        [Description("Logged In Successfully!")]
+        LoggedInSuccessfully,
     }
 }

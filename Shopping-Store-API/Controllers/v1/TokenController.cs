@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CoreApiResponse;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace Shopping_Store_API.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/token")]
+    [Authorize]
     public class TokenController : BaseController
     {
         private readonly UserManager<AppUser> _userManager;
@@ -39,7 +41,7 @@ namespace Shopping_Store_API.Controllers.v1
             string refreshToken = tokenRequestDTO.RefreshToken;
 
             var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken);
-            var email = principal.Identity.Name;
+            var email = User.Identity.Name;
             var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Email == email);
 
             var userToken = await _unitOfWork.Token.FindByCondition(u => u.UserId == user.Id && u.RefreshToken == refreshToken)

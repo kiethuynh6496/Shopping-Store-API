@@ -12,14 +12,16 @@ namespace Shopping_Store_API.Infrastucture
         public IProductRepository Products { get; }
         public IShoppingCartRepository ShoppingCart { get; }
         public IShoppingCartItemRepository ShoppingCartItem { get; }
+        public IOrderRepository Order { get; }
         public ITokenRepository Token { get; }
 
-        public UnitOfWork(DbFactory dbFactory, IProductRepository productRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartItemRepository shoppingCartItemRepository, ITokenRepository tokenRepository)
+        public UnitOfWork(DbFactory dbFactory, IProductRepository productRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartItemRepository shoppingCartItemRepository, IOrderRepository orderRepository,ITokenRepository tokenRepository)
         {
             _dbFactory = dbFactory;
             Products = productRepository;
             ShoppingCart = shoppingCartRepository;
             ShoppingCartItem = shoppingCartItemRepository;
+            Order = orderRepository;
             Token = tokenRepository;
         }
 

@@ -175,7 +175,8 @@ namespace Shopping_Store_API.Extensions
                 .AddScoped<IProductRepository, ProductRepository>()
                 .AddScoped<IShoppingCartRepository, ShoppingCartRepository>()
                 .AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>()
-                .AddScoped<ITokenRepository, TokenRepository>();
+                .AddScoped<ITokenRepository, TokenRepository>()
+                .AddScoped<IOrderRepository, OrderRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)
@@ -183,7 +184,8 @@ namespace Shopping_Store_API.Extensions
             return services
                 .AddScoped<IProductService, ProductService>()
                 .AddScoped<IShoppingCartService, ShoppingCartService>()
-                .AddScoped<ITokenService, TokenService>();
+                .AddScoped<ITokenService, TokenService>()
+                .AddScoped<IOrderService, OrderService>();
         }
 
         public static IApplicationBuilder ConfigureAPIApp(this IApplicationBuilder app)

@@ -55,9 +55,9 @@ namespace Shopping_Store_API.Controllers.v1
         /// <param name="brand"></param>
         /// <returns></returns>
         [HttpGet("brand/{brand}")]
-        public async Task<IActionResult> GetProdcutByBrandAsync(string brand)
+        public async Task<IActionResult> GetProductByBrandAsync(string brand)
         {
-            var productByBrand = await _productService.GetProdcutByBrand(brand);
+            var productByBrand = await _productService.GetProductByBrand(brand);
             var productListDT0 = _mapper.Map<IEnumerable<ProductDTO>>(productByBrand);
 
             return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), productListDT0);
@@ -69,9 +69,9 @@ namespace Shopping_Store_API.Controllers.v1
         /// <param name="category"></param>
         /// <returns></returns>
         [HttpGet("category/{category}")]
-        public async Task<IActionResult> GetProdcutByCategoryAsync(string category)
+        public async Task<IActionResult> GetProductByCategoryAsync(string category)
         {
-            var productByCategory = await _productService.GetProdcutByCategory(category);
+            var productByCategory = await _productService.GetProductByCategory(category);
             var productListDT0 = _mapper.Map<IEnumerable<ProductDTO>>(productByCategory);
 
             return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), productListDT0);

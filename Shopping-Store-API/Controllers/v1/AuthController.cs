@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CoreApiResponse;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
+using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
 
 namespace Shopping_Store_API.Controllers.v1
@@ -18,12 +20,14 @@ namespace Shopping_Store_API.Controllers.v1
     {
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ITokenService _tokenService;
 
-        public AuthController(IMapper mapper, UserManager<AppUser> userManager, ITokenService tokenService)
+        public AuthController(IMapper mapper, UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService)
         {
             _mapper = mapper;
             _userManager = userManager;
+            _unitOfWork = unitOfWork;
             _tokenService = tokenService;
         }
 
@@ -43,6 +47,21 @@ namespace Shopping_Store_API.Controllers.v1
 
             if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
 
+            // Creata Shopping Cart and save userId to Cookie
+            var shoppingCart = _unitOfWork.ShoppingCart.CreateShoppingCart(user.Id, Response);
+
+            // Add Shopping Cart
+            var createShoppingCartResult = await _unitOfWork.ShoppingCart.Add(shoppingCart);
+            if (createShoppingCartResult == false)
+            {
+                throw new ApiError((int)ErrorCodes.ShoppingCartCantBeCreated);
+            }
+
+            if(await _unitOfWork.CommitAsync() <= 0)
+            {
+                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
+            }
+
             return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
@@ -59,25 +78,17 @@ namespace Shopping_Store_API.Controllers.v1
 
             var token = await _tokenService.GenerateAccessToken(user);
 
-            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), token);
+            return CustomResult(ResponseMesssage.LoggedInSuccessfully.DisplayName(), token, System.Net.HttpStatusCode.OK);
         }
 
-        /// <summary>
-        /// Remove product item to shopping cart
-        /// </summary>
-        /// <returns></returns>
-        //[HttpDelete]
-        //public async Task<IActionResult> RemoveItemToShoppingCartAsync([FromQuery]ShoppingCartParameters shoppingCartParameters)
-        //{
-        //    var removeResult = await _shoppingCartService.RemoveItemToShoppingCart(Request.Cookies["userId"], shoppingCartParameters);
-
-        //    if (!removeResult)
-        //    {
-        //        throw new ApiError((int)ErrorCodes.DataArentDeletedSuccessfully);
-        //    }
-
-        //    return CustomResult(ResponseMesssage.DataAreDeletedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
-        //}
+        [HttpPost("logout")]
+        [Authorize]
+        public IActionResult Logout()
+        {
+            // Remove the authentication cookie
+            Response.Cookies.Delete("userId");
+            return CustomResult(ResponseMesssage.LoggedOutSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
+        }
 
         private async Task<bool> IsUserExists(string email)
         {

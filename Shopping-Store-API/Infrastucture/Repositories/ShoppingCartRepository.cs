@@ -41,7 +41,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(30) };
 
             httpResponse.Cookies.Append("userId", buyerId, cookieOptions);
-            var shoppingCart = new ShoppingCart { UserId = buyerId, CreatedBy = "user", CreatedDate = DateTime.UtcNow, UpdatedBy = "user" };
+            var shoppingCart = new ShoppingCart { UserId = buyerId, CreatedBy = "user"};
             return shoppingCart;
         }
 

@@ -23,6 +23,11 @@ namespace Shopping_Store_API.DTOs
                 .ReverseMap();
             CreateMap<LogInResponseDTO, Token>()
                 .ReverseMap();
+
+            CreateMap<OrderDTO, Order>()
+                .ReverseMap();
+            CreateMap<OrderItemDTO, OrderItem>()
+                .ReverseMap();
         }
     }
 }

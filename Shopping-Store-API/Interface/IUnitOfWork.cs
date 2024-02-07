@@ -12,6 +12,8 @@ namespace Shopping_Store_API.Interface
 
         ITokenRepository Token { get; }
 
+        IOrderRepository Order { get; }
+
         Task<int> CommitAsync();
     }
 }
