@@ -35,13 +35,10 @@ namespace Shopping_Store_API.Infrastucture.Repositories
 
         public ShoppingCart CreateShoppingCart(string userId, HttpResponse httpResponse)
         {
-            if(userId.IsNullOrEmpty()) throw new ApiError((int)ErrorCodes.SignUpPlease);
+            if (userId.IsNullOrEmpty()) throw new ApiError((int)ErrorCodes.SignUpPlease);
             var buyerId = userId;
-
-            var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(30) };
-
-            httpResponse.Cookies.Append("userId", buyerId, cookieOptions);
-            var shoppingCart = new ShoppingCart { UserId = buyerId, CreatedBy = "user"};
+            Helpers.SaveDataToCookie(buyerId, httpResponse);
+            var shoppingCart = new ShoppingCart { UserId = buyerId, CreatedBy = "user" };
             return shoppingCart;
         }
 

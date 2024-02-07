@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Shopping_Store_API.Commons
 {
-    public static class EnumExtensions
+    public static class Helpers
     {
         // Note that we never need to expire these cache items, so we just use ConcurrentDictionary rather than MemoryCache
         private static readonly
@@ -26,6 +26,14 @@ namespace Shopping_Store_API.Commons
             });
 
             return displayName;
+        }
+
+
+        public static void SaveDataToCookie(string buyerId, HttpResponse httpResponse)
+        {
+            var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(30) };
+
+            httpResponse.Cookies.Append("userId", buyerId, cookieOptions);
         }
     }
 }

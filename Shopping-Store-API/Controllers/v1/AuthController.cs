@@ -62,7 +62,7 @@ namespace Shopping_Store_API.Controllers.v1
                 throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
             }
 
-            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
+            return CustomResult(ResponseMesssage.UserRegisteredSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
         [HttpPost("login")]
@@ -77,6 +77,9 @@ namespace Shopping_Store_API.Controllers.v1
             if (!result) throw new ApiError((int)ErrorCodes.UserIsUnauthorized);
 
             var token = await _tokenService.GenerateAccessToken(user);
+
+            Helpers.SaveDataToCookie(user.Id, Response);
+
 
             return CustomResult(ResponseMesssage.LoggedInSuccessfully.DisplayName(), token, System.Net.HttpStatusCode.OK);
         }

@@ -37,11 +37,16 @@ namespace Shopping_Store_API.Controllers.v1
             if (tokenRequestDTO is null) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
             // Extract the access token from the Authorization header
-            string accessToken = Request.Headers["Authorization"];
+            string authorizationHeader = Request.Headers["Authorization"];
+            string accessToken = string.Empty;
+            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
+            {
+                accessToken = authorizationHeader.Substring("Bearer ".Length).Trim();
+            }
             string refreshToken = tokenRequestDTO.RefreshToken;
 
             var principal = _tokenService.GetPrincipalFromExpiredToken(accessToken);
-            var email = User.Identity.Name;
+            var email = principal.Identity.Name; // this is mapped to the Name claim by default
             var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Email == email);
 
             var userToken = await _unitOfWork.Token.FindByCondition(u => u.UserId == user.Id && u.RefreshToken == refreshToken)

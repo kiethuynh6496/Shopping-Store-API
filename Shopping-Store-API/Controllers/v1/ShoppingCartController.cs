@@ -35,7 +35,7 @@ namespace Shopping_Store_API.Controllers.v1
             var shoppingCart = await _shoppingCartService.GetShoppingCart(Request.Cookies["userId"], false);
             var shoppingCartDT0 = _mapper.Map<ShoppingCartDTO>(shoppingCart);
 
-            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), shoppingCartDT0);
+            return CustomResult(ResponseMesssage.ShoppingCartIsLoadedSuccessfully.DisplayName(), shoppingCartDT0);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Shopping_Store_API.Controllers.v1
                 throw new ApiError((int)ErrorCodes.DataArentCreatedSuccessfully);
             }
 
-            return CustomResult(ResponseMesssage.DataAreCreatedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
+            return CustomResult(ResponseMesssage.ItemIsAddedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Shopping_Store_API.Controllers.v1
                 throw new ApiError((int)ErrorCodes.DataArentDeletedSuccessfully);
             }
 
-            return CustomResult(ResponseMesssage.DataAreDeletedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
+            return CustomResult(ResponseMesssage.ItemIsRemovedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
         }
     }
 }

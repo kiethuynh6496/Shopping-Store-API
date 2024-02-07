@@ -28,5 +28,17 @@ namespace Shopping_Store_API.Commons
 
         [Description("Logged In Successfully!")]
         LoggedInSuccessfully,
+
+        [Description("Shopping Cart Is Loaded Successfully!")]
+        ShoppingCartIsLoadedSuccessfully,
+
+        [Description("Item Is Added Successfully!")]
+        ItemIsAddedSuccessfully,
+
+        [Description("Item Is Removed Successfully!")]
+        ItemIsRemovedSuccessfully,
+
+        [Description("User Registered Successfully!")]
+        UserRegisteredSuccessfully,
     }
 }

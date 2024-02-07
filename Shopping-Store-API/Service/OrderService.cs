@@ -1,17 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Shopping_Store_API.Commons;
-using Shopping_Store_API.DTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
-using Shopping_Store_API.Service.Parameters;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Shopping_Store_API.Service
 {
