@@ -60,5 +60,11 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "Email is already taken")]
         EmailIsAlreadyTaken,
+
+        [Display(Description = "Address Isn't Added Successfully!")]
+        AddressIsntAddedSuccessfully,
+
+        [Display(Description = "Order Isn't Added Successfully!")]
+        OrderIsntAddedSuccessfully,
     }
 }

@@ -13,7 +13,7 @@ namespace Shopping_Store_API.Base
 
     public abstract class DeleteEntity<TKey> : EntityBase<TKey>, IDeleteEntity<TKey>
     {
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 
     public abstract class AuditEntity<TKey> : DeleteEntity<TKey>, IAuditEntity<TKey>

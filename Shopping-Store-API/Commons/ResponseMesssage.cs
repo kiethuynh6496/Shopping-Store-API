@@ -40,5 +40,8 @@ namespace Shopping_Store_API.Commons
 
         [Description("User Registered Successfully!")]
         UserRegisteredSuccessfully,
+
+        [Description("Order Is Created Successfully!")]
+        OrderIsCreatedSuccessfully,
     }
 }

@@ -14,6 +14,8 @@ namespace Shopping_Store_API.Interface
 
         IOrderRepository Order { get; }
 
+        IAddressRepository Address { get; }
+
         Task<int> CommitAsync();
     }
 }

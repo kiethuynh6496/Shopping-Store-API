@@ -23,8 +23,9 @@ namespace Shopping_Store_API.Repositories
             _dbFactory = dbFactory;
         }
 
-        public async Task<T> FindById(Expression<Func<T, bool>> expression)
+        public async Task<T> FindById(Expression<Func<T, bool>> expression, bool I)
         {
+            if (I) return await DbSet.FirstOrDefaultAsync(expression);
             return await DbSet.AsNoTracking().FirstOrDefaultAsync(expression);
         }
 

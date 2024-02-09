@@ -6,11 +6,11 @@ using static Shopping_Store_API.Commons.Constants;
 
 namespace Shopping_Store_API.DTOs
 {
-    public class OrderDTO
+    public class OrderResquestDTO
     {
-        public string UserId { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
-        public long Total { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public string? FullName { get; set; }
+        public string? AddressName { get; set; }
+        public string? City { get; set; }
+        public bool? isDefault { get; set; } = false;
     }
 }

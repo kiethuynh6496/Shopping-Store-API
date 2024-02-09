@@ -15,16 +15,16 @@ namespace Shopping_Store_API.Infrastucture.Repositories
         {  
         }
 
-        public IQueryable<Order> GetOrders(string userEmail)
+        public IQueryable<Order> GetOrders(string userId)
         {
-            var getAllOrders = FindByCondition(u => u.UserId.Equals(userEmail))
+            var getAllOrders = FindByCondition(u => u.UserId.Equals(userId))
                                 .Include(o => o.OrderItems);
             return getAllOrders;
         }
 
-        public IQueryable<Order> GetOrderById(int id, string userEmail)
+        public IQueryable<Order> GetOrderById(int id, string userId)
         {
-            var getOrderById = FindByCondition(o => o.Id.Equals(id) && o.UserId.Equals(userEmail))
+            var getOrderById = FindByCondition(o => o.Id.Equals(id) && o.UserId.Equals(userId))
                                 .Include(o => o.OrderItems);
             return getOrderById;
         }

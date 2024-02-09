@@ -24,7 +24,7 @@ namespace Shopping_Store_API.Entities.ERP
             if(ShoppingCartItems.All(item => item.ItemId != product.Id))
             {
                 ShoppingCartItems.Add(new ShoppingCartItem { ItemId = product.Id, Item = product, Quantity = quantity, CreatedBy = "user", CreatedDate = DateTime.UtcNow, UpdatedBy = "user"});
-                return;                
+                return;
             }
 
             var existingItem = ShoppingCartItems.FirstOrDefault(item => item.ItemId.Equals(product.Id));

@@ -9,5 +9,6 @@ namespace Shopping_Store_API.Interface.ServiceInterface
     {
         Task<IEnumerable<Order>> GetOrders(string userEmail);
         Task<IEnumerable<Order>> GetOrderById(int id, string userEmail);
+        Task<bool> CreateOrder(string userId, OrderResquestDTO orderResquestDTO);
     }
 }

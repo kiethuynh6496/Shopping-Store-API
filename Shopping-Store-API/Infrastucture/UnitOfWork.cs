@@ -14,8 +14,9 @@ namespace Shopping_Store_API.Infrastucture
         public IShoppingCartItemRepository ShoppingCartItem { get; }
         public IOrderRepository Order { get; }
         public ITokenRepository Token { get; }
+        public IAddressRepository Address { get; }
 
-        public UnitOfWork(DbFactory dbFactory, IProductRepository productRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartItemRepository shoppingCartItemRepository, IOrderRepository orderRepository,ITokenRepository tokenRepository)
+        public UnitOfWork(DbFactory dbFactory, IProductRepository productRepository, IShoppingCartRepository shoppingCartRepository, IShoppingCartItemRepository shoppingCartItemRepository, IOrderRepository orderRepository,ITokenRepository tokenRepository, IAddressRepository address)
         {
             _dbFactory = dbFactory;
             Products = productRepository;
@@ -23,6 +24,7 @@ namespace Shopping_Store_API.Infrastucture
             ShoppingCartItem = shoppingCartItemRepository;
             Order = orderRepository;
             Token = tokenRepository;
+            Address = address;
         }
 
         public async Task<int> CommitAsync()
