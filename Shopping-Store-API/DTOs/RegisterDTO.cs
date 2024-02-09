@@ -1,6 +1,4 @@
-﻿using Shopping_Store_API.Entities.ERP;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Shopping_Store_API.DTOs
 {

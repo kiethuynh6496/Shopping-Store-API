@@ -17,13 +17,11 @@ namespace Shopping_Store_API.Controllers.v1
     public class OrderController : BaseController
     {
         private readonly IMapper _mapper;
-        private readonly UserManager<AppUser> _userManager;
         private readonly IOrderService _orderService;
 
-        public OrderController(IMapper mapper, UserManager<AppUser> userManager, IOrderService orderService)
+        public OrderController(IMapper mapper, IOrderService orderService)
         {
             _mapper = mapper;
-            _userManager = userManager;
             _orderService = orderService;
         }
 
@@ -35,9 +33,9 @@ namespace Shopping_Store_API.Controllers.v1
         public async Task<IActionResult> GetOrdersAsync()
         {
             var ordersList = await _orderService.GetOrders(Request.Cookies["userId"]);
-            //var ordersListDT0 = _mapper.Map<IEnumerable<OrderResquestDTO>>(ordersList);
+            var ordersListDT0 = _mapper.Map<IEnumerable<OrderResponseDTO>>(ordersList);
 
-            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), ordersList);
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), ordersListDT0);
         }
 
         /// <summary>
@@ -49,9 +47,9 @@ namespace Shopping_Store_API.Controllers.v1
         public async Task<IActionResult> GetOrderByIdAsync(int orderId)
         {
             var ordersList = await _orderService.GetOrderById(orderId, Request.Cookies["userId"]);
-            //var ordersListDT0 = _mapper.Map<IEnumerable<OrderResquestDTO>>(ordersList);
+            var ordersListDT0 = _mapper.Map<IEnumerable<OrderResponseDTO>>(ordersList);
 
-            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), ordersList);
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), ordersListDT0);
         }
 
         /// <summary>
