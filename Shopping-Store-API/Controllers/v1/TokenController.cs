@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using CoreApiResponse;
+﻿using CoreApiResponse;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +13,7 @@ using Shopping_Store_API.Interface.ServiceInterface;
 
 namespace Shopping_Store_API.Controllers.v1
 {
-    [ApiController]
+	[ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/token")]
     [Authorize]

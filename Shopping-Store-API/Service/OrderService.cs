@@ -68,6 +68,7 @@ namespace Shopping_Store_API.Service
             {
                 UserId = userId,
                 OrderItems = items,
+                PaymentIntenId = shoppingCart.PaymentIntenId,
                 Total = total,
             };
 

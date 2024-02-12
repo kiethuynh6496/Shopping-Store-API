@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
 using CoreApiResponse;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs;
-using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface.ServiceInterface;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Shopping_Store_API.Controllers.v1
 {
-    [ApiController]
+	[ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/order")]
     //[Authorize]
