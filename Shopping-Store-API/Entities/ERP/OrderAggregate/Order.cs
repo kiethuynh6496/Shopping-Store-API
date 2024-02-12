@@ -22,5 +22,6 @@ namespace Shopping_Store_API.Entities.ERP
 
         public long Total { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
+        public string? PaymentIntenId { get; set; }
     }
 }

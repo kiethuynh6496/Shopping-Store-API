@@ -74,10 +74,7 @@ namespace Shopping_Store_API.Controllers.v1
 
             userToken.RefreshToken = null;
             var IsCommitted = await _unitOfWork.CommitAsync();
-            if (IsCommitted <= 0)
-            {
-                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
-            }
+            if (IsCommitted <= 0) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
             return CustomResult(ResponseMesssage.TokenAreRevokedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
         }

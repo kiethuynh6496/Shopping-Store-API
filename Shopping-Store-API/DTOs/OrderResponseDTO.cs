@@ -11,5 +11,6 @@ namespace Shopping_Store_API.DTOs
         public long Total { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
         public DateTime CreatedDate { get; set; }
-    }
+		public string PaymentIntenId { get; set; }
+	}
 }

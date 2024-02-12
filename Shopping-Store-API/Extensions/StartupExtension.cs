@@ -186,7 +186,8 @@ namespace Shopping_Store_API.Extensions
                 .AddScoped<IProductService, ProductService>()
                 .AddScoped<IShoppingCartService, ShoppingCartService>()
                 .AddScoped<ITokenService, TokenService>()
-                .AddScoped<IOrderService, OrderService>();
+                .AddScoped<IOrderService, OrderService>()
+                .AddScoped<IPaymentService, PaymentService>();
         }
 
         public static IApplicationBuilder ConfigureAPIApp(this IApplicationBuilder app)

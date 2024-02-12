@@ -47,10 +47,7 @@ namespace Shopping_Store_API.Controllers.v1
         {
             var addResult = await _shoppingCartService.AddItemToShoppingCart(Request.Cookies["userId"], shoppingCartParameters, Response);
 
-            if(!addResult)
-            {
-                throw new ApiError((int)ErrorCodes.DataArentCreatedSuccessfully);
-            }
+            if(!addResult) throw new ApiError((int)ErrorCodes.DataArentCreatedSuccessfully);
 
             return CustomResult(ResponseMesssage.ItemIsAddedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
@@ -64,10 +61,7 @@ namespace Shopping_Store_API.Controllers.v1
         {
             var removeResult = await _shoppingCartService.RemoveItemToShoppingCart(Request.Cookies["userId"], shoppingCartParameters);
 
-            if (!removeResult)
-            {
-                throw new ApiError((int)ErrorCodes.DataArentDeletedSuccessfully);
-            }
+            if (!removeResult) throw new ApiError((int)ErrorCodes.DataArentDeletedSuccessfully);
 
             return CustomResult(ResponseMesssage.ItemIsRemovedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
         }

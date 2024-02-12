@@ -19,6 +19,9 @@ namespace Shopping_Store_API.Entities.ERP
         [InverseProperty(nameof(ShoppingCartItem.ShoppingCart))]
         public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        public string? PaymentIntenId { get; set; }
+        public string? ClientSecret { get; set; }
+
         public void AddItem(Product product, int quantity)
         {
             if(ShoppingCartItems.All(item => item.ItemId != product.Id))

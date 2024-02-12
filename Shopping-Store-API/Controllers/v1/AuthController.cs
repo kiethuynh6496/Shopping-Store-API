@@ -52,15 +52,9 @@ namespace Shopping_Store_API.Controllers.v1
 
             // Add Shopping Cart
             var createShoppingCartResult = await _unitOfWork.ShoppingCart.Add(shoppingCart);
-            if (createShoppingCartResult == false)
-            {
-                throw new ApiError((int)ErrorCodes.ShoppingCartCantBeCreated);
-            }
+            if (createShoppingCartResult == false) throw new ApiError((int)ErrorCodes.ShoppingCartCantBeCreated);
 
-            if(await _unitOfWork.CommitAsync() <= 0)
-            {
-                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
-            }
+            if(await _unitOfWork.CommitAsync() <= 0) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
             return CustomResult(ResponseMesssage.UserRegisteredSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
