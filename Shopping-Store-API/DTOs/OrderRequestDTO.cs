@@ -6,7 +6,7 @@ using static Shopping_Store_API.Commons.Constants;
 
 namespace Shopping_Store_API.DTOs
 {
-    public class OrderResquestDTO
+    public class OrderRequestDTO
     {
         public string? FullName { get; set; }
         public string? AddressName { get; set; }

@@ -34,11 +34,11 @@ namespace Shopping_Store_API.Service
             return ordersList;
         }
 
-        public async Task<bool> CreateOrder(string userId, OrderResquestDTO orderResquestDTO)
+        public async Task<bool> CreateOrder(string userId, OrderRequestDTO orderRequestDTO)
         {
             // Handle User
             var currentUser = await _userManager.FindByIdAsync(userId);
-            currentUser.FullName = orderResquestDTO.FullName;
+            currentUser.FullName = orderRequestDTO.FullName;
             await _userManager.UpdateAsync(currentUser);
 
             // Handle Shopping Cart
@@ -75,7 +75,7 @@ namespace Shopping_Store_API.Service
             var address = await _unitOfWork.Address.FindById(a => a.UserId.Equals(userId));
             if (address != null)
             {
-                if (address.AddressName.Equals(orderResquestDTO.AddressName) && orderResquestDTO.isDefault == true)
+                if (address.AddressName.Equals(orderRequestDTO.AddressName) && orderRequestDTO.isDefault == true)
                 {
                     address.isDefault = true;
                 }
@@ -83,9 +83,9 @@ namespace Shopping_Store_API.Service
             var newAddress = new Address
             {
                 UserId = userId,
-                AddressName = orderResquestDTO.AddressName,
-                City = orderResquestDTO.City,
-                isDefault = orderResquestDTO.isDefault,
+                AddressName = orderRequestDTO.AddressName,
+                City = orderRequestDTO.City,
+                isDefault = orderRequestDTO.isDefault,
             };
             var addAddress = await _unitOfWork.Address.Add(newAddress);
             if (!addAddress) throw new ApiError((int)ErrorCodes.AddressIsntAddedSuccessfully);

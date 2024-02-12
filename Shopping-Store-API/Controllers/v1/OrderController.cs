@@ -55,12 +55,12 @@ namespace Shopping_Store_API.Controllers.v1
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="orderResquestDTO"></param>
+        /// <param name="orderRequestDTO"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromBody]OrderResquestDTO orderResquestDTO)
+        public async Task<IActionResult> CreateOrder([FromBody]OrderRequestDTO orderRequestDTO)
         {
-            await _orderService.CreateOrder(Request.Cookies["userId"], orderResquestDTO);
+            await _orderService.CreateOrder(Request.Cookies["userId"], orderRequestDTO);
 
             return CustomResult(ResponseMesssage.OrderIsCreatedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
