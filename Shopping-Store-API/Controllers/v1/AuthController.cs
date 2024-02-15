@@ -74,7 +74,6 @@ namespace Shopping_Store_API.Controllers.v1
 
             Helpers.SaveDataToCookie(user.Id, Response);
 
-
             return CustomResult(ResponseMesssage.LoggedInSuccessfully.DisplayName(), token, System.Net.HttpStatusCode.OK);
         }
 

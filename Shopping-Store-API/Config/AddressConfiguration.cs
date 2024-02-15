@@ -31,22 +31,6 @@ namespace Shopping_Store_API.Config
                         AddressName = "175 Duong so 1, Go Vap",
                         City = "HCM",
                         isDefault = false
-                    },
-                    new Address
-                    {
-                        Id = 3,
-                        UserId = "94a12a30-1a9b-48ad-950d-29f80865003d",
-                        AddressName = "175 Duong so 10, Binh Thanh",
-                        City = "HCM",
-                        isDefault = true
-                    },
-                    new Address
-                    {
-                        Id = 4,
-                        UserId = "f222bfbf-86bf-4b65-9958-bc818ba5f822",
-                        AddressName = "11 Duong so 1, Binh Thanh",
-                        City = "HCM",
-                        isDefault = true
                     }
                 );
         }

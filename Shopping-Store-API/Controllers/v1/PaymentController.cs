@@ -11,7 +11,7 @@ using Stripe;
 
 namespace Shopping_Store_API.Controllers.v1
 {
-	[ApiController]
+    [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/payment")]
     [Authorize]
