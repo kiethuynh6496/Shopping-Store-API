@@ -16,6 +16,10 @@ namespace Shopping_Store_API.Interface
 
         IAddressRepository Address { get; }
 
+        IBrandRepository Brand { get; }
+
+        ICategoryRepository Category { get; }
+
         Task<int> CommitAsync();
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Shopping_Store_API.DTOs
+﻿using Shopping_Store_API.DTOs.ProductDTOs;
+
+namespace Shopping_Store_API.DTOs.ShoppingCartDTOs
 {
     public class ShoppingCartItemDTO
     {

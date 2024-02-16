@@ -1,4 +1,8 @@
 ﻿using AutoMapper;
+using Shopping_Store_API.DTOs.AuthDTOs;
+using Shopping_Store_API.DTOs.OrderDTOs;
+using Shopping_Store_API.DTOs.ProductDTOs;
+using Shopping_Store_API.DTOs.ShoppingCartDTOs;
 using Shopping_Store_API.Entities.ERP;
 
 namespace Shopping_Store_API.DTOs

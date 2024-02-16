@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Shopping_Store_API.Commons;
-using Shopping_Store_API.DTOs;
+using Shopping_Store_API.DTOs.AuthDTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;

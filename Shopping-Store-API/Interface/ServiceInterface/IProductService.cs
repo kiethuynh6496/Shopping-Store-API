@@ -1,4 +1,5 @@
-﻿using Shopping_Store_API.Entities.ERP;
+﻿using Shopping_Store_API.DTOs.ProductDTOs;
+using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Service.Parameters;
 
 namespace Shopping_Store_API.Interface.ServiceInterface
@@ -7,15 +8,15 @@ namespace Shopping_Store_API.Interface.ServiceInterface
     {
         IEnumerable<Product> GetProducts(ProductParameters productParameters);
 
-        Task<Product> GetProductById(int productId);
+        Task<IEnumerable<Product>> GetProductById(int productId);
 
         Task<IEnumerable<Product>> GetProductByCategory(string category);
 
         Task<IEnumerable<Product>> GetProductByBrand(string brand);
 
-        Task<bool> CreateProduct(Product product);
+        Task<Product> CreateProduct(CreateProductDTO createProductDTO);
 
-        Task<bool> UpdateProduct(Product product);
+        Task<Product> UpdateProduct(UpdateProductDTO updateProductDTO);
 
         Task<bool> DeleteProduct(int productId);
     }

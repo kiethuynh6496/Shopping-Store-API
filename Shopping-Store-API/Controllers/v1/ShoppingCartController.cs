@@ -3,7 +3,7 @@ using CoreApiResponse;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
-using Shopping_Store_API.DTOs;
+using Shopping_Store_API.DTOs.ShoppingCartDTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Interface.ServiceInterface;
 using Shopping_Store_API.Service.Parameters;

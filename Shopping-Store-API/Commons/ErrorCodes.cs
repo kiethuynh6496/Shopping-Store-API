@@ -67,7 +67,7 @@ namespace Shopping_Store_API.Commons
         [Display(Description = "Order Isn't Added Successfully!")]
         OrderIsntAddedSuccessfully,
 
-		[Display(Description = "There is a problem of creating an payment intention")]
-		ProblemCreatingPaymentIntent,
-	}
+        [Display(Description = "There is a problem of creating an payment intention")]
+        ProblemCreatingPaymentIntent,
+    }
 }

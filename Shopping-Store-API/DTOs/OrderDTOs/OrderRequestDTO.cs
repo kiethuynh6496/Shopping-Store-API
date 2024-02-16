@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using static Shopping_Store_API.Commons.Constants;
 
-namespace Shopping_Store_API.DTOs
+namespace Shopping_Store_API.DTOs.OrderDTOs
 {
     public class OrderRequestDTO
     {

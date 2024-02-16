@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Shopping_Store_API.DBContext;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.RepositoryInterface;
@@ -8,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Shopping_Store_API.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+	public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly DbFactory _dbFactory;
         private DbSet<T> _dbSet;
@@ -59,7 +57,7 @@ namespace Shopping_Store_API.Repositories
             return true;
         }
 
-        public void Delete(T entity)
+        public bool Delete(T entity)
         {
             if (typeof(IDeleteEntity).IsAssignableFrom(typeof(T)))
             {
@@ -68,6 +66,7 @@ namespace Shopping_Store_API.Repositories
             }
             else
                 DbSet.Remove(entity);
+            return true;
         }
     }
 }

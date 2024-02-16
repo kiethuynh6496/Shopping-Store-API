@@ -15,11 +15,19 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             
         }
 
+        public IQueryable<Product> GetProdcutById(int productId)
+        {
+            var productById = FindByCondition(p => p.Id == productId && p.IsDeleted == false)
+                                    .Include(p => p.Category)
+                                    .Include(p => p.Brand);
+            return productById;
+        }
+
         public IQueryable<Product> GetProdcutByCategory(string category)
         {
             var productByCategory = FindByAll()
                                     .Include(p => p.Category)
-                                    .Where(p => p.Category.Name.ToLower().Contains(category));
+                                    .Where(p => p.Category.Name.ToLower().Contains(category) && p.IsDeleted == false);
             return productByCategory;
         }
 
@@ -27,7 +35,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
         {
             var productByBrand = FindByAll()
                                 .Include(p => p.Brand)
-                                .Where(p => p.Brand.Name.ToLower().Contains(brand));
+                                .Where(p => p.Brand.Name.ToLower().Contains(brand) && p.IsDeleted == false);
             return productByBrand;
         }
 
@@ -36,6 +44,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             var productList = FindByAll()
                             .Include(p => p.Category)
                             .Include(p => p.Brand)
+                            .Where(p => p.IsDeleted == false)
                             .Sort(productParameters)
                             .Filter(productParameters)
                             .Pagination(productParameters);

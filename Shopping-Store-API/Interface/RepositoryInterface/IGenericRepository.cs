@@ -11,6 +11,6 @@ namespace Shopping_Store_API.Interface.RepositoryInterface
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
         Task<bool> Add(T entity);
         bool Update(T entity);
-        void Delete(T entity);
+        bool Delete(T entity);
     }
 }

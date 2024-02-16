@@ -177,7 +177,9 @@ namespace Shopping_Store_API.Extensions
                 .AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>()
                 .AddScoped<ITokenRepository, TokenRepository>()
                 .AddScoped<IOrderRepository, OrderRepository>()
-                .AddScoped<IAddressRepository, AddressRepository>();
+                .AddScoped<IAddressRepository, AddressRepository>()
+                .AddScoped<IBrandRepository, BrandRepository>()
+                .AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection services)

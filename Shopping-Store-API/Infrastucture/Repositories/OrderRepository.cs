@@ -12,7 +12,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
     public class OrderRepository : GenericRepository<Order>, IOrderRepository
     {
         public OrderRepository(DbFactory dbFactory) : base(dbFactory)
-        {  
+        {
         }
 
         public IQueryable<Order> GetOrders(string userId)

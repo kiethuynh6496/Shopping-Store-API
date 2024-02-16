@@ -7,6 +7,7 @@ namespace Shopping_Store_API.Interface.RepositoryInterface
     public interface IProductRepository : IGenericRepository<Product>
     {
         IEnumerable<Product> GetProducts(ProductParameters productParameters);
+        IQueryable<Product> GetProdcutById(int productId);
         IQueryable<Product> GetProdcutByCategory(string category);
         IQueryable<Product> GetProdcutByBrand(string brand);
     }

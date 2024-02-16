@@ -1,6 +1,6 @@
 ﻿using static Shopping_Store_API.Commons.Constants;
 
-namespace Shopping_Store_API.DTOs
+namespace Shopping_Store_API.DTOs.OrderDTOs
 {
     public class OrderResponseDTO
     {
@@ -11,6 +11,6 @@ namespace Shopping_Store_API.DTOs
         public long Total { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
         public DateTime CreatedDate { get; set; }
-		public string PaymentIntenId { get; set; }
-	}
+        public string PaymentIntenId { get; set; }
+    }
 }

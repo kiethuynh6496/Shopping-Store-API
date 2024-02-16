@@ -1,4 +1,4 @@
-﻿namespace Shopping_Store_API.DTOs
+﻿namespace Shopping_Store_API.DTOs.AuthDTOs
 {
     public class LogInResponseDTO
     {

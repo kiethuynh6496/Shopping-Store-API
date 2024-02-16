@@ -1,4 +1,6 @@
-﻿namespace Shopping_Store_API.DTOs
+﻿using Shopping_Store_API.Entities.ERP;
+
+namespace Shopping_Store_API.DTOs.ProductDTOs
 {
     public class ProductDTO
     {
@@ -8,7 +10,7 @@
         public long Price { get; set; }
         public int QuantityInStock { get; set; }
 
-        public int CategoryID { get; set; }
-        public int BrandID { get; set; }
+        public CategoryDTO Category { get; set; }
+        public BrandDTO Brand { get; set; }
     }
 }

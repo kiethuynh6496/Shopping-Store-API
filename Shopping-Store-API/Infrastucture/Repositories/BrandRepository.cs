@@ -5,9 +5,9 @@ using Shopping_Store_API.Repositories;
 
 namespace Shopping_Store_API.Infrastucture.Repositories
 {
-    public class ShoppingCartItemRepository : GenericRepository<ShoppingCartItem>, IShoppingCartItemRepository
+    public class BrandRepository : GenericRepository<Brand>, IBrandRepository
     {
-        public ShoppingCartItemRepository(DbFactory dbFactory) : base(dbFactory)
+        public BrandRepository(DbFactory dbFactory) : base(dbFactory)
         {
         }
     }

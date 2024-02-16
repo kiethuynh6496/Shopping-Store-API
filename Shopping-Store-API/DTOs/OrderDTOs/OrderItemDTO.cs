@@ -1,8 +1,8 @@
-﻿using Shopping_Store_API.Entities.ERP;
+﻿using Shopping_Store_API.DTOs.ProductDTOs;
 
-namespace Shopping_Store_API.DTOs
+namespace Shopping_Store_API.DTOs.OrderDTOs
 {
-    public class OrderItemDTO
+	public class OrderItemDTO
     {
         public int OrderID { get; set; }
         public int ItemId { get; set; }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Shopping_Store_API.Commons;
-using Shopping_Store_API.DTOs;
+using Shopping_Store_API.DTOs.AuthDTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
@@ -13,7 +13,7 @@ using Shopping_Store_API.Interface.ServiceInterface;
 
 namespace Shopping_Store_API.Controllers.v1
 {
-	[ApiController]
+    [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/token")]
     [Authorize]

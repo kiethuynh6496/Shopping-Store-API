@@ -12,7 +12,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
     public class TokenRepository : GenericRepository<Token>, ITokenRepository
     {
         public TokenRepository(DbFactory dbFactory) : base(dbFactory)
-        {  
+        {
         }
     }
 }

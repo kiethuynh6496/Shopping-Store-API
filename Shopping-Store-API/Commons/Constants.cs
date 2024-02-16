@@ -8,12 +8,10 @@
             PaymentReceived,
             PaymentFailed
         }
-        public enum Status
+        public enum Role
         {
-            Danger = 0,
-            Info,
-            Warning,
-            Success,
+            Admin = 0,
+            User
         }
     }
 }

@@ -2,12 +2,12 @@
 using CoreApiResponse;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
-using Shopping_Store_API.DTOs;
+using Shopping_Store_API.DTOs.OrderDTOs;
 using Shopping_Store_API.Interface.ServiceInterface;
 
 namespace Shopping_Store_API.Controllers.v1
 {
-	[ApiController]
+    [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/order")]
     //[Authorize]

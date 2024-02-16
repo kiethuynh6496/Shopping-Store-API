@@ -12,7 +12,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
     public class AddressRepository : GenericRepository<Address>, IAddressRepository
     {
         public AddressRepository(DbFactory dbFactory) : base(dbFactory)
-        {  
+        {
         }
     }
 }
