@@ -12,10 +12,12 @@ namespace Shopping_Store_API.Service
 	public class ProductService : IProductService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IImageService _imageService;
 
-        public ProductService(IUnitOfWork unitOfWork)
+        public ProductService(IUnitOfWork unitOfWork, IImageService imageService)
         {
             _unitOfWork = unitOfWork;
+            _imageService = imageService;
         }
 
         public async Task<IEnumerable<Product>> GetProductById(int productId)
@@ -60,10 +62,10 @@ namespace Shopping_Store_API.Service
 
         public async Task<Product> CreateProduct(CreateProductDTO createProductDTO)
         {
+            // Handle Brand and Category
             var currentBrand = await _unitOfWork.Brand.FindById(b => b.Name == createProductDTO.Brand.ToLower());
-            var currentCategory = await _unitOfWork.Category.FindById(b => b.Name == createProductDTO.Category.ToLower());
-            int categoryId;
-            int brandId;
+            var currentCategory = await _unitOfWork.Category.FindById(c => c.Name == createProductDTO.Category.ToLower());
+            var currentProduct = await _unitOfWork.Products.FindById(p => p.PictureUrl == createProductDTO.PictureUrl.ToString());
 
             if(currentBrand is null)
             {
@@ -90,22 +92,36 @@ namespace Shopping_Store_API.Service
 
             if(currentBrand is null)
             {
-                var tempBrand = await _unitOfWork.Brand.FindById(b => b.Name == createProductDTO.Brand.ToLower());
-                brandId = tempBrand.Id;
+                currentBrand = await _unitOfWork.Brand.FindById(b => b.Name == createProductDTO.Brand.ToLower());
             }
-            else
-            {
-                brandId = currentBrand.Id;
-            }
+            int brandId = currentBrand.Id;
 
             if (currentCategory is null)
             {
-                var tempCategory = await _unitOfWork.Category.FindById(b => b.Name == createProductDTO.Category.ToLower());
-                categoryId = tempCategory.Id;
+                currentCategory = await _unitOfWork.Category.FindById(c => c.Name == createProductDTO.Category.ToLower());
+            }
+            int categoryId = currentCategory.Id;
+
+
+            // Handle Image
+            string productPictureURL = "";
+            string publicId = "";
+            if(currentProduct != null)
+            {
+                productPictureURL = currentProduct.PictureUrl;
+                publicId = currentProduct.PublicIdCloudary;
             }
             else
             {
-                categoryId = currentCategory.Id;
+                if(createProductDTO.PictureUrl != null)
+                {
+                    var imageResult = await _imageService.AddImageAsync(createProductDTO.PictureUrl);
+
+                    if(imageResult.Error != null) throw new ApiError((int)ErrorCodes.ImageIsntAddedSuccessfully);
+
+                    productPictureURL = imageResult.SecureUrl.ToString();
+                    publicId = imageResult.PublicId;
+                }
             }
 
             var product = new Product
@@ -116,6 +132,8 @@ namespace Shopping_Store_API.Service
                 QuantityInStock = createProductDTO.QuantityInStock,
                 CategoryID = categoryId,
                 BrandID = brandId,
+                PictureUrl = productPictureURL,
+                PublicIdCloudary = publicId,
             };
 
             await _unitOfWork.Products.Add(product);
@@ -130,8 +148,9 @@ namespace Shopping_Store_API.Service
 
             if(findProduct is null) throw new ApiError((int)ErrorCodes.DataEntryIsNotExisted);
 
+            // Handle Brand and Category
             var currentBrand = await _unitOfWork.Brand.FindById(b => b.Name == updateProductDTO.Brand.ToLower());
-            var currentCategory = await _unitOfWork.Category.FindById(b => b.Name == updateProductDTO.Category.ToLower());
+            var currentCategory = await _unitOfWork.Category.FindById(c => c.Name == updateProductDTO.Category.ToLower());
 
             if(currentBrand is null)
             {
@@ -156,26 +175,31 @@ namespace Shopping_Store_API.Service
                 if (await _unitOfWork.CommitAsync() <= 0) throw new ApiError((int)ErrorCodes.DataArentCreatedSuccessfully);
             }
 
-            int brandId;
-            int categoryId;
             if(currentBrand is null)
             {
-                var tempBrand = await _unitOfWork.Brand.FindById(b => b.Name == updateProductDTO.Brand.ToLower());
-                brandId = tempBrand.Id;
+                currentBrand = await _unitOfWork.Brand.FindById(b => b.Name == updateProductDTO.Brand.ToLower());
             }
-            else
-            {
-                brandId = currentBrand.Id;
-            }
+            int brandId = currentBrand.Id;
+
 
             if (currentCategory is null)
             {
-                var tempCategory = await _unitOfWork.Category.FindById(b => b.Name == updateProductDTO.Category.ToLower());
-                categoryId = tempCategory.Id;
+                currentCategory = await _unitOfWork.Category.FindById(c => c.Name == updateProductDTO.Category.ToLower());
             }
-            else
+            int categoryId = currentCategory.Id;
+
+            // Handle Image
+            string productPictureURL = "";
+            string publicId = "";
+
+            if(updateProductDTO.PictureUrl.ToString() != findProduct.PictureUrl && updateProductDTO.PictureUrl != null)
             {
-                categoryId = currentCategory.Id;
+                var imageResult = await _imageService.AddImageAsync(updateProductDTO.PictureUrl);
+
+                if(imageResult.Error != null) throw new ApiError((int)ErrorCodes.ImageIsntAddedSuccessfully);
+
+                productPictureURL = imageResult.SecureUrl.ToString();
+                publicId = imageResult.PublicId;
             }
 
             var product = new Product
@@ -187,10 +211,12 @@ namespace Shopping_Store_API.Service
                 QuantityInStock = updateProductDTO.QuantityInStock,
                 CategoryID = categoryId,
                 BrandID = brandId,
+                PictureUrl = productPictureURL,
+                PublicIdCloudary = publicId,
             };
 
             bool updateResult = _unitOfWork.Products.Update(product);
-            if (!updateResult || await _unitOfWork.CommitAsync() <= 0) throw new ApiError((int)ErrorCodes.DataArentCreatedSuccessfully);
+            if (!updateResult || await _unitOfWork.CommitAsync() <= 0) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
 
             return product;
         }

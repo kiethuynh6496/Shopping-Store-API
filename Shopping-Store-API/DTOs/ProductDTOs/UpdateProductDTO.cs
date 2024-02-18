@@ -4,6 +4,7 @@ namespace Shopping_Store_API.DTOs.ProductDTOs
 {
     public class UpdateProductDTO
     {
+        [Required]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
@@ -12,7 +13,8 @@ namespace Shopping_Store_API.DTOs.ProductDTOs
         [Required]
         [Range(100, Double.PositiveInfinity)]
         public long Price { get; set; }
-        //public IFormFile PictureUrl { get; set; }
+        [Required]
+        public IFormFile PictureUrl { get; set; }
         [Required]
         [Range(0, 200)]
         public int QuantityInStock { get; set; }

@@ -89,7 +89,7 @@ namespace Shopping_Store_API.Service
             var updateShoppingItemCartResult = _unitOfWork.ShoppingCartItem.Update(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId));
             if (updateShoppingItemCartResult == false)
             {
-                throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfullyInShoppingCartItem);
+                throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
             }
 
             // Update data int ShoppingCart

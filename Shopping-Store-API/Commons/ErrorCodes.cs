@@ -46,19 +46,19 @@ namespace Shopping_Store_API.Commons
         [Display(Description = "Data Aren't Created Successfully!")]
         DataArentCreatedSuccessfully,
 
-        [Display(Description = "Sign up, Please!")]
+        [Display(Description = "Sign Up, Please!")]
         SignUpPlease,
 
         [Display(Description = "Data Aren't Deleted Successfully!")]
         DataArentDeletedSuccessfully,
 
-        [Display(Description = "Data Aren't Updated Successfully in ShoppingCartItem!")]
-        DataArentUpdatedSuccessfullyInShoppingCartItem,
+        [Display(Description = "Data Aren't Updated Successfully!")]
+        DataArentUpdatedSuccessfully,
 
         [Display(Description = "Shopping Cart Can't Be Updated!")]
         ShoppingCartCantBeUpdated,
 
-        [Display(Description = "Email is already taken")]
+        [Display(Description = "Email Is Already Taken")]
         EmailIsAlreadyTaken,
 
         [Display(Description = "Address Isn't Added Successfully!")]
@@ -69,5 +69,8 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "There is a problem of creating an payment intention")]
         ProblemCreatingPaymentIntent,
+
+        [Display(Description = "Image Isn't Added Successfully!")]
+        ImageIsntAddedSuccessfully,
     }
 }

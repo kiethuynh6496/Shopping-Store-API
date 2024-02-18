@@ -2,7 +2,7 @@
 
 namespace Shopping_Store_API.DTOs.ProductDTOs
 {
-    public class ProductDTO
+    public class CreateProductResponseDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -10,8 +10,8 @@ namespace Shopping_Store_API.DTOs.ProductDTOs
         public long Price { get; set; }
         public int QuantityInStock { get; set; }
 
-        public CategoryDTO Category { get; set; }
-        public BrandDTO Brand { get; set; }
+        public int CategoryID { get; set; }
+        public int BrandID { get; set; }
         public string? PublicIdCloudary { get; set; }
     }
 }

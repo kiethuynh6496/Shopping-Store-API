@@ -27,6 +27,8 @@ namespace Shopping_Store_API.Entities.ERP
         [InverseProperty("Products")]
         public virtual Brand Brand { get; set; }
 
+        public string? PublicIdCloudary { get; set; }
+
         [InverseProperty("Item")]
         public virtual ICollection<ShoppingCartItem> ProductShoppingCartItems { get; set; }
 

@@ -92,10 +92,10 @@ namespace Shopping_Store_API.Controllers.v1
         /// <returns></returns>
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateProductAsync(CreateProductDTO createProductDTO)
+        public async Task<IActionResult> CreateProductAsync([FromForm]CreateProductDTO createProductDTO)
         {
             var newProduct = await _productService.CreateProduct(createProductDTO);
-            var productDT0 = _mapper.Map<ProductDTO>(newProduct);
+            var productDT0 = _mapper.Map<CreateProductResponseDTO>(newProduct);
 
             return CustomResult(ResponseMesssage.DataAreCreatedSuccessfully.DisplayName(), productDT0, System.Net.HttpStatusCode.Created);
         }
@@ -107,7 +107,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// <returns></returns>
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateProductAsync(UpdateProductDTO updateProductDTO)
+        public async Task<IActionResult> UpdateProductAsync([FromForm]UpdateProductDTO updateProductDTO)
         {
             var currentProduct = await _productService.UpdateProduct(updateProductDTO);
             var productDT0 = _mapper.Map<ProductDTO>(currentProduct);
@@ -120,8 +120,8 @@ namespace Shopping_Store_API.Controllers.v1
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [HttpDelete]
         [Authorize(Roles = "Admin")]
+        [HttpDelete("{productId:int}")]
         public async Task<IActionResult> DeleteProductAsync(int productId)
         {
             await _productService.DeleteProduct(productId);

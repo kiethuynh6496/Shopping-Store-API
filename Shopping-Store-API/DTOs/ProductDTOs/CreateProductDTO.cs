@@ -11,7 +11,8 @@ namespace Shopping_Store_API.DTOs.ProductDTOs
         [Required]
         [Range(100, Double.PositiveInfinity)]
         public long Price { get; set; }
-        //public IFormFile PictureUrl { get; set; }
+        [Required]
+        public IFormFile? PictureUrl { get; set; }
         [Required]
         [Range(0, 200)]
         public int QuantityInStock { get; set; }
