@@ -72,5 +72,8 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "Image Isn't Added Successfully!")]
         ImageIsntAddedSuccessfully,
+
+        [Display(Description = "Stripe Checkout Isn't Successfully!")]
+        StripeCheckoutIsntSuccessfully,
     }
 }

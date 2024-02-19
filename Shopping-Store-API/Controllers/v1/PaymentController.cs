@@ -32,8 +32,12 @@ namespace Shopping_Store_API.Controllers.v1
             _shoppingCartService = shoppingCartService;
         }
 
+        /// <summary>
+        /// Create or Update a Payment Intent for Stripe Checkout
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ApiError"></exception>
         [HttpPost("create-update-payment-intent")]
-        [Authorize]
         public async Task<ActionResult<ShoppingCartDTO>> CreateOrUpdatePaymentIntentAsync()
         {
             var shoppingCart = await _shoppingCartService.GetShoppingCart(Request.Cookies["userId"], true);
@@ -59,32 +63,44 @@ namespace Shopping_Store_API.Controllers.v1
             return shoppingCartDTO;
         }
 
+        /// <summary>
+        /// Listen to Payment Events in the Stripe account
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("webhook")]
         public async Task<IActionResult> StripeWebhook()
         {
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
 
-            var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _config["StripeSettings:WhSecret"]);
-
-            var charge = (Charge)stripeEvent.Data.Object;
-
-            var order = await _unitOfWork.Order.FindById(x => x.PaymentIntenId == charge.PaymentIntentId);
-
-            PaymentIntent intent;
-
-            switch (stripeEvent.Type)
+            try
             {
-                case "payment_intent.succeeded" :
-                    intent = (PaymentIntent)stripeEvent.Data.Object;
-                    order.OrderStatus = Constants.OrderStatus.PaymentReceived;
-                    break;
-                case "payment_intent.payment_failed" :
-                    intent = (PaymentIntent)stripeEvent.Data.Object;
-                    order.OrderStatus = Constants.OrderStatus.PaymentFailed;
-                    break;
+                var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _config["StripeSettings:WhSecret"]);
+
+                var charge = (Charge)stripeEvent.Data.Object;
+
+                var order = await _unitOfWork.Order.FindById(x => x.PaymentIntenId == charge.PaymentIntentId);
+
+                PaymentIntent intent;
+
+                switch (stripeEvent.Type)
+                {
+                    case "payment_intent.succeeded" :
+                        intent = (PaymentIntent)stripeEvent.Data.Object;
+                        order.OrderStatus = Constants.OrderStatus.PaymentReceived;
+                        break;
+                    case "payment_intent.payment_failed" :
+                        intent = (PaymentIntent)stripeEvent.Data.Object;
+                        order.OrderStatus = Constants.OrderStatus.PaymentFailed;
+                        break;
+                }
+                return new EmptyResult();
+            }
+            catch (StripeException)
+            {
+                throw new ApiError((int)ErrorCodes.StripeCheckoutIsntSuccessfully);
             }
 
-            return new EmptyResult();
+
         }
     }
 }

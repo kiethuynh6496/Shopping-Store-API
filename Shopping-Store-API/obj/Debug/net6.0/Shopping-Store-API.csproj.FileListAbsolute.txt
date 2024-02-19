@@ -96,3 +96,5 @@ C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\obj\Debug\n
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\obj\Debug\net6.0\Shopping-Store-API.pdb
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\obj\Debug\net6.0\Shopping-Store-API.genruntimeconfig.cache
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\obj\Debug\net6.0\ref\Shopping-Store-API.dll
+C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\Shopping-Store-API.xml
+C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\obj\Debug\net6.0\Shopping-Store-API.xml

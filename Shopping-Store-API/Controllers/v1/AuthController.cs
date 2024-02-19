@@ -32,6 +32,21 @@ namespace Shopping_Store_API.Controllers.v1
             _tokenService = tokenService;
         }
 
+        /// <summary>
+        /// Sign up a User (the default role : User)
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/v1/auth/register
+        ///     {        
+        ///       "email": "userdemo@gmail.com",
+        ///       "password": "1234"
+        ///     }
+        /// </remarks>
+        /// <param name="registerDTO"></param>
+        /// <returns></returns>
+        /// <exception cref="ApiError"></exception>
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
@@ -60,6 +75,21 @@ namespace Shopping_Store_API.Controllers.v1
             return CustomResult(ResponseMesssage.UserRegisteredSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
+        /// <summary>
+        /// Sign in a User (after signing in successfully, "userId" is stored in Cookies)
+        /// </summary>
+        /// <remarks>
+        /// Sample request: Here is an Admin Account (role: Admin)
+        /// 
+        ///     POST api/v1/auth/login
+        ///     {        
+        ///       "email": "admin@gmail.com",
+        ///       "password": "12345"
+        ///     }
+        /// </remarks>
+        /// <param name="logInRequestDTO"></param>
+        /// <returns></returns>
+        /// <exception cref="ApiError"></exception>
         [HttpPost("login")]
         public async Task<IActionResult> Login(LogInRequestDTO logInRequestDTO)
         {
@@ -78,6 +108,10 @@ namespace Shopping_Store_API.Controllers.v1
             return CustomResult(ResponseMesssage.LoggedInSuccessfully.DisplayName(), token, System.Net.HttpStatusCode.OK);
         }
 
+        /// <summary>
+        /// Log out a User by deleting "userId"
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("logout")]
         [Authorize]
         public IActionResult Logout()

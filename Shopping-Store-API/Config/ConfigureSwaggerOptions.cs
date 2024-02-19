@@ -52,7 +52,8 @@ namespace Shopping_Store_API.Config
             var info = new OpenApiInfo()
             {
                 Title = ".NET Core (.NET 6) Web API",
-                Version = desc.ApiVersion.ToString()
+                Version = desc.ApiVersion.ToString(),
+                Description = "Shopee API by kiethuynh"
             };
 
             if (desc.IsDeprecated)

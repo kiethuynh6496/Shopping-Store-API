@@ -30,6 +30,12 @@ namespace Shopping_Store_API.Controllers.v1
             _tokenService = tokenService;
         }
 
+        /// <summary>
+        /// Recreate a couple of Token
+        /// </summary>
+        /// <param name="tokenRequestDTO"></param>
+        /// <returns></returns>
+        /// <exception cref="ApiError"></exception>
         [HttpPost("refresh")]
         public async Task<IActionResult> Refresh(TokenRequestDTO tokenRequestDTO)
         {
@@ -60,6 +66,12 @@ namespace Shopping_Store_API.Controllers.v1
 
         }
 
+        /// <summary>
+        /// Revoke Refresh token
+        /// </summary>
+        /// <param name="tokenRequestDTO"></param>
+        /// <returns></returns>
+        /// <exception cref="ApiError"></exception>
         [HttpPost("revoke")]
         public async Task<IActionResult> Revoke(TokenRequestDTO tokenRequestDTO)
         {

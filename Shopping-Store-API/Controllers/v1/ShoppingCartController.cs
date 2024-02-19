@@ -26,7 +26,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Get shopping cart by user id in Cookie
+        /// Retrieve Shopping Cart by userId in Cookie
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -39,7 +39,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Add product item to shopping cart
+        /// Add an Item to Cart
         /// </summary>
         /// <returns></returns>
         [HttpPost("update-item")]
@@ -53,7 +53,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Remove product item to shopping cart
+        /// Remove an Item to Cart
         /// </summary>
         /// <returns></returns>
         [HttpDelete("delete-item")]

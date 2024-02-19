@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace Shopping_Store_API.Extensions
 {
@@ -44,6 +45,11 @@ namespace Shopping_Store_API.Extensions
             #region Swagger
             services.AddSwaggerGen(opt =>
             {
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                opt.IncludeXmlComments(xmlPath);
+
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,

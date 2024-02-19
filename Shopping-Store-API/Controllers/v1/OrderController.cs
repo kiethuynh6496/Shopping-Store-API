@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CoreApiResponse;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs.OrderDTOs;
@@ -10,7 +11,7 @@ namespace Shopping_Store_API.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/order")]
-    //[Authorize]
+    [Authorize]
     public class OrderController : BaseController
     {
         private readonly IMapper _mapper;
@@ -23,7 +24,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Get all orders
+        /// Retrieve  all Orders
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -36,7 +37,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Get order by id
+        /// Retrieve the specific User's Orders by Id
         /// </summary>
         /// <param name="orderId"></param>
         /// <returns></returns>
@@ -50,8 +51,19 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Create an Order
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/v1/order
+        ///     {        
+        ///       "fullName": "Nguyễn Văn A",
+        ///       "addressName": "12 đường số 1, Bình Thạnh",
+        ///       "city": "Hồ Chí Minh",
+        ///       "isDefault": "true"
+        ///     }
+        /// </remarks>
         /// <param name="orderRequestDTO"></param>
         /// <returns></returns>
         [HttpPost]

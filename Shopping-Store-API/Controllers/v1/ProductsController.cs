@@ -31,8 +31,23 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Get the list of product
+        /// Retrieve all Products with Pagination (10 products/page)
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET api/v1/product
+        ///     {        
+        ///       "orderBy": "", // defaul value: "", Sorting Products by Name
+        ///                      // price+ : Sorting Products by Ascending Price
+        ///                      // price- : Sorting Products by Descending Price
+        ///       "productName": "", // Filtering Products by Name
+        ///       "minPrice": "", // defaul value: 0
+        ///       "maxPrice": "", // defaul value: 999999999
+        ///       "pageNumber": "", // defaul value: 1
+        ///       "pageSize": "", // defaul value: 10
+        ///     }
+        /// </remarks>
         /// <returns></returns>
         [HttpGet]
         public IActionResult GetProductListAsync([FromQuery]ProductParameters productParameters)
@@ -44,7 +59,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Get product by id
+        /// Retrieve a specific Product by Id
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -58,7 +73,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Get product by brand name
+        /// Retrieve the specific Products by Brand name
         /// </summary>
         /// <param name="brand"></param>
         /// <returns></returns>
@@ -72,7 +87,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Get product by category name
+        /// Retrieve the specific Products by Category name
         /// </summary>
         /// <param name="category"></param>
         /// <returns></returns>
@@ -86,8 +101,22 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Create product by Admin
+        /// Create a Product by Admin
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/v1/product
+        ///     {        
+        ///       "Name": "Dell Lattitude 7660",
+        ///       "Description": "Sản xuất 2014",
+        ///       "Price": 1000, // defaul value: 100
+        ///       "PictureUrl": "", // Select a specific image
+        ///       "QuantityInStock": 100, // Range(0, 200)
+        ///       "Category": "Laptop",
+        ///       "Brand": "Dell"
+        ///     }
+        /// </remarks>
         /// <param name="createProductDTO"></param>
         /// <returns></returns>
         [HttpPost]
@@ -101,8 +130,23 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Update a Product by Admin
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     PUT api/v1/product
+        ///     {        
+        ///       "Id": 1,
+        ///       "Name": "Dell Lattitude 7660",
+        ///       "Description": "Sản xuất 2014",
+        ///       "Price": 1000, // defaul value: 100
+        ///       "PictureUrl": "", // Select a specific image
+        ///       "QuantityInStock": 100, // Range(0, 200)
+        ///       "Category": "Laptop",
+        ///       "Brand": "Dell"
+        ///     }
+        /// </remarks>
         /// <param name="updateProductDTO"></param>
         /// <returns></returns>
         [HttpPut]
@@ -116,12 +160,12 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// 
+        /// Remove a Product by Admin
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        [Authorize(Roles = "Admin")]
         [HttpDelete("{productId:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteProductAsync(int productId)
         {
             await _productService.DeleteProduct(productId);
