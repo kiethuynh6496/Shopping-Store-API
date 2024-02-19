@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs.ProductDTOs;
 using Shopping_Store_API.Entities;
@@ -9,15 +10,19 @@ using Shopping_Store_API.Service.Parameters;
 
 namespace Shopping_Store_API.Service
 {
-	public class ProductService : IProductService
+    public class ProductService : IProductService
     {
+        private const string productListCacheKey = "productList";
+        private IMemoryCache _cache;
+        private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
         private readonly IUnitOfWork _unitOfWork;
         private readonly IImageService _imageService;
 
-        public ProductService(IUnitOfWork unitOfWork, IImageService imageService)
+        public ProductService(IUnitOfWork unitOfWork, IImageService imageService, IMemoryCache cache)
         {
             _unitOfWork = unitOfWork;
             _imageService = imageService;
+            _cache = cache;
         }
 
         public async Task<IEnumerable<Product>> GetProductById(int productId)
@@ -30,14 +35,34 @@ namespace Shopping_Store_API.Service
             return productById;
         }
 
-        public IEnumerable<Product> GetProducts(ProductParameters productParameters)
+        public async Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters)
         {
-            var productList = _unitOfWork.Products.GetProducts(productParameters);
-            if (productList == null)
+            if (!_cache.TryGetValue(productListCacheKey + productParameters.pageNumber.ToString(), out IEnumerable<Product> products))
             {
-                throw new ApiError((int)ErrorCodes.ProductDataDoesntExist);
+                try
+                {
+                    await semaphore.WaitAsync();
+                    if (!_cache.TryGetValue(productListCacheKey + productParameters.pageNumber.ToString(), out products))
+                    {
+                        products = _unitOfWork.Products.GetProducts(productParameters);
+                        var cacheEntryOptions = new MemoryCacheEntryOptions()
+                                .SetSlidingExpiration(TimeSpan.FromMinutes(10))
+                                .SetAbsoluteExpiration(TimeSpan.FromMinutes(15))
+                                .SetPriority(CacheItemPriority.Normal)
+                                .SetSize(1024);
+                        _cache.Set(productListCacheKey + productParameters.pageNumber.ToString(), products, cacheEntryOptions);
+                    }
+                }
+                catch
+                {
+                    throw new ApiError((int)ErrorCodes.DataArentLoadedSuccessfully);
+                }
+                finally
+                {
+                    semaphore.Release();
+                }
             }
-            return productList;
+            return products;
         }
 
         public async Task<IEnumerable<Product>> GetProductByBrand(string brand)

@@ -55,6 +55,9 @@ namespace Shopping_Store_API.Commons
         [Display(Description = "Data Aren't Updated Successfully!")]
         DataArentUpdatedSuccessfully,
 
+        [Display(Description = "Data Aren't Loaded Successfully!")]
+        DataArentLoadedSuccessfully,
+
         [Display(Description = "Shopping Cart Can't Be Updated!")]
         ShoppingCartCantBeUpdated,
 

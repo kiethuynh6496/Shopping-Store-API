@@ -50,9 +50,9 @@ namespace Shopping_Store_API.Controllers.v1
         /// </remarks>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult GetProductListAsync([FromQuery]ProductParameters productParameters)
+        public async Task<IActionResult> GetProductListAsync([FromQuery]ProductParameters productParameters)
         {
-            var productDetailsList = _productService.GetProducts(productParameters);
+            var productDetailsList = await _productService.GetProducts(productParameters);
             var productListDT0 = _mapper.Map<IEnumerable<ProductDTO>>(productDetailsList);
 
             return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), productListDT0);

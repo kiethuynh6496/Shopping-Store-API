@@ -150,6 +150,9 @@ namespace Shopping_Store_API.Extensions
             });
             #endregion
 
+            // In-Memory Cache
+            services.AddMemoryCache();
+
             #region Configure Authentication and Authorization
             services.AddAuthentication(options =>
             {

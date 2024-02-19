@@ -6,7 +6,7 @@ namespace Shopping_Store_API.Interface.ServiceInterface
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetProducts(ProductParameters productParameters);
+        Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters);
 
         Task<IEnumerable<Product>> GetProductById(int productId);
 
