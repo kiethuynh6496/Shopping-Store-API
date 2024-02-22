@@ -10,7 +10,8 @@ namespace Shopping_Store_API.Config
         {
             builder.HasOne(s => s.ShoppingCart)
                 .WithMany(si => si.ShoppingCartItems)
-                .HasForeignKey(si => si.ShoppingCartID);
+                .HasForeignKey(si => si.ShoppingCartID)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(p => p.Item)
                 .WithMany(si => si.ProductShoppingCartItems)

@@ -6,6 +6,7 @@ using Shopping_Store_API.Entities;
 using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface.RepositoryInterface;
 using Shopping_Store_API.Repositories;
+using static Shopping_Store_API.Commons.Constants;
 
 namespace Shopping_Store_API.Infrastucture.Repositories
 {
@@ -17,7 +18,15 @@ namespace Shopping_Store_API.Infrastucture.Repositories
 
         public IQueryable<Order> GetOrders(string userId)
         {
-            var getAllOrders = FindByCondition(u => u.UserId.Equals(userId))
+            var getAllOrders = FindByCondition(o => o.UserId.Equals(userId))
+                                .Include(o => o.OrderItems)
+                                .ThenInclude(p => p.Item);
+            return getAllOrders;
+        }
+
+        public IQueryable<Order> GetOrderByStatus(OrderStatus orderStatus, string userId)
+        {
+            var getAllOrders = FindByCondition(o => o.UserId.Equals(userId) && o.OrderStatus == orderStatus)
                                 .Include(o => o.OrderItems)
                                 .ThenInclude(p => p.Item);
             return getAllOrders;

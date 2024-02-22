@@ -1,6 +1,8 @@
 ﻿using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Shopping_Store_API.Commons
 {
@@ -34,6 +36,19 @@ namespace Shopping_Store_API.Commons
             var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(30) };
 
             httpResponse.Cookies.Append("userId", buyerId, cookieOptions);
+        }
+
+        public static String HmacSHA256(string inputData, string key)
+        {
+            byte[] keyByte = Encoding.UTF8.GetBytes(key);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(inputData);
+            using (var hmacsha256 = new HMACSHA256(keyByte))
+            {
+                byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
+                string hex = BitConverter.ToString(hashmessage);
+                hex = hex.Replace("-", "").ToLower();
+                return hex;
+            }
         }
     }
 }

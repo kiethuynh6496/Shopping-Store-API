@@ -49,7 +49,7 @@ namespace Shopping_Store_API.Service
             // Add Item to ShoppingCartItem
             shoppingCart.AddItem(product, shoppingCartParameters.quantity);
 
-            UpdateEntity(shoppingCart, shoppingCartParameters);
+            await UpdateEntity(shoppingCart, shoppingCartParameters);
 
             // Updata Db in 2 tables: ShoppingCartItem and ShoppingCart
             var result = await _unitOfWork.CommitAsync();
@@ -72,7 +72,7 @@ namespace Shopping_Store_API.Service
             // Remove product in Cart
             shoppingCart.RemoveItem(shoppingCartParameters.productId, shoppingCartParameters.quantity);
 
-            UpdateEntity(shoppingCart, shoppingCartParameters);
+            await UpdateEntity(shoppingCart, shoppingCartParameters);
 
             // Updata ShoppingCartItem table
             var result = await _unitOfWork.CommitAsync();
@@ -83,21 +83,19 @@ namespace Shopping_Store_API.Service
             return true;
         }
 
-        private void UpdateEntity(ShoppingCart? shoppingCart, ShoppingCartParameters shoppingCartParameters)
+        private async Task UpdateEntity(ShoppingCart? shoppingCart, ShoppingCartParameters shoppingCartParameters)
         {
-            // Update data in ShoppingCartItem
-            var updateShoppingItemCartResult = _unitOfWork.ShoppingCartItem.Update(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId));
-            if (updateShoppingItemCartResult == false)
-            {
-                throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
-            }
+            var currentShoppingCart = await _unitOfWork.ShoppingCart.FindById(s => s.Id == shoppingCart.Id);
 
             // Update data int ShoppingCart
-            var updateShoppingCartResult = _unitOfWork.ShoppingCart.Update(shoppingCart);
-            if (updateShoppingCartResult == false)
-            {
-                throw new ApiError((int)ErrorCodes.ShoppingCartCantBeUpdated);
-            }
+            var updateShoppingCartResult = currentShoppingCart == null ? await _unitOfWork.ShoppingCart.Add(shoppingCart) :
+                                                                         _unitOfWork.ShoppingCart.Update(shoppingCart);
+            if (updateShoppingCartResult == false) throw new ApiError((int)ErrorCodes.ShoppingCartCantBeUpdated);
+
+            // Update data in ShoppingCartItem
+            var updateShoppingItemCartResult = currentShoppingCart == null ? await _unitOfWork.ShoppingCartItem.Add(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId)) :
+                                                                                   _unitOfWork.ShoppingCartItem.Update(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId));
+            if (updateShoppingItemCartResult == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
         }
     }
 }

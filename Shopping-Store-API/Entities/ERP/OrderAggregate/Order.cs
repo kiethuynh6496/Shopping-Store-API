@@ -5,7 +5,7 @@ using static Shopping_Store_API.Commons.Constants;
 namespace Shopping_Store_API.Entities.ERP
 {
     [Table("Order")]
-    public class Order : AuditEntity<int>
+    public class Order : AuditEntity<Guid>
     {
         public Order()
         {
@@ -23,5 +23,6 @@ namespace Shopping_Store_API.Entities.ERP
         public long Total { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
         public string? PaymentIntenId { get; set; }
+        public string? MomoRequestId { get; set; }
     }
 }

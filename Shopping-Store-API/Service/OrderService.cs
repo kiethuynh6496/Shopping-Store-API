@@ -70,6 +70,7 @@ namespace Shopping_Store_API.Service
                 OrderItems = items,
                 PaymentIntenId = shoppingCart.PaymentIntenId,
                 Total = total,
+                MomoRequestId = Guid.NewGuid().ToString()
             };
 
             // Handle Address
@@ -96,7 +97,8 @@ namespace Shopping_Store_API.Service
             if (!addOrder) throw new ApiError((int)ErrorCodes.OrderIsntAddedSuccessfully);
 
             //Remove Shopping Cart
-            shoppingCart.IsDeleted = true;
+            var removeCart = _unitOfWork.ShoppingCart.Delete(shoppingCart);
+            if (!removeCart) throw new ApiError((int)ErrorCodes.ShoppingCartCantBeRemoved);
 
             // Commit all
             var save = await _unitOfWork.CommitAsync();

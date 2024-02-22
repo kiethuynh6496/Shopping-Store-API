@@ -2,9 +2,9 @@
 
 namespace Shopping_Store_API.DTOs.OrderDTOs
 {
-	public class OrderItemDTO
+    public class OrderItemDTO
     {
-        public int OrderID { get; set; }
+        public Guid OrderID { get; set; }
         public int ItemId { get; set; }
         public ProductDTO Item { get; set; }
         public int Quantity { get; set; }

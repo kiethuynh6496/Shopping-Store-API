@@ -61,7 +61,7 @@ namespace Shopping_Store_API.Controllers.v1
         ///       "fullName": "Nguyễn Văn A",
         ///       "addressName": "12 đường số 1, Bình Thạnh",
         ///       "city": "Hồ Chí Minh",
-        ///       "isDefault": "true"
+        ///       "isDefault": true
         ///     }
         /// </remarks>
         /// <param name="orderRequestDTO"></param>

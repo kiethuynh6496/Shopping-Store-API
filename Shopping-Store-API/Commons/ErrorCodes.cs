@@ -43,6 +43,9 @@ namespace Shopping_Store_API.Commons
         [Display(Description = "Shopping Cart Can't Be Created!")]
         ShoppingCartCantBeCreated,
 
+        [Display(Description = "Shopping Cart Can't Be Removed!")]
+        ShoppingCartCantBeRemoved,
+
         [Display(Description = "Data Aren't Created Successfully!")]
         DataArentCreatedSuccessfully,
 
@@ -57,6 +60,9 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "Data Aren't Loaded Successfully!")]
         DataArentLoadedSuccessfully,
+
+        [Display(Description = "Data Aren't Added Successfully!")]
+        DataArentAddedSuccessfully,
 
         [Display(Description = "Shopping Cart Can't Be Updated!")]
         ShoppingCartCantBeUpdated,

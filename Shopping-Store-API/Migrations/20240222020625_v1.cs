@@ -179,12 +179,12 @@ namespace ShoppingStoreAPI.Migrations
                 name: "Order",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Total = table.Column<long>(type: "bigint", nullable: false),
                     OrderStatus = table.Column<int>(type: "int", nullable: false),
                     PaymentIntenId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MomoRequestId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -210,12 +210,7 @@ namespace ShoppingStoreAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PaymentIntenId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClientSecret = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ClientSecret = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -347,7 +342,7 @@ namespace ShoppingStoreAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderID = table.Column<int>(type: "int", nullable: false),
+                    OrderID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ItemId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -410,14 +405,14 @@ namespace ShoppingStoreAPI.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "Name", "UpdatedBy", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6038), false, "Dell", null, null },
-                    { 2, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6047), false, "Apple", null, null },
-                    { 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6048), false, "Gigabyte", null, null },
-                    { 4, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6049), false, "Corsair", null, null },
-                    { 5, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6050), false, "LG", null, null },
-                    { 6, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6052), false, "Asus", null, null },
-                    { 7, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6053), false, "Viewsonic", null, null },
-                    { 8, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6054), false, "Acer", null, null }
+                    { 1, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6431), false, "Dell", null, null },
+                    { 2, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6435), false, "Apple", null, null },
+                    { 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6435), false, "Gigabyte", null, null },
+                    { 4, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6436), false, "Corsair", null, null },
+                    { 5, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6437), false, "LG", null, null },
+                    { 6, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6438), false, "Asus", null, null },
+                    { 7, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6439), false, "Viewsonic", null, null },
+                    { 8, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6440), false, "Acer", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -425,13 +420,13 @@ namespace ShoppingStoreAPI.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "Name", "UpdatedBy", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6321), false, "Laptop", null, null },
-                    { 2, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6327), false, "Ipad", null, null },
-                    { 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6328), false, "Screen", null, null },
-                    { 4, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6329), false, "Iphone", null, null },
-                    { 5, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6330), false, "Macbook", null, null },
-                    { 6, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6331), false, "Mainboard", null, null },
-                    { 7, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(6332), false, "Case", null, null }
+                    { 1, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6553), false, "Laptop", null, null },
+                    { 2, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6556), false, "Ipad", null, null },
+                    { 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6557), false, "Screen", null, null },
+                    { 4, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6558), false, "Iphone", null, null },
+                    { 5, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6559), false, "Macbook", null, null },
+                    { 6, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6560), false, "Mainboard", null, null },
+                    { 7, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6560), false, "Case", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -439,22 +434,22 @@ namespace ShoppingStoreAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "44bc1c18-51a6-46b0-8e20-0df40a2ae0b9", "35ee7857-338d-4b83-97c8-075bd9daaba0", "Admin", "ADMIN" },
-                    { "4d267d01-3ce5-44d4-bf99-a3fd2172ba17", "0ece80e3-6420-4c4c-a590-e28627ea3339", "User", "USER" }
+                    { "44bc1c18-51a6-46b0-8e20-0df40a2ae0b9", "f22a9c3b-9e53-432a-9d54-10706ff9b920", "Admin", "ADMIN" },
+                    { "4d267d01-3ce5-44d4-bf99-a3fd2172ba17", "76b394b7-9b3a-4176-9a81-6d8f49023eca", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "Birthday", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "d68dcb5f-2706-4cb5-bb0b-37bf39400420", 0, null, "fe9b475c-21ad-45ed-8c1a-44abec68623a", "admin@gmail.com", false, "kiethuynh", false, null, null, null, "AQAAAAEAACcQAAAAEORqsu30Xu2m4FyF5WRg8ScZ6GZOtWBBeEVNO3Hgfq03k/bjHmUAKOh0SWJRkMjVdA==", null, false, "d571b6fc-3a9c-40dd-acd9-949451e7a378", false, "admin@gmail.com" });
+                values: new object[] { "d68dcb5f-2706-4cb5-bb0b-37bf39400420", 0, null, "22dfc3aa-fc0b-41fc-ba84-4a10b15491e7", "admin@gmail.com", false, "kiethuynh", false, null, null, null, "AQAAAAEAACcQAAAAEORqsu30Xu2m4FyF5WRg8ScZ6GZOtWBBeEVNO3Hgfq03k/bjHmUAKOh0SWJRkMjVdA==", null, false, "447afe9a-86bf-4497-80ef-f5ef871cbafe", false, "admin@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Address",
                 columns: new[] { "Id", "AddressName", "City", "CreatedBy", "CreatedDate", "IsDeleted", "UpdatedBy", "UpdatedDate", "UserId", "isDefault" },
                 values: new object[,]
                 {
-                    { 1, "172/26 Ly Thai To, Q.3", "HCM", null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(9991), false, null, null, "d68dcb5f-2706-4cb5-bb0b-37bf39400420", true },
-                    { 2, "175 Duong so 1, Go Vap", "HCM", null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(9996), false, null, null, "d68dcb5f-2706-4cb5-bb0b-37bf39400420", false }
+                    { 1, "172/26 Ly Thai To, Q.3", "HCM", null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(9393), false, null, null, "d68dcb5f-2706-4cb5-bb0b-37bf39400420", true },
+                    { 2, "175 Duong so 1, Go Vap", "HCM", null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(9398), false, null, null, "d68dcb5f-2706-4cb5-bb0b-37bf39400420", false }
                 });
 
             migrationBuilder.InsertData(
@@ -462,36 +457,36 @@ namespace ShoppingStoreAPI.Migrations
                 columns: new[] { "Id", "BrandID", "CategoryID", "CreatedBy", "CreatedDate", "Description", "IsDeleted", "Name", "PictureUrl", "Price", "PublicIdCloudary", "QuantityInStock", "UpdatedBy", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5657), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Latitude 7320", "/images/products/product-01.png", 1000L, null, 100, null, null },
-                    { 2, 1, 1, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5664), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Latitude 7330", "/images/products/product-02.png", 2000L, null, 100, null, null },
-                    { 3, 1, 1, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5666), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Inspiron 6430", "/images/products/product-03.png", 3000L, null, 100, null, null },
-                    { 4, 1, 1, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5668), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Inspiron 6530", "/images/products/product-04.png", 4000L, null, 100, null, null },
-                    { 5, 2, 2, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5669), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Ipad M1 12.9", "/images/products/product-05.png", 5000L, null, 100, null, null },
-                    { 6, 2, 2, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5672), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Ipad M1 12.9", "/images/products/product-06.png", 6000L, null, 100, null, null },
-                    { 7, 1, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5675), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Screen 27inch", "/images/products/product-07.png", 7000L, null, 100, null, null },
-                    { 8, 1, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5676), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Screen 27inch", "/images/products/product-08.png", 8000L, null, 100, null, null },
-                    { 9, 2, 4, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5679), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Iphone 14 Pro Max", "/images/products/product-09.jpeg", 9000L, null, 100, null, null },
-                    { 10, 2, 4, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5680), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Iphone 14 Pro Max", "/images/products/product-10.jpeg", 10000L, null, 100, null, null },
-                    { 11, 2, 5, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5682), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Macbook Air M1", "/images/products/product-11.jpeg", 11000L, null, 100, null, null },
-                    { 12, 2, 5, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5683), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Macbook Air M1", "/images/products/product-12.png", 12000L, null, 100, null, null },
-                    { 13, 3, 6, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5684), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Mainboard Gigabyte 6330", "/images/products/product-13.png", 13000L, null, 100, null, null },
-                    { 14, 3, 6, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5686), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Mainboard Gigabyte 6330", "/images/products/product-14.png", 14000L, null, 100, null, null },
-                    { 15, 4, 7, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5689), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Case Corsair", "/images/products/product-15.png", 15000L, null, 100, null, null },
-                    { 16, 5, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5697), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "LG Ultra Gear", "/images/products/product-16.png", 16000L, null, 100, null, null },
-                    { 17, 5, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5699), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "LG Ultra Gear", "/images/products/product-17.png", 17000L, null, 100, null, null },
-                    { 18, 6, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5700), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "MSI 27", "/images/products/product-18.png", 18000L, null, 100, null, null },
-                    { 19, 7, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5701), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Viewsonic 24", "/images/products/product-19.png", 19000L, null, 100, null, null },
-                    { 20, 8, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5704), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Acer 27", "/images/products/product-20.png", 10000L, null, 100, null, null },
-                    { 21, 6, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5705), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus 27 Freesync", "/images/products/product-21.png", 21000L, null, 100, null, null },
-                    { 22, 6, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5706), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus 24 Freesync", "/images/products/product-22.png", 22000L, null, 100, null, null },
-                    { 23, 7, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5708), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Viewsonic 24 Freesync", "/images/products/product-23.png", 23000L, null, 100, null, null },
-                    { 24, 7, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5709), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Viewsonic 24 Freesync 75Hz", "/images/products/product-24.png", 24000L, null, 100, null, null },
-                    { 25, 6, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5711), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus TUF Gaming 24", "/images/products/product-25.png", 25000L, null, 100, null, null },
-                    { 26, 3, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5712), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Gigabyte 24", "/images/products/product-26.png", 26000L, null, 100, null, null },
-                    { 27, 6, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5714), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus GM27", "/images/products/product-27.png", 27000L, null, 100, null, null },
-                    { 28, 8, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5715), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Acer 75hz 27", "/images/products/product-28.png", 28000L, null, 100, null, null },
-                    { 29, 5, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5717), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "LG 75hz 27", "/images/products/product-29.png", 29000L, null, 100, null, null },
-                    { 30, 6, 3, null, new DateTime(2024, 2, 17, 22, 57, 14, 442, DateTimeKind.Local).AddTicks(5719), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus 100hz 27", "/images/products/product-30.png", 30000L, null, 100, null, null }
+                    { 1, 1, 1, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6143), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Latitude 7320", "/images/products/product-01.png", 1000L, null, 100, null, null },
+                    { 2, 1, 1, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6160), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Latitude 7330", "/images/products/product-02.png", 2000L, null, 100, null, null },
+                    { 3, 1, 1, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6162), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Inspiron 6430", "/images/products/product-03.png", 3000L, null, 100, null, null },
+                    { 4, 1, 1, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6164), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Inspiron 6530", "/images/products/product-04.png", 4000L, null, 100, null, null },
+                    { 5, 2, 2, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6165), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Ipad M1 12.9", "/images/products/product-05.png", 5000L, null, 100, null, null },
+                    { 6, 2, 2, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6166), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Ipad M1 12.9", "/images/products/product-06.png", 6000L, null, 100, null, null },
+                    { 7, 1, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6167), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Screen 27inch", "/images/products/product-07.png", 7000L, null, 100, null, null },
+                    { 8, 1, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6168), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Dell Screen 27inch", "/images/products/product-08.png", 8000L, null, 100, null, null },
+                    { 9, 2, 4, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6170), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Iphone 14 Pro Max", "/images/products/product-09.jpeg", 9000L, null, 100, null, null },
+                    { 10, 2, 4, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6171), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Iphone 14 Pro Max", "/images/products/product-10.jpeg", 10000L, null, 100, null, null },
+                    { 11, 2, 5, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6172), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Macbook Air M1", "/images/products/product-11.jpeg", 11000L, null, 100, null, null },
+                    { 12, 2, 5, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6174), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Macbook Air M1", "/images/products/product-12.png", 12000L, null, 100, null, null },
+                    { 13, 3, 6, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6175), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Mainboard Gigabyte 6330", "/images/products/product-13.png", 13000L, null, 100, null, null },
+                    { 14, 3, 6, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6177), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Mainboard Gigabyte 6330", "/images/products/product-14.png", 14000L, null, 100, null, null },
+                    { 15, 4, 7, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6178), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Case Corsair", "/images/products/product-15.png", 15000L, null, 100, null, null },
+                    { 16, 5, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6179), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "LG Ultra Gear", "/images/products/product-16.png", 16000L, null, 100, null, null },
+                    { 17, 5, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6180), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "LG Ultra Gear", "/images/products/product-17.png", 17000L, null, 100, null, null },
+                    { 18, 6, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6181), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "MSI 27", "/images/products/product-18.png", 18000L, null, 100, null, null },
+                    { 19, 7, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6182), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Viewsonic 24", "/images/products/product-19.png", 19000L, null, 100, null, null },
+                    { 20, 8, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6184), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Acer 27", "/images/products/product-20.png", 10000L, null, 100, null, null },
+                    { 21, 6, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6189), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus 27 Freesync", "/images/products/product-21.png", 21000L, null, 100, null, null },
+                    { 22, 6, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6191), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus 24 Freesync", "/images/products/product-22.png", 22000L, null, 100, null, null },
+                    { 23, 7, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6193), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Viewsonic 24 Freesync", "/images/products/product-23.png", 23000L, null, 100, null, null },
+                    { 24, 7, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6194), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Viewsonic 24 Freesync 75Hz", "/images/products/product-24.png", 24000L, null, 100, null, null },
+                    { 25, 6, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6195), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus TUF Gaming 24", "/images/products/product-25.png", 25000L, null, 100, null, null },
+                    { 26, 3, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6196), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Gigabyte 24", "/images/products/product-26.png", 26000L, null, 100, null, null },
+                    { 27, 6, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6197), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus GM27", "/images/products/product-27.png", 27000L, null, 100, null, null },
+                    { 28, 8, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6199), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Acer 75hz 27", "/images/products/product-28.png", 28000L, null, 100, null, null },
+                    { 29, 5, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6200), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "LG 75hz 27", "/images/products/product-29.png", 29000L, null, 100, null, null },
+                    { 30, 6, 3, null, new DateTime(2024, 2, 22, 9, 6, 24, 785, DateTimeKind.Local).AddTicks(6201), "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.", false, "Asus 100hz 27", "/images/products/product-30.png", 30000L, null, 100, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -506,8 +501,8 @@ namespace ShoppingStoreAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "ShoppingCart",
-                columns: new[] { "Id", "ClientSecret", "CreatedBy", "CreatedDate", "IsDeleted", "PaymentIntenId", "UpdatedBy", "UpdatedDate", "UserId" },
-                values: new object[] { 1, null, null, new DateTime(2024, 2, 17, 22, 57, 14, 441, DateTimeKind.Local).AddTicks(9863), false, null, null, null, "d68dcb5f-2706-4cb5-bb0b-37bf39400420" });
+                columns: new[] { "Id", "ClientSecret", "PaymentIntenId", "UserId" },
+                values: new object[] { 1, null, null, "d68dcb5f-2706-4cb5-bb0b-37bf39400420" });
 
             migrationBuilder.InsertData(
                 table: "UserClaims",

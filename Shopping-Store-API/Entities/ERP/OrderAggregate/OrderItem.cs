@@ -6,7 +6,7 @@ namespace Shopping_Store_API.Entities.ERP
     [Table("OrderItem")]
     public class OrderItem : AuditEntity<int>
     {
-        public int OrderID { get; set; }
+        public Guid OrderID { get; set; }
         [ForeignKey(nameof(OrderID))]
         [InverseProperty("OrderItems")]
         public virtual Order Order { get; set; }

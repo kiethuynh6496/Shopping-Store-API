@@ -3,11 +3,13 @@ using CoreApiResponse;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
+using Shopping_Store_API.DTOs.OrderDTOs;
 using Shopping_Store_API.DTOs.ShoppingCartDTOs;
 using Shopping_Store_API.Entities;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
 using Stripe;
+using static Shopping_Store_API.Commons.Constants;
 
 namespace Shopping_Store_API.Controllers.v1
 {
@@ -38,7 +40,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// <returns></returns>
         /// <exception cref="ApiError"></exception>
         [HttpPost("create-update-payment-intent")]
-        public async Task<ActionResult<ShoppingCartDTO>> CreateOrUpdatePaymentIntentAsync()
+        public async Task<IActionResult> CreateOrUpdatePaymentIntentAsync()
         {
             var shoppingCart = await _shoppingCartService.GetShoppingCart(Request.Cookies["userId"], true);
 
@@ -60,7 +62,7 @@ namespace Shopping_Store_API.Controllers.v1
 
             var shoppingCartDTO = _mapper.Map<ShoppingCartDTO>(shoppingCart);
 
-            return shoppingCartDTO;
+            return CustomResult(ResponseMesssage.DataAreCreatedSuccessfully.DisplayName(), shoppingCartDTO);
         }
 
         /// <summary>
@@ -101,6 +103,15 @@ namespace Shopping_Store_API.Controllers.v1
             }
 
 
+        }
+
+        [HttpPost("momo")]
+        public async Task<IActionResult> CreateMomoPaymentAsync()
+        {
+            var currentOrder = _unitOfWork.Order.GetOrderByStatus(OrderStatus.Pending, Request.Cookies["userId"]).OrderBy(o => o.CreatedDate).LastOrDefault();
+
+            var momoResponse = _paymentService.CreateMomoPayment(currentOrder);
+            return CustomResult(ResponseMesssage.DataAreCreatedSuccessfully.DisplayName(), momoResponse, System.Net.HttpStatusCode.Created);
         }
     }
 }

@@ -20,12 +20,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
         {
             var shoppingCart = await RetrieveShoppingCart(userId, IsTracked);
 
-            if (shoppingCart == null)
-            {
-                throw new ApiError((int)ErrorCodes.ShoppingCartDoesntExist);
-            }
-
-            if(!IsTracked)
+            if(shoppingCart != null && !IsTracked)
             {
                 shoppingCart.ShoppingCartItems = shoppingCart.ShoppingCartItems.Where(i => i.Quantity > 0).ToList();
             }
@@ -38,7 +33,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             if (userId.IsNullOrEmpty()) throw new ApiError((int)ErrorCodes.SignUpPlease);
             var buyerId = userId;
             Helpers.SaveDataToCookie(buyerId, httpResponse);
-            var shoppingCart = new ShoppingCart { UserId = buyerId, CreatedBy = buyerId };
+            var shoppingCart = new ShoppingCart { UserId = buyerId };
             return shoppingCart;
         }
 
@@ -47,12 +42,12 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             return IsTracked ? await DbSet
                                     .Include(i => i.ShoppingCartItems)
                                     .ThenInclude(p => p.Item)
-                                    .FirstOrDefaultAsync(x => x.UserId == userId && x.IsDeleted == false) :
+                                    .FirstOrDefaultAsync(x => x.UserId == userId) :
                                await DbSet
                                     .AsNoTracking()
                                     .Include(i => i.ShoppingCartItems)
                                     .ThenInclude(p => p.Item)
-                                    .FirstOrDefaultAsync(x => x.UserId == userId && x.IsDeleted == false);
+                                    .FirstOrDefaultAsync(x => x.UserId == userId);
         }
     }
 }

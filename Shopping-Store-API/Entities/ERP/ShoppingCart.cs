@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Shopping_Store_API.Entities.ERP
 {
     [Table("ShoppingCart")]
-    public class ShoppingCart : AuditEntity<int>
+    public class ShoppingCart : EntityBase<int>
     {
         public ShoppingCart()
         {
@@ -26,7 +26,7 @@ namespace Shopping_Store_API.Entities.ERP
         {
             if(ShoppingCartItems.All(item => item.ItemId != product.Id))
             {
-                ShoppingCartItems.Add(new ShoppingCartItem { ItemId = product.Id, Item = product, Quantity = quantity});
+                ShoppingCartItems.Add(new ShoppingCartItem { ItemId = product.Id, Quantity = quantity});
                 return;
             }
 
