@@ -105,6 +105,10 @@ namespace Shopping_Store_API.Controllers.v1
 
         }
 
+        /// <summary>
+        /// Create a MoMo Payment link
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("momo")]
         public async Task<IActionResult> CreateMomoPaymentAsync()
         {

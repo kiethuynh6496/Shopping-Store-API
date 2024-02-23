@@ -3,7 +3,7 @@ using Newtonsoft.Json.Serialization;
 using Shopping_Store_API.Commons;
 using System.Text;
 
-namespace Shopping_Store_API.Entities
+namespace Shopping_Store_API.Entities.Momo
 {
     public class MomoOneTimePaymentRequest
     {
@@ -37,16 +37,16 @@ namespace Shopping_Store_API.Entities
         public void MakeSignature(string accessKey, string secretKey)
         {
             var rawHash = "accessKey=" + accessKey +
-                "&amount=" + this.amount +
-                "&extraData=" + this.extraData +
-                "&ipnUrl=" + this.ipnUrl +
-                "&orderId=" + this.orderId +
-                "&orderInfo=" + this.orderInfo +
-                "&partnerCode=" + this.partnerCode +
-                "&redirectUrl=" + this.redirectUrl +
-                "&requestId=" + this.requestId +
-                "&requestType=" + this.requestType;
-            this.signature = Helpers.HmacSHA256(rawHash, secretKey);
+                "&amount=" + amount +
+                "&extraData=" + extraData +
+                "&ipnUrl=" + ipnUrl +
+                "&orderId=" + orderId +
+                "&orderInfo=" + orderInfo +
+                "&partnerCode=" + partnerCode +
+                "&redirectUrl=" + redirectUrl +
+                "&requestId=" + requestId +
+                "&requestType=" + requestType;
+            signature = Helpers.HmacSHA256(rawHash, secretKey);
         }
 
         public (bool, string?) GetLink(string paymentUrl)
@@ -63,12 +63,12 @@ namespace Shopping_Store_API.Entities
             var createPaymentLinkRes = client.PostAsync(paymentUrl, requestContent)
                 .Result;
 
-            if(createPaymentLinkRes.IsSuccessStatusCode)
+            if (createPaymentLinkRes.IsSuccessStatusCode)
             {
                 var responseContent = createPaymentLinkRes.Content.ReadAsStringAsync().Result;
                 var responseData = JsonConvert
                     .DeserializeObject<MomoOneTimePaymentCreateLinkResponse>(responseContent);
-                if(responseData.resultCode == "0")
+                if (responseData.resultCode == "0")
                 {
                     return (true, responseData.payUrl);
                 }

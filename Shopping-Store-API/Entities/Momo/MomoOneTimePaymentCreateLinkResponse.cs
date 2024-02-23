@@ -1,4 +1,4 @@
-﻿namespace Shopping_Store_API.Entities
+﻿namespace Shopping_Store_API.Entities.Momo
 {
     public class MomoOneTimePaymentCreateLinkResponse
     {
