@@ -17,7 +17,7 @@ namespace Shopping_Store_API.Config
                     new AppUser
                     {
                         Id = "d68dcb5f-2706-4cb5-bb0b-37bf39400420",
-                        FullName = "kiethuynh",
+                        FullName = "admin",
                         UserName = "admin@gmail.com",
                         Email = "admin@gmail.com",
                         PasswordHash = "AQAAAAEAACcQAAAAEORqsu30Xu2m4FyF5WRg8ScZ6GZOtWBBeEVNO3Hgfq03k/bjHmUAKOh0SWJRkMjVdA==",
