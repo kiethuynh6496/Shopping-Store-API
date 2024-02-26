@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Shopping_Store_API.Extensions;
 
@@ -24,7 +25,7 @@ app.UseSwaggerUI(options =>
     }
     options.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
 });
-
+app.UseIpRateLimiting();
 app.ConfigureAPIApp();
 
 app.Run();

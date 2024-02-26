@@ -6,6 +6,7 @@ C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\n
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\Shopping-Store-API.dll
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\Shopping-Store-API.pdb
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\Shopping-Store-API.xml
+C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\AspNetCoreRateLimit.dll
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\TuanKiet\source\repos\Shopping-Store-API\Shopping-Store-API\bin\Debug\net6.0\Azure.Core.dll

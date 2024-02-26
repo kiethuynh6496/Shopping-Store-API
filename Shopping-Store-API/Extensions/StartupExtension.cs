@@ -20,6 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using AspNetCoreRateLimit;
 
 namespace Shopping_Store_API.Extensions
 {
@@ -152,6 +153,14 @@ namespace Shopping_Store_API.Extensions
 
             // In-Memory Cache
             services.AddMemoryCache();
+
+            // Rate Limiting
+            services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimiting"));
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+            services.AddInMemoryRateLimiting();
 
             #region Configure Authentication and Authorization
             services.AddAuthentication(options =>
