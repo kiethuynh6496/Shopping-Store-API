@@ -30,7 +30,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
 
         public ShoppingCart CreateShoppingCart(string userId, HttpResponse httpResponse)
         {
-            if (userId.IsNullOrEmpty()) throw new ApiError((int)ErrorCodes.SignUpPlease);
+            if (string.IsNullOrEmpty(userId)) throw new ApiError((int)ErrorCodes.SignUpPlease);
             var buyerId = userId;
             Helpers.SaveDataToCookie(buyerId, httpResponse);
             var shoppingCart = new ShoppingCart { UserId = buyerId };

@@ -75,7 +75,7 @@ namespace Shopping_Store_API.Controllers.v1
         [HttpPost("revoke")]
         public async Task<IActionResult> Revoke(TokenRequestDTO tokenRequestDTO)
         {
-            if (tokenRequestDTO.RefreshToken.IsNullOrEmpty()) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
+            if (string.IsNullOrEmpty(tokenRequestDTO.RefreshToken)) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
             var userToken = await _unitOfWork.Token.FindByCondition(u => u.RefreshToken == tokenRequestDTO.RefreshToken)
                                                    .AsTracking()
