@@ -216,13 +216,14 @@ namespace Shopping_Store_API.Extensions
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //app.UseCors("AllowAll");
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-
             app.UseRouting();
+
+            app.UseCors(x => x
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+
             app.UseAuthentication();
             app.UseAuthorization();
 
