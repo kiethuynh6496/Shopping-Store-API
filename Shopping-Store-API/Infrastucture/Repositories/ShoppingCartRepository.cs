@@ -41,12 +41,15 @@ namespace Shopping_Store_API.Infrastucture.Repositories
         {
             return IsTracked ? await DbSet
                                     .Include(i => i.ShoppingCartItems)
-                                    .ThenInclude(p => p.Item)
+                                        .ThenInclude(p => p.Item)
                                     .FirstOrDefaultAsync(x => x.UserId == userId) :
                                await DbSet
                                     .AsNoTracking()
                                     .Include(i => i.ShoppingCartItems)
-                                    .ThenInclude(p => p.Item)
+                                        .ThenInclude(p => p.Item)
+                                        .ThenInclude(item => item.Category)
+                                    .Include(i => i.ShoppingCartItems)
+                                        .ThenInclude(p => p.Item.Brand)
                                     .FirstOrDefaultAsync(x => x.UserId == userId);
         }
     }
