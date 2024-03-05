@@ -21,6 +21,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.CookiePolicy;
 
 namespace Shopping_Store_API.Extensions
 {
@@ -183,6 +184,19 @@ namespace Shopping_Store_API.Extensions
             });
             #endregion
 
+            #region Configure CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin", builder =>
+                {
+                    builder
+                        .WithOrigins("https://myshopeeapi.azurewebsites.net/api/v1", "https://localhost:3000")
+                        .AllowCredentials()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+            #endregion
             return services;
         }
 
@@ -218,11 +232,7 @@ namespace Shopping_Store_API.Extensions
 
             app.UseRouting();
 
-            app.UseCors(x => x
-                .WithOrigins("http://localhost:3000")
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+            app.UseCors("AllowOrigin");
 
             app.UseAuthentication();
             app.UseAuthorization();
