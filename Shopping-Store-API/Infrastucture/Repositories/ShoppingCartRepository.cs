@@ -20,7 +20,7 @@ namespace Shopping_Store_API.Infrastucture.Repositories
         {
             var shoppingCart = await RetrieveShoppingCart(userId, IsTracked);
 
-            if(shoppingCart != null && !IsTracked)
+            if(shoppingCart != null)
             {
                 shoppingCart.ShoppingCartItems = shoppingCart.ShoppingCartItems.Where(i => i.Quantity > 0).ToList();
             }
@@ -42,6 +42,9 @@ namespace Shopping_Store_API.Infrastucture.Repositories
             return IsTracked ? await DbSet
                                     .Include(i => i.ShoppingCartItems)
                                         .ThenInclude(p => p.Item)
+                                        .ThenInclude(item => item.Category)
+                                    .Include(i => i.ShoppingCartItems)
+                                        .ThenInclude(p => p.Item.Brand)
                                     .FirstOrDefaultAsync(x => x.UserId == userId) :
                                await DbSet
                                     .AsNoTracking()

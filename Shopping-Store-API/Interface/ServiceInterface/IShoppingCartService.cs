@@ -7,8 +7,8 @@ namespace Shopping_Store_API.Interface.ServiceInterface
     {
         Task<ShoppingCart> GetShoppingCart(string userId, bool IsTracked);
 
-        Task<bool> AddItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters, HttpResponse httpResponse);
+        Task<ShoppingCart> AddItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters, HttpResponse httpResponse);
 
-        Task<bool> RemoveItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters);
+        Task<ShoppingCart> RemoveItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters);
     }
 }

@@ -26,7 +26,7 @@ namespace Shopping_Store_API.Entities.ERP
         {
             if(ShoppingCartItems.All(item => item.ItemId != product.Id))
             {
-                ShoppingCartItems.Add(new ShoppingCartItem { ItemId = product.Id, Quantity = quantity});
+                ShoppingCartItems.Add(new ShoppingCartItem { ItemId = product.Id, Quantity = quantity, Item = product});
                 return;
             }
 
@@ -47,7 +47,10 @@ namespace Shopping_Store_API.Entities.ERP
             if (item == null) return;
             if(item.IsDeleted) return;
             item.Quantity = item.Quantity - quantity <= 0 ? 0 : item.Quantity - quantity;
-            if(item.Quantity == 0) item.IsDeleted = true;
+            if(item.Quantity == 0)
+            {
+                ShoppingCartItems.Remove(item);
+            }
         }
     }
 }

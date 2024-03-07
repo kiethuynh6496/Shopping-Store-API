@@ -13,7 +13,7 @@ namespace Shopping_Store_API.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/shoppingcart")]
-    //[Authorize]
+    [Authorize]
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService _shoppingCartService;
@@ -47,9 +47,11 @@ namespace Shopping_Store_API.Controllers.v1
         {
             var addResult = await _shoppingCartService.AddItemToShoppingCart(Request.Cookies["userId"], shoppingCartParameters, Response);
 
-            if(!addResult) throw new ApiError((int)ErrorCodes.DataArentCreatedSuccessfully);
+            if(addResult is null) throw new ApiError((int)ErrorCodes.DataArentCreatedSuccessfully);
 
-            return CustomResult(ResponseMesssage.ItemIsAddedSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
+            var shoppingCartDT0 = _mapper.Map<ShoppingCartDTO>(addResult);
+
+            return CustomResult(ResponseMesssage.ItemIsAddedSuccessfully.DisplayName(), shoppingCartDT0, System.Net.HttpStatusCode.Created);
         }
 
         /// <summary>
@@ -61,9 +63,11 @@ namespace Shopping_Store_API.Controllers.v1
         {
             var removeResult = await _shoppingCartService.RemoveItemToShoppingCart(Request.Cookies["userId"], shoppingCartParameters);
 
-            if (!removeResult) throw new ApiError((int)ErrorCodes.DataArentDeletedSuccessfully);
+            if (removeResult is null) throw new ApiError((int)ErrorCodes.DataArentDeletedSuccessfully);
 
-            return CustomResult(ResponseMesssage.ItemIsRemovedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
+            var shoppingCartDT0 = _mapper.Map<ShoppingCartDTO>(removeResult);
+
+            return CustomResult(ResponseMesssage.ItemIsRemovedSuccessfully.DisplayName(), shoppingCartDT0, System.Net.HttpStatusCode.OK);
         }
     }
 }

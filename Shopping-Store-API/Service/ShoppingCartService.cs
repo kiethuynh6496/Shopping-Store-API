@@ -23,7 +23,7 @@ namespace Shopping_Store_API.Service
             return getShoppingCart;
         }
 
-        public async Task<bool> AddItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters, HttpResponse httpResponse)
+        public async Task<ShoppingCart> AddItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters, HttpResponse httpResponse)
         {
             // Get Shopping Cart
             var shoppingCart = await _unitOfWork.ShoppingCart.GetShoppingCart(userId, true);
@@ -55,12 +55,12 @@ namespace Shopping_Store_API.Service
             var result = await _unitOfWork.CommitAsync();
             if (result == 0)
             {
-                return false;
+                return null;
             }
-            return true;
+            return shoppingCart;
         }
 
-        public async Task<bool> RemoveItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters)
+        public async Task<ShoppingCart> RemoveItemToShoppingCart(string userId, ShoppingCartParameters shoppingCartParameters)
         {
             // Get Shopping Cart
             var shoppingCart = await _unitOfWork.ShoppingCart.GetShoppingCart(userId, true);
@@ -78,9 +78,9 @@ namespace Shopping_Store_API.Service
             var result = await _unitOfWork.CommitAsync();
             if (result == 0)
             {
-                return false;
+                return null;
             }
-            return true;
+            return shoppingCart;
         }
 
         private async Task UpdateEntity(ShoppingCart? shoppingCart, ShoppingCartParameters shoppingCartParameters)
@@ -94,7 +94,8 @@ namespace Shopping_Store_API.Service
 
             // Update data in ShoppingCartItem
             var updateShoppingItemCartResult = currentShoppingCart == null ? await _unitOfWork.ShoppingCartItem.Add(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId)) :
-                                                                                   _unitOfWork.ShoppingCartItem.Update(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId));
+                                                                                    shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId) is not null ?
+                                                                                   _unitOfWork.ShoppingCartItem.Update(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId)) : true;
             if (updateShoppingItemCartResult == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
         }
     }
