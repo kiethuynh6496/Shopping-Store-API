@@ -31,7 +31,7 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Retrieve all Products with Pagination (10 products/page)
+        /// Retrieve all Products with Pagination (12 products/page)
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -42,10 +42,10 @@ namespace Shopping_Store_API.Controllers.v1
         ///                      // price+ : Sorting Products by Ascending Price
         ///                      // price- : Sorting Products by Descending Price
         ///       "productName": "", // Filtering Products by Name
-        ///       "minPrice": "", // defaul value: 0
-        ///       "maxPrice": "", // defaul value: 999999999
-        ///       "pageNumber": "", // defaul value: 1
-        ///       "pageSize": "", // defaul value: 10
+        ///       "minPrice": #, // defaul value: 0
+        ///       "maxPrice": #, // defaul value: 999999999
+        ///       "pageNumber": #, // defaul value: 1
+        ///       "pageSize": #, // defaul value: 12
         ///     }
         /// </remarks>
         /// <returns></returns>

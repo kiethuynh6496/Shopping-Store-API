@@ -381,6 +381,90 @@ namespace Shopping_Store_API.Config
                         BrandID = 6,
                         CategoryID = 3,
                         QuantityInStock = 100
+                    },
+                    new Product
+                    {
+                        Id = 31,
+                        Name = "Dell Latitude 7320 - 2",
+                        Description =
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        Price = 1000,
+                        PictureUrl = "https://res.cloudinary.com/donrlyxgv/image/upload/v1708693471/shopee/products/jqyuena1vpsuojaht4vu.png",
+                        BrandID = 1,
+                        CategoryID = 1,
+                        QuantityInStock = 100
+                    },
+                    new Product
+                    {
+                        Id = 32,
+                        Name = "Dell Latitude 7330 - 2",
+                        Description =
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        Price = 2000,
+                        PictureUrl = "https://res.cloudinary.com/donrlyxgv/image/upload/v1708693471/shopee/products/n28l0eh9rjx2bihtxoy5.jpg",
+                        BrandID = 1,
+                        CategoryID = 1,
+                        QuantityInStock = 100
+                    },
+                    new Product
+                    {
+                        Id = 33,
+                        Name = "Dell Inspiron 6430 - 2",
+                        Description =
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        Price = 3000,
+                        PictureUrl = "https://res.cloudinary.com/donrlyxgv/image/upload/v1708693472/shopee/products/hpgz7xlaqa52xo7ubjw9.png",
+                        BrandID = 1,
+                        CategoryID = 1,
+                        QuantityInStock = 100
+                    },
+                    new Product
+                    {
+                        Id = 34,
+                        Name = "Dell Inspiron 6530 - 2",
+                        Description =
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        Price = 4000,
+                        PictureUrl = "https://res.cloudinary.com/donrlyxgv/image/upload/v1708693472/shopee/products/enebiqezhcup3lgkcstb.png",
+                        BrandID = 1,
+                        CategoryID = 1,
+                        QuantityInStock = 100
+                    },
+                    new Product
+                    {
+                        Id = 35,
+                        Name = "Ipad M1 12.9 - 2",
+                        Description =
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        Price = 5000,
+                        PictureUrl = "https://res.cloudinary.com/donrlyxgv/image/upload/v1708693472/shopee/products/gpomm9nf5w3w4juiooiv.png",
+                        BrandID = 2,
+                        CategoryID = 2,
+                        QuantityInStock = 100
+                    },
+                    new Product
+                    {
+                        Id = 36,
+                        Name = "Ipad M1 12.9 - 3",
+                        Description =
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        Price = 6000,
+                        PictureUrl = "https://res.cloudinary.com/donrlyxgv/image/upload/v1708693472/shopee/products/yysgxkbqiufbui1hb9si.jpg",
+                        BrandID = 2,
+                        CategoryID = 2,
+                        QuantityInStock = 100
+                    },
+                    new Product
+                    {
+                        Id = 37,
+                        Name = "Dell Screen 27inch - 2",
+                        Description =
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        Price = 7000,
+                        PictureUrl = "https://res.cloudinary.com/donrlyxgv/image/upload/v1708693472/shopee/products/wsb51zjp5mc4wqbfxatp.png",
+                        BrandID = 1,
+                        CategoryID = 3,
+                        QuantityInStock = 100
                     }
                 );
         }

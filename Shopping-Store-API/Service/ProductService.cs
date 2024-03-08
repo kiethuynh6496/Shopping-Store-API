@@ -37,12 +37,12 @@ namespace Shopping_Store_API.Service
 
         public async Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters)
         {
-            if (!_cache.TryGetValue(productListCacheKey + productParameters.pageNumber.ToString(), out IEnumerable<Product> products))
+            if (!_cache.TryGetValue(productListCacheKey + productParameters.pageNumber.ToString() + productParameters.pageSize.ToString(), out IEnumerable<Product> products))
             {
                 try
                 {
                     await semaphore.WaitAsync();
-                    if (!_cache.TryGetValue(productListCacheKey + productParameters.pageNumber.ToString(), out products))
+                    if (!_cache.TryGetValue(productListCacheKey + productParameters.pageNumber.ToString() + productParameters.pageSize.ToString(), out products))
                     {
                         products = _unitOfWork.Products.GetProducts(productParameters);
                         var cacheEntryOptions = new MemoryCacheEntryOptions()
@@ -50,7 +50,7 @@ namespace Shopping_Store_API.Service
                                 .SetAbsoluteExpiration(TimeSpan.FromMinutes(15))
                                 .SetPriority(CacheItemPriority.Normal)
                                 .SetSize(1024);
-                        _cache.Set(productListCacheKey + productParameters.pageNumber.ToString(), products, cacheEntryOptions);
+                        _cache.Set(productListCacheKey + productParameters.pageNumber.ToString() + productParameters.pageSize.ToString(), products, cacheEntryOptions);
                     }
                 }
                 catch
