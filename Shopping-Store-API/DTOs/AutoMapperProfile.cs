@@ -25,6 +25,10 @@ namespace Shopping_Store_API.DTOs
             CreateMap<ShoppingCartItemDTO, ShoppingCartItem>()
                 .ReverseMap();
 
+            CreateMap<UserDTO, AppUser>()
+                .ReverseMap();
+            CreateMap<AddressDTO, Address>()
+                .ReverseMap();
             CreateMap<RegisterDTO, AppUser>()
                 .ReverseMap();
             CreateMap<LogInResponseDTO, Token>()

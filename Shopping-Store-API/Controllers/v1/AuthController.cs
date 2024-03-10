@@ -121,6 +121,22 @@ namespace Shopping_Store_API.Controllers.v1
             return CustomResult(ResponseMesssage.LoggedOutSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
+        /// <summary>
+        /// Get the current User
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ApiError"></exception>
+        [HttpGet("current-user")]
+        [Authorize]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            var user = await _userManager.Users.AsNoTracking().Include(a => a.Addresses).FirstOrDefaultAsync(u => u.Id == Request.Cookies["userId"]);
+            if (user == null) throw new ApiError((int)ErrorCodes.UserIsUnauthenticated);
+            var userDTO = _mapper.Map<UserDTO>(user);
+
+            return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), userDTO, System.Net.HttpStatusCode.OK);
+        }
+
         private async Task<bool> IsUserExists(string email)
         {
             return await _userManager.Users.AnyAsync(x => x.Email == email.ToLower());
