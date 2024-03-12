@@ -64,10 +64,7 @@ namespace Shopping_Store_API.Service
             if(result == false) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
             var IsCommitted = await _unitOfWork.CommitAsync();
-            if (IsCommitted <= 0)
-            {
-                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
-            }
+            if (IsCommitted <= 0) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
             var responeToken = new LogInResponseDTO
             {

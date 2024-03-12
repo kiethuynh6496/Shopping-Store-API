@@ -13,7 +13,7 @@ namespace Shopping_Store_API.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/shoppingcart")]
-    //[Authorize]
+    [Authorize]
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService _shoppingCartService;

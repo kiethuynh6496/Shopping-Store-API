@@ -53,10 +53,7 @@ namespace Shopping_Store_API.Service
 
             // Updata Db in 2 tables: ShoppingCartItem and ShoppingCart
             var result = await _unitOfWork.CommitAsync();
-            if (result == 0)
-            {
-                return null;
-            }
+            if (result <= 0) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
             return shoppingCart;
         }
 
@@ -76,10 +73,7 @@ namespace Shopping_Store_API.Service
 
             // Updata ShoppingCartItem table
             var result = await _unitOfWork.CommitAsync();
-            if (result == 0)
-            {
-                return null;
-            }
+            if (result <= 0) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
             return shoppingCart;
         }
 

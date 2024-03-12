@@ -102,10 +102,7 @@ namespace Shopping_Store_API.Service
 
             // Commit all
             var save = await _unitOfWork.CommitAsync();
-            if (save <= 0)
-            {
-                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
-            }
+            if (save <= 0) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
             return true;
         }
     }

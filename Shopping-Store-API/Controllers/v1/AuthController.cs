@@ -39,7 +39,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// Sample request:
         /// 
         ///     POST api/v1/auth/register
-        ///     {        
+        ///     {
         ///       "email": "userdemo@gmail.com",
         ///       "password": "1234"
         ///     }
@@ -82,7 +82,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// Sample request: Here is an Admin Account (role: Admin)
         /// 
         ///     POST api/v1/auth/login
-        ///     {        
+        ///     {
         ///       "email": "admin@gmail.com",
         ///       "password": "12345"
         ///     }
@@ -130,11 +130,36 @@ namespace Shopping_Store_API.Controllers.v1
         [Authorize]
         public async Task<IActionResult> GetCurrentUser()
         {
-            var user = await _userManager.Users.AsNoTracking().Include(a => a.Addresses).FirstOrDefaultAsync(u => u.Id == Request.Cookies["userId"]);
+            var user = await _userManager.Users
+                            .AsNoTracking()
+                            .Include(a => a.Addresses)
+                            .FirstOrDefaultAsync(u => u.Id == Request.Cookies["userId"]);
             if (user == null) throw new ApiError((int)ErrorCodes.UserIsUnauthenticated);
             var userDTO = _mapper.Map<UserDTO>(user);
 
             return CustomResult(ResponseMesssage.DataAreLoadedSuccessfully.DisplayName(), userDTO, System.Net.HttpStatusCode.OK);
+        }
+
+        /// <summary>
+        /// Update Full Name and Phone of the current User
+        /// </summary>
+        /// <param name="userRequestDTO"></param>
+        /// <returns></returns>
+        /// <exception cref="ApiError"></exception>
+        [HttpPut("update-current-user")]
+        [Authorize]
+        public async Task<IActionResult> UpdateCurrentUser(UserRequestDTO userRequestDTO)
+        {
+            var user = await _userManager.FindByIdAsync(Request.Cookies["userId"]);
+            if (user == null) throw new ApiError((int)ErrorCodes.UserIsUnauthenticated);
+            user.FullName = userRequestDTO.FullName;
+            var updateFullName = await _userManager.UpdateAsync(user);
+            if(updateFullName != IdentityResult.Success) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
+
+            var updatePhone = await _userManager.SetPhoneNumberAsync(user, userRequestDTO.PhoneNumber);
+            if(updatePhone != IdentityResult.Success) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
+
+            return CustomResult(ResponseMesssage.DataAreUpdatedSuccessfully.DisplayName(), System.Net.HttpStatusCode.OK);
         }
 
         private async Task<bool> IsUserExists(string email)

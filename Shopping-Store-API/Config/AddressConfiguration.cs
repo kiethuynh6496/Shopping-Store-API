@@ -19,7 +19,9 @@ namespace Shopping_Store_API.Config
                     {
                         Id = 1,
                         UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420",
+                        NickName = "Huynh Tuan Kiet",
                         AddressName = "172/26 Ly Thai To, Q.3",
+                        Phone = "0386226362",
                         City = "HCM",
                         isDefault = true
                     },
@@ -27,7 +29,9 @@ namespace Shopping_Store_API.Config
                     {
                         Id = 2,
                         UserId = "d68dcb5f-2706-4cb5-bb0b-37bf39400420",
+                        NickName = "Au Duong Phong",
                         AddressName = "175 Duong so 1, Go Vap",
+                        Phone = "0129629521",
                         City = "HCM",
                         isDefault = false
                     }

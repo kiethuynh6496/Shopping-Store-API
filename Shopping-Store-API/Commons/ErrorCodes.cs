@@ -84,5 +84,8 @@ namespace Shopping_Store_API.Commons
 
         [Display(Description = "Stripe Checkout Isn't Successfully!")]
         StripeCheckoutIsntSuccessfully,
+
+        [Display(Description = "New Address Can't Created!")]
+        NewAddressCantCreated,
     }
 }

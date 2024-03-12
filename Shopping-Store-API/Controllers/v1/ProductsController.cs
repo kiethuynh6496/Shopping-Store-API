@@ -37,7 +37,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// Sample request:
         /// 
         ///     GET api/v1/product
-        ///     {        
+        ///     {
         ///       "orderBy": "", // defaul value: "", Sorting Products by Name
         ///                      // price+ : Sorting Products by Ascending Price
         ///                      // price- : Sorting Products by Descending Price
@@ -107,7 +107,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// Sample request:
         /// 
         ///     POST api/v1/product
-        ///     {        
+        ///     {
         ///       "Name": "Dell Lattitude 7660",
         ///       "Description": "Sản xuất 2014",
         ///       "Price": 1000, // defaul value: 100
@@ -136,7 +136,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// Sample request:
         /// 
         ///     PUT api/v1/product
-        ///     {        
+        ///     {
         ///       "Id": 1,
         ///       "Name": "Dell Lattitude 7660",
         ///       "Description": "Sản xuất 2014",
