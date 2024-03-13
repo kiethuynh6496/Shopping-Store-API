@@ -15,7 +15,6 @@ namespace Shopping_Store_API.Controllers.v1
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/token")]
-    [Authorize]
     public class TokenController : BaseController
     {
         private readonly UserManager<AppUser> _userManager;
@@ -72,6 +71,7 @@ namespace Shopping_Store_API.Controllers.v1
         /// <returns></returns>
         /// <exception cref="ApiError"></exception>
         [HttpPost("revoke")]
+        [Authorize]
         public async Task<IActionResult> Revoke(TokenRequestDTO tokenRequestDTO)
         {
             if (string.IsNullOrEmpty(tokenRequestDTO.RefreshToken)) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);

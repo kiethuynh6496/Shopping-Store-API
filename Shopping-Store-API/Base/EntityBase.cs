@@ -18,7 +18,7 @@ namespace Shopping_Store_API.Base
 
     public abstract class AuditEntity<TKey> : DeleteEntity<TKey>, IAuditEntity<TKey>
     {
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public string? CreatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public string? UpdatedBy { get; set; }
