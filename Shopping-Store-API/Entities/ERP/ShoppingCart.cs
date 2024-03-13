@@ -24,9 +24,20 @@ namespace Shopping_Store_API.Entities.ERP
 
         public void AddItem(Product product, int quantity)
         {
+            var newItem = new Product
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                PictureUrl = product.PictureUrl,
+                QuantityInStock = product.QuantityInStock,
+                CategoryID = product.CategoryID,
+                BrandID = product.BrandID,
+                PublicIdCloudary = product.PublicIdCloudary,
+            };
             if(ShoppingCartItems.All(item => item.ItemId != product.Id))
             {
-                ShoppingCartItems.Add(new ShoppingCartItem { ItemId = product.Id, Quantity = quantity, Item = product});
+                ShoppingCartItems.Add(new ShoppingCartItem { ItemId = product.Id, Quantity = quantity, Item = newItem });
                 return;
             }
 

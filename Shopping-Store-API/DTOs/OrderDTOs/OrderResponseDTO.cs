@@ -8,6 +8,9 @@ namespace Shopping_Store_API.DTOs.OrderDTOs
 
         public ICollection<OrderItemDTO> OrderItems { get; set; }
 
+        public string? NickName { get; set; }
+        public string? AddressName { get; set; }
+        public string? Phone { get; set; }
         public long Total { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public DateTime CreatedDate { get; set; }

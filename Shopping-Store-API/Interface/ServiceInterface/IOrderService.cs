@@ -3,7 +3,7 @@ using Shopping_Store_API.Entities.ERP;
 
 namespace Shopping_Store_API.Interface.ServiceInterface
 {
-	public interface IOrderService
+    public interface IOrderService
     {
         Task<IEnumerable<Order>> GetOrders(string userEmail);
         Task<IEnumerable<Order>> GetOrderById(int id, string userEmail);

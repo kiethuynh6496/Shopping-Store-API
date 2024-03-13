@@ -1,6 +1,4 @@
-﻿using Shopping_Store_API.Entities.ERP;
-
-namespace Shopping_Store_API.DTOs.ProductDTOs
+﻿namespace Shopping_Store_API.DTOs.ProductDTOs
 {
     public class ProductDTO
     {

@@ -51,23 +51,15 @@ namespace Shopping_Store_API.Controllers.v1
         }
 
         /// <summary>
-        /// Create an Order
+        /// Create an Order based on the current Shopping Cart
         /// </summary>
         /// <remarks>
-        /// Sample request:
-        /// 
         ///     POST api/v1/order
-        ///     {
-        ///       "fullName": "Nguyễn Văn A",
-        ///       "addressName": "12 đường số 1, Bình Thạnh",
-        ///       "city": "Hồ Chí Minh",
-        ///       "isDefault": true
-        ///     }
         /// </remarks>
         /// <param name="orderRequestDTO"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromBody]OrderRequestDTO orderRequestDTO)
+        public async Task<IActionResult> CreateOrder([FromQuery]OrderRequestDTO orderRequestDTO)
         {
             await _orderService.CreateOrder(Request.Cookies["userId"], orderRequestDTO);
 

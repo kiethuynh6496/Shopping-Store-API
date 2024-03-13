@@ -4,7 +4,7 @@ using System.Security.Claims;
 
 namespace Shopping_Store_API.Interface.ServiceInterface
 {
-	public interface ITokenService
+    public interface ITokenService
     {
         Task<LogInResponseDTO> GenerateAccessToken(AppUser appUser);
         string GenerateRefreshToken();

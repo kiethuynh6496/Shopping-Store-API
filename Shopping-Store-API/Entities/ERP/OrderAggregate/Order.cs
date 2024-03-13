@@ -20,6 +20,9 @@ namespace Shopping_Store_API.Entities.ERP
         [InverseProperty(nameof(OrderItem.Order))]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 
+        public string? NickName { get; set; }
+        public string? AddressName { get; set; }
+        public string? Phone { get; set; }
         public long Total { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
         public string? PaymentIntenId { get; set; }

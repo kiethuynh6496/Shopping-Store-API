@@ -81,16 +81,17 @@ namespace Shopping_Store_API.Service
         {
             var currentShoppingCart = await _unitOfWork.ShoppingCart.FindById(s => s.Id == shoppingCart.Id);
 
-            // Update data int ShoppingCart
-            var updateShoppingCartResult = currentShoppingCart == null ? await _unitOfWork.ShoppingCart.Add(shoppingCart) :
-                                                                         _unitOfWork.ShoppingCart.Update(shoppingCart);
-            if (updateShoppingCartResult == false) throw new ApiError((int)ErrorCodes.ShoppingCartCantBeUpdated);
+            if(currentShoppingCart != null)
+            {
+                // Update data int ShoppingCart
+                var updateShoppingCartResult = _unitOfWork.ShoppingCart.Update(shoppingCart);
+                if (updateShoppingCartResult == false) throw new ApiError((int)ErrorCodes.ShoppingCartCantBeUpdated);
 
-            // Update data in ShoppingCartItem
-            var updateShoppingItemCartResult = currentShoppingCart == null ? await _unitOfWork.ShoppingCartItem.Add(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId)) :
-                                                                                    shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId) is not null ?
+                // Update data in ShoppingCartItem
+                var updateShoppingItemCartResult = shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId) is not null ?
                                                                                    _unitOfWork.ShoppingCartItem.Update(shoppingCart.ShoppingCartItems.FirstOrDefault(item => item.ItemId == shoppingCartParameters.productId)) : true;
-            if (updateShoppingItemCartResult == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
+                if (updateShoppingItemCartResult == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
+            }
         }
     }
 }

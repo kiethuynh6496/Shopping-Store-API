@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CoreApiResponse;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
 using Shopping_Store_API.DTOs.AuthDTOs;
@@ -11,7 +10,7 @@ using Shopping_Store_API.Interface;
 
 namespace Shopping_Store_API.Controllers.v1
 {
-    [ApiController]
+	[ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/address")]
     public class AddressController : BaseController
@@ -84,18 +83,19 @@ namespace Shopping_Store_API.Controllers.v1
         public async Task<IActionResult> SetDefaultAddress(int id)
         {
             var userAddress = await _unitOfWork.Address.FindById(a => a.UserId == Request.Cookies["userId"] && a.isDefault == true, true);
-            if (userAddress == null) throw new ApiError((int)ErrorCodes.UserIsUnauthenticated);
-
-            userAddress.isDefault = false;
-            var updateUserAddress = _unitOfWork.Address.Update(userAddress);
-            if (updateUserAddress == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
+            if(userAddress != null)
+            {
+                 userAddress.isDefault = false;
+                var updateUserAddress = _unitOfWork.Address.Update(userAddress);
+                if (updateUserAddress == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
+            }
 
             var defaultUserAddress = await _unitOfWork.Address.FindById(a => a.UserId == Request.Cookies["userId"] && a.Id == id, true);
             if (defaultUserAddress == null) throw new ApiError((int)ErrorCodes.UserIsUnauthenticated);
 
             defaultUserAddress.isDefault = true;
             var updateDefaultUserAddress = _unitOfWork.Address.Update(defaultUserAddress);
-            if (updateUserAddress == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
+            if (updateDefaultUserAddress == false) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);
 
             var result = await _unitOfWork.CommitAsync();
             if (result <= 0) throw new ApiError((int)ErrorCodes.DataArentUpdatedSuccessfully);

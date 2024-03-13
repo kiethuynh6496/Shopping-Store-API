@@ -3,14 +3,10 @@ using CoreApiResponse;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shopping_Store_API.Commons;
-using Shopping_Store_API.Config;
 using Shopping_Store_API.DTOs.ProductDTOs;
-using Shopping_Store_API.Entities;
-using Shopping_Store_API.Entities.ERP;
 using Shopping_Store_API.Interface;
 using Shopping_Store_API.Interface.ServiceInterface;
 using Shopping_Store_API.Service.Parameters;
-using static Shopping_Store_API.Commons.Constants;
 
 namespace Shopping_Store_API.Controllers.v1
 {
