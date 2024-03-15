@@ -33,7 +33,7 @@ namespace Shopping_Store_API.Commons
 
         public static void SaveDataToCookie(string buyerId, HttpResponse httpResponse)
         {
-            var cookieOptions = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(30) };
+            var cookieOptions = new CookieOptions { IsEssential = false, Expires = DateTime.Now.AddDays(30), Secure = true, SameSite = SameSiteMode.None };
 
             httpResponse.Cookies.Append("userId", buyerId, cookieOptions);
         }

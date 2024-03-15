@@ -25,7 +25,7 @@ app.UseSwaggerUI(options =>
     }
     options.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
 });
-app.UseIpRateLimiting();
 app.ConfigureAPIApp();
+app.UseIpRateLimiting();
 
 app.Run();
