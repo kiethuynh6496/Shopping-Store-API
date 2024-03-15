@@ -37,6 +37,14 @@ namespace Shopping_Store_API.Service
 
         public async Task<IEnumerable<Product>> GetProducts(ProductParameters productParameters)
         {
+            if(productParameters.productName != null || 
+                productParameters.orderBy != null ||
+                productParameters.minPrice != 0 ||
+                productParameters.maxPrice != 999999999)
+            {
+                var productList = _unitOfWork.Products.GetProducts(productParameters);
+                return productList;
+            }
             if (!_cache.TryGetValue(productListCacheKey + productParameters.pageNumber.ToString() + productParameters.pageSize.ToString(), out IEnumerable<Product> products))
             {
                 try
