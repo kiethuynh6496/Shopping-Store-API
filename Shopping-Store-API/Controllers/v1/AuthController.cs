@@ -23,13 +23,16 @@ namespace Shopping_Store_API.Controllers.v1
         private readonly UserManager<AppUser> _userManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITokenService _tokenService;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IMapper mapper, UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService)
+
+        public AuthController(IMapper mapper, UserManager<AppUser> userManager, IUnitOfWork unitOfWork, ITokenService tokenService, ILogger<AuthController> logger)
         {
             _mapper = mapper;
             _userManager = userManager;
             _unitOfWork = unitOfWork;
             _tokenService = tokenService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -50,18 +53,31 @@ namespace Shopping_Store_API.Controllers.v1
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
-            if (await IsUserExists(registerDTO.Email)) throw new ApiError((int)ErrorCodes.EmailIsAlreadyTaken);
+            _logger.LogInformation("Start Register!");
+            if (await IsUserExists(registerDTO.Email))
+            {
+                _logger.LogInformation("Email existed!");
+                throw new ApiError((int)ErrorCodes.EmailIsAlreadyTaken);
+            }
 
             var user = _mapper.Map<AppUser>(registerDTO);
             user.UserName = registerDTO.Email.ToLower();
 
             var result = await _userManager.CreateAsync(user, registerDTO.Password);
 
-            if (!result.Succeeded) return BadRequest(result.Errors);
+            if (!result.Succeeded)
+            {
+                _logger.LogInformation("User is created successfully!");
+                return BadRequest(result.Errors);
+            }
 
             var roleResult = await _userManager.AddToRoleAsync(user, Role.User.ToString());
 
-            if (!roleResult.Succeeded) return BadRequest(roleResult.Errors);
+            if (!roleResult.Succeeded)
+            {
+                _logger.LogInformation("Role User is created successfully!");
+                return BadRequest(roleResult.Errors);
+            }
 
             // Creata Shopping Cart and save userId to Cookie
             var shoppingCart = _unitOfWork.ShoppingCart.CreateShoppingCart(user.Id, Response);
@@ -69,9 +85,11 @@ namespace Shopping_Store_API.Controllers.v1
             // Add Shopping Cart
             var createShoppingCartResult = await _unitOfWork.ShoppingCart.Add(shoppingCart);
             if (createShoppingCartResult == false) throw new ApiError((int)ErrorCodes.ShoppingCartCantBeCreated);
+            _logger.LogInformation("Shopping Cart is created successfully!");
 
             if(await _unitOfWork.CommitAsync() <= 0) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
 
+            _logger.LogInformation("Close Register!");
             return CustomResult(ResponseMesssage.UserRegisteredSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
@@ -93,17 +111,37 @@ namespace Shopping_Store_API.Controllers.v1
         [HttpPost("login")]
         public async Task<IActionResult> Login(LogInRequestDTO logInRequestDTO)
         {
-            if (logInRequestDTO is null) throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
+            _logger.LogInformation("Start Login!");
+            if (logInRequestDTO is null)
+            {
+                _logger.LogInformation("Enter your email and password, Please!");
+                throw new ApiError((int)ErrorCodes.ClientRequestIsInvalid);
+            }
 
             var user = await _userManager.Users.FirstOrDefaultAsync(user => user.Email == logInRequestDTO.Email);
-            if (user == null) throw new ApiError((int)ErrorCodes.UserIsUnauthenticated);
+            if (user == null)
+            {
+                _logger.LogInformation("Email is not correct!");
+                throw new ApiError((int)ErrorCodes.UserIsUnauthenticated);
+            }
+
 
             var result = await _userManager.CheckPasswordAsync(user, logInRequestDTO.Password);
-            if (!result) throw new ApiError((int)ErrorCodes.UserIsUnauthorized);
+            if (!result)
+            {
+                _logger.LogInformation("Password is not correct!");
+                throw new ApiError((int)ErrorCodes.UserIsUnauthorized);
+            }
 
             var token = await _tokenService.GenerateAccessToken(user);
+            if(token is not null)
+            {
+                _logger.LogInformation("Generate 2 tokens successfully!");
+            }
 
             Helpers.SaveDataToCookie(user.Id, Response);
+            _logger.LogInformation("Login Successfully!");
+            _logger.LogInformation("Close Login!");
 
             return CustomResult(ResponseMesssage.LoggedInSuccessfully.DisplayName(), token, System.Net.HttpStatusCode.OK);
         }
@@ -118,6 +156,8 @@ namespace Shopping_Store_API.Controllers.v1
         {
             // Remove the authentication cookie
             Response.Cookies.Delete("userId");
+            _logger.LogInformation("userId isn't remove from Coockies.");
+
             return CustomResult(ResponseMesssage.LoggedOutSuccessfully.DisplayName(), System.Net.HttpStatusCode.Created);
         }
 
