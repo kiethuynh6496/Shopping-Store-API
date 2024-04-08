@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  sql:
+    build:
+        context: ./Shopping-Store-API/sql
+        args:
+          - SA_PASSWORD=sa&123456
+    image: shop:sql
+    container_name: sql2019
+    ports:
+      - "1433:1433"
+    restart: always
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  api:
+    build:
+        context: ./Shopping-Store-API
+    image: shop:api
+    container_name: shop2024
+    ports:
+      - "5000:80"
+      - "6333:443"
+    restart: always
+    depends_on:
+      - sql
+
+volumes:
+  sql_data:
