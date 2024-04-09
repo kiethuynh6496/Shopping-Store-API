@@ -21,4 +21,3 @@ RUN chmod +x /app/init-data.sh
 RUN chmod +x /app/entrypoint.sh
 
 CMD /bin/bash /app/entrypoint.sh
-

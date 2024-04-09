@@ -3,13 +3,15 @@ version: '3.4'
 services:
   sql:
     build:
-        context: ./Shopping-Store-API/sql
+        context: ./sql
         args:
           - SA_PASSWORD=sa&123456
     image: shop:sql
     container_name: sql2019
     ports:
       - "1433:1433"
+    networks:
+      - shared_network
     restart: always
     volumes:
       - sql_data:/var/opt/mssql
@@ -18,13 +20,29 @@ services:
     build:
         context: ./Shopping-Store-API
     image: shop:api
-    container_name: shop2024
+    container_name: api2024
     ports:
       - "5000:80"
       - "6333:443"
+    networks:
+      - shared_network
     restart: always
     depends_on:
       - sql
+  ui:
+    build:
+       context: ./shopUI
+    image: shop:ui
+    container_name: shop2024
+    ports:
+      - "7000:80"
+    networks:
+      - shared_network
+    restart: always
+    depends_on:
+      - api
 
+networks:
+  shared_network:
 volumes:
   sql_data:

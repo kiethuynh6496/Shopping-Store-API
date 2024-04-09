@@ -20,6 +20,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="shopUI\**" />
+    <Compile Remove="sql\**" />
+    <Content Remove="shopUI\**" />
+    <Content Remove="sql\**" />
+    <EmbeddedResource Remove="shopUI\**" />
+    <EmbeddedResource Remove="sql\**" />
+    <None Remove="shopUI\**" />
+    <None Remove="sql\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\v1\WeatherForecastController.cs" />
     <Compile Remove="WeatherForecast.cs" />
   </ItemGroup>
@@ -54,6 +65,7 @@
   <ItemGroup>
     <Folder Include="Controllers\v2\" />
     <Folder Include="Products\" />
+    <Folder Include="shopUI\" />
   </ItemGroup>
 
 </Project>
