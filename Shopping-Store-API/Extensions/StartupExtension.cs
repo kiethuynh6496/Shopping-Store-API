@@ -190,7 +190,7 @@ namespace Shopping_Store_API.Extensions
                 options.AddPolicy("AllowOrigin", builder =>
                 {
                     builder
-                        .WithOrigins("https://myshopeestore.azurewebsites.net", "https://localhost:3000", "https://172.26.192.1:3000")
+                        .WithOrigins("https://myshopeestore.azurewebsites.net", "https://localhost:3000", "https://172.26.192.1:3000", "https://localhost:8333", "http://localhost:7000")
                         .AllowCredentials()
                         .AllowAnyHeader()
                         .AllowAnyMethod();

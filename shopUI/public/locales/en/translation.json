@@ -1,0 +1,133 @@
+{
+  "landing": {
+    "header": {
+      "left_side": {
+        "tag1": "Seller Hub",
+        "tag2": "Become a Shopee Seller",
+        "tag3": "Download the App",
+        "tag4": "Connect",
+        "today_suggestion": "TODAY'S SUGGESTION"
+      },
+
+      "right_side": {
+        "tag1": "Notifications",
+        "tag2": "Support",
+        "tag3": "English",
+        "tag4": "English",
+        "tag5": "Sign Up",
+        "tag6": "Log In",
+        "tran_his": "Transaction History",
+        "acc_detail": "Account Information",
+        "logout": "Log Out",
+        "registered": "Registered",
+        "unregistered": "Unregistered",
+        "products": "Products",
+        "warning": "Warning",
+        "warning-description": "Please log in before buying it!"
+      }
+    }
+  },
+
+  "product": {
+    "detail": {
+      "quantity": "Quantity",
+      "available": "Available Products",
+      "warranty": "Shopee Guarantee",
+      "refund_day": "Return/Refund Days",
+      "detail": "PRODUCT DETAILS",
+      "type": "Category",
+      "warehouse": "Warehouse",
+      "from": "Sent from",
+      "description": "PRODUCT DESCRIPTION",
+      "review": "PRODUCT REVIEWS",
+      "out_of": "out of",
+      "star": "Stars",
+      "image": "Has Image",
+      "video": "Video",
+      "comment": "Has Comments",
+      "addCart": "Add to Cart",
+      "buy_now": "Buy Now"
+    }
+  },
+
+  "cart": {
+    "cart": "Shopping Cart",
+    "notification": "Click on the Discount Code section at the bottom of the page for free shipping!",
+    "title1": "Product",
+    "title2": "Unit Price",
+    "title3": "Quantity",
+    "title4": "Total",
+    "title5": "Action",
+    "type": "Product Type",
+    "voucher": "Choose or Enter Code",
+    "select_all": "Select All",
+    "delete": "Delete",
+    "save": "Save to Favorites",
+    "summary": "Total Payment",
+    "product": "Product",
+    "submit_btn": "Proceed to Checkout"
+  },
+
+  "checkout": {
+    "header": "Checkout",
+    "address": "Shipping Address",
+    "change": "Change",
+    "add_new": "Add New Address",
+    "default": "Default",
+    "title1": "Product",
+    "title2": "Unit Price",
+    "title3": "Quantity",
+    "title4": "Subtotal",
+    "type": "Type",
+    "e_bill": "E-Bill",
+    "require": "Request Immediately",
+    "voucher": "Shop Voucher",
+    "select_voucher": "Select Voucher",
+    "payment_title": "Payment Method MoMo",
+    "payment_label": "Pay with Shopee Account",
+    "total_price": "Total Payment",
+    "summary_label": "Press \"Place Order\" implies you agree to abide by",
+    "summary_label_nav": "Shopee Terms",
+    "order": "Place Order",
+    "order_checkouted": "The product has been paid for",
+    "continue_buy": "Continue Buy",
+    "back": "Back",
+    "cancel": "Cancel",
+    "update_address": "Update Address",
+    "my_addresses": " My Addresses",
+    "confirm": "Confirm",
+    "full_name": "Full Name",
+    "phone": "Telephone",
+    "payment": "Pay",
+    "confirm_payment": "Have you confirmed your purchase?",
+    "make_payment": "Make payment"
+  },
+
+  "auth": {
+    "placeholder1": "Email",
+    "placeholder2": "Password",
+    "or": "OR",
+    "support": "Need help?",
+
+    "account_existed": "Account is existed",
+    "wrong_user_pass": "The username or password is incorrect",
+    "input_email_alert": "Please input your email!",
+    "input_pass_alert": "Please input your password!",
+    "register-success": "Your registration has been successful! Log in, please!",
+
+    "register": {
+      "signup": "Sign Up",
+      "other_option_label": "Already have an account?",
+      "login": "Log In"
+    },
+
+    "login": {
+      "signin": "Log In",
+      "other_option_label": "New to Shopee?",
+      "qrlabel": "Log in with QR Code",
+      "sms": "Log in with SMS",
+      "fogot": "Forgot Password",
+      "signup": "Sign Up"
+    }
+  }
+}
